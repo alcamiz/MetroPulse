@@ -1,25 +1,23 @@
-Canvas / Ed Discussion group number :  Group 6
+**Canvas / Ed Discussion group number :  Group 6**
 
-names of the team members
+**names of the team members**
 
-name of the project (alphanumeric, no spaces, max 32 chars; this will also be your URL)
+**name of the project (alphanumeric, no spaces, max 32 chars; this will also be your URL)**
 
-the proposed project
+**the proposed project**
 
-URLs of at least three data sources that you will programmatically scrape using a RESTful API (be very sure about this)
+**URLs of at least three data sources that you will programmatically scrape using a RESTful API (be very sure about this)**
 
-at least three models
+**at least three models**
 
-an estimate of the number of instances of each model
+**an estimate of the number of instances of each model**
 
-each model must have many attributes
+**each model must have many attributes describe five of those attributes for each model that you can filter or sort**
 
-describe five of those attributes for each model that you can filter or sort
+**instances of each model must connect to instances of at least two other models**
 
-instances of each model must connect to instances of at least two other models
+**instances of each model must be rich with different media (e.g., feeds, images, maps, text, videos, etc.) (be very sure about this)**
 
-instances of each model must be rich with different media (e.g., feeds, images, maps, text, videos, etc.) (be very sure about this)
+**describe two types of media for instances of each model**
 
-describe two types of media for instances of each model
-
-describe three questions that your site will answer
+**describe three questions that your site will answer**
