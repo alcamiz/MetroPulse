@@ -1,4 +1,4 @@
-Canvas / Ed Discussion group number (please check this carefully)
+Canvas / Ed Discussion group number :  Group 6
 
 names of the team members
 
