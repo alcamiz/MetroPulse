@@ -10,9 +10,9 @@
 * Alex Cabrera (gac2827)
 * Kamil Kalowski (ktk582)
 
-**Name of the Project: **MetroPulse-NYC
+**Name of the Project: ** MetroPulse-NYC
 
-**Proposed Project: **Hypertension Awareness in NY City
+**Proposed Project: ** Hypertension Awareness in NY City
 
 **Problem Importance: **Hypertension affects 30 percent of New York residents, and a large portion of the population either are not aware of the problem, know they have the disease but do not get any sort of treatment ([link](https://www.nyc.gov/assets/doh/downloads/pdf/epi/databrief135.pdf)).
 
