@@ -1,23 +1,103 @@
-**Canvas / Ed Discussion group number :  Group 6**
+**— Group #6 —**
 
-**names of the team members**
 
-**name of the project (alphanumeric, no spaces, max 32 chars; this will also be your URL)**
+**Team Members:**
 
-**the proposed project**
 
-**URLs of at least three data sources that you will programmatically scrape using a RESTful API (be very sure about this)**
 
-**at least three models**
+* Kyston Brown (kmb6273)
+* Thomas Moody (tjm4482)
+* Alex Cabrera (gac2827)
+* Kamil Kalowski (ktk582)
 
-**an estimate of the number of instances of each model**
+**Name of the Project: **MetroPulse-NYC
 
-**each model must have many attributes describe five of those attributes for each model that you can filter or sort**
+**Proposed Project: **Hypertension Awareness in NY City
 
-**instances of each model must connect to instances of at least two other models**
+**Problem Importance: **Hypertension affects 30 percent of New York residents, and a large portion of the population either are not aware of the problem, know they have the disease but do not get any sort of treatment ([link](https://www.nyc.gov/assets/doh/downloads/pdf/epi/databrief135.pdf)).
 
-**instances of each model must be rich with different media (e.g., feeds, images, maps, text, videos, etc.) (be very sure about this)**
+**Data Sources URLs (RESTful APIs)**
 
-**describe two types of media for instances of each model**
 
-**describe three questions that your site will answer**
+
+* Testing Centers ([link](https://dev.socrata.com/foundry/data.cityofnewyork.us/8eux-rfe8))
+* Council Demographics in Each District ([link](https://data.cityofnewyork.us/City-Government/Council-district-breakdown/jqy3-ybjq))
+* District Populations ([link](https://data.cityofnewyork.us/City-Government/New-York-City-Population-By-Community-Districts/xi7c-iiu2))
+* Hospital APIs ([link](https://data.cityofnewyork.us/Health/NYC-Health-Hospitals-patient-care-locations-2011/f7b6-v6v3))
+* Maps APIs ([link](https://www.openstreetmap.org/about/api/))
+
+**Three Models:**
+
+
+
+* Medical Facilities
+* Districts
+* Test Centers
+
+**Number of Instances**
+
+
+
+* Districts: 51
+* Medical Facilities: 78
+* Test Centers: 999
+
+**Attributes per Model**
+
+
+
+* Districts 
+    * Demographics
+    * Population
+    * Borough
+    * Average cardiologist price?
+* Medical Facilities
+    * Location
+    * Contact information
+    * District
+    * Borough
+* Test Centers
+    * Location
+    * Facility Name
+    * Address
+    * Times
+    * Phone Number
+    * Service Type
+
+**Connections:**
+
+
+
+* District: List of test centers and hospitals
+* Test Centers: List of hospitals within 10 mile radius and link to district location.
+* Hospitals: List of test centers within 10-mile radius and link to district location.
+
+**Rich Media**
+
+
+
+* Map locations (OpenStreetMaps)
+* Images (Bing Images; testing and medical centers)
+
+**Types of Media per Model**
+
+
+
+* Districts
+    * Map outline of the district
+    * Pie chart showing demographics
+* Medical Facilities
+    * Maps
+    * Images
+* Test Centers
+    * Maps
+    * Images
+
+**Questions to Answer:**
+
+
+
+* Where can NYC residents go to check for dangerously high blood pressure?
+* Where can NYC residents find urgent medical care due to high blood pressure?
+* What facilities geared at aiding their high blood pressure can be found in their district?
+* What is hypertension?
