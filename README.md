@@ -12,9 +12,9 @@
 
 **Name of the Project:** MetroPulse-NYC
 
-**Proposed Project:** Hypertension Awareness in NY City
+**Proposed Project:** Helping NYC's black community deal with rising hypertension health issues.
 
-**Problem Importance:** Hypertension affects 30 percent of New York residents, and a large portion of the population either are not aware of the problem, know they have the disease but do not get any sort of treatment ([link](https://www.nyc.gov/assets/doh/downloads/pdf/epi/databrief135.pdf)).
+**Problem Importance:** The city of New York has recently published concerning statistics about the rise of hypertension problems in the city. In particular, the disease is disproportionately affecting black communities, with the prevalance of hypertension in the community being alost double (44%) that of the white community (23%). More concerning is the fact that of those in the community suffering from the disease, only 30% report having controlled blood pressure. With a number so low, we aim to help this community to more easily keep their blood pressure in check by finding local blood pressure testing centers, and in case of emergency find a facility able to help them stabilize their condition.
 
 **Data Sources URLs (RESTful APIs)**
 
@@ -97,7 +97,6 @@
 
 
 
-* Where can NYC residents go to check for dangerously high blood pressure?
-* Where can NYC residents find urgent medical care due to high blood pressure?
+* How can black NYC residents suffering from hypertension control their blood pressure consistently?
+* Where can black NYC residents find urgent medical care due to high blood pressure?
 * What facilities geared at aiding their high blood pressure can be found in their district?
-* What is hypertension?
