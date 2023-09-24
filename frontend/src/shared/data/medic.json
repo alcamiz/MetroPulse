@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Corona Child Health Clinic",
+    "address": "104 04 Corona Avenue Corona NY 11368",
+    "borough": "Queens",
+    "nta": "Corona",
+    "zip": "11103",
+    "phone": "718-334-6100",
+    "council": "21",
+    "id": 0
+  },
+  {
+    "name": "Junction Boulevard Child Health Clinic",
+    "address": "34 33 Junction Boulevard Jackson Heights NY 11372",
+    "borough": "Queens",
+    "nta": "Corona",
+    "zip": "11103",
+    "phone": "718-334-6150",
+    "council": "21",
+    "id": 1
+  },
+  {
+    "name": "Woodside Houses Child Health Clinic",
+    "address": "50 53 Newtown Road Woodside NY 11377",
+    "borough": "Queens",
+    "nta": "Woodside",
+    "zip": "11104",
+    "phone": "718-334-6140",
+    "council": "26",
+    "id": 2
+  }
+]

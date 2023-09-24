@@ -1,0 +1,35 @@
+[
+  {
+    "name": "Duane Reade",
+    "address": "28-58 Steinway Street",
+    "borough": "Queens",
+    "nta": "Astoria",
+    "zip": "11103",
+    "phone": "(718) 278-1402",
+    "council": "22",
+    "howto": "Ask a staff member to check your blood pressure",
+    "id": 0
+  },
+  {
+    "name": "Wellness Center Pharmacy",
+    "address": "40-13 Broadway",
+    "borough": "Queens",
+    "nta": "Astoria",
+    "zip": "11103",
+    "phone": "(718) 956-0060",
+    "council": "22",
+    "howto": "Ask a staff member to check your blood pressure",
+    "id": 1
+  },
+  {
+    "name": "Platinum Pharmacy",
+    "address": "46-21 Queens Boulevard",
+    "borough": "Queens",
+    "nta": "Hunters Point-Sunnyside-West Maspeth",
+    "zip": "11104",
+    "phone": "(718) 956-0060",
+    "council": "22",
+    "howto": "Ask a staff member to check your blood pressure",
+    "id": 2
+  }
+]
