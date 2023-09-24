@@ -1,0 +1,40 @@
+.Instance {
+  display: flex;
+  justify-content: center;
+  height: 100vmin;
+  
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.Instance-logo {
+  height: 40vmin;
+  pointer-events: none;
+  
+  border-radius: 10%;
+  border: 5px solid #555;
+
+  margin: 20px auto 20px auto;
+}
+
+.Instance-header {
+  border-radius: 5%;
+
+  background-color: #9bb5ea;
+  text-align: left;
+  margin: 20px 20px 20px 20px;
+
+  width: 800px;
+  height: fit-content;
+
+  display: flex;
+  flex-direction: column;
+  
+  /* font-size: calc(10px + 2vmin); */
+  color: white;
+}
+
+.Instance-title {
+  text-align: center;
+}
