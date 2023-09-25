@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  
 }
 
 .App-logo {
@@ -15,12 +16,12 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 50vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: 50px;
   color: white;
 }
 
@@ -32,7 +33,57 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+.CardStuff {
+  background-color: #293241;
+  color: rgb(53, 170, 229);
+  border: rgb(135, 135, 135);
+}
+
+.Team {
+  background-color: #293241;
+  color: #3d5a80;
+  font-size: 20px;
+}
+
+.OurTeam {
+  background-color: #293241;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #61dafb;
+  min-height: 20vh;
+  font-size: 40px;
+}
+
+.teamGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.gridCard {
+  background-color: #e0fbfc;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  margin: 20px 10px;
+  width: 300px;
+}
+
+.cardCap {
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.What{
+  background-color: #000000;
+  color: rgb(53, 170, 229);
+  font-size:30px;
 }
