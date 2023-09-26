@@ -76,3 +76,14 @@
   flex-direction: row;
   flex-wrap: wrap;
 }
+
+.resCard {
+  background-color: #282c34;
+  color: #e0fbfc;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  margin: 20px 20px;
+  width: 150px;
+  text-align: center
+}

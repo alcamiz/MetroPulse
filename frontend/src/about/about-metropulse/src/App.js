@@ -9,7 +9,6 @@ import { useState, useEffect } from 'react';
 
 function App() {
   const [commitNum, setCommitCount] = useState({});
-
   useEffect(() => {
     const url = 'https://gitlab.com/api/v4/projects/50434557/repository/commits?per_page=100';
     const members = ['Alex Cabrera', 'Kamil Kalowski', 'Ky5t0nbr', 'tjmoody18'];
@@ -111,10 +110,53 @@ function App() {
       </div>
       <div class="Resources">
         <div class="card">
-          <div class="textblock">
-            <h1>Git Overall</h1>
-            <p></p>
+          <h1>Resources</h1>
+          <div class="Team">
+            <div class="teamGrid">
+              <div class="resCard">
+                <div class="cardCap"></div>
+                <Card.Img variant="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png" height="150px" width="150px" objectFit="cover" />
+                <Card.Title>React</Card.Title>
+              </div>
+              <div class="resCard">
+                <div class="cardCap"></div>
+                <Card.Img variant="top" src="https://www.svgrepo.com/show/354202/postman-icon.svg" height="150px" width="150px" objectFit="cover" />
+                <Card.Title>Postman</Card.Title>
+              </div>
+              <div class="resCard">
+                <div class="cardCap"></div>
+                <Card.Img variant="top" src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/bootstrap-5-logo-icon.png" height="150px" width="150px" objectFit="cover" />
+                <Card.Title>BootStrap</Card.Title>
+              </div>
+              <div class="resCard">
+                <div class="cardCap"></div>
+                <Card.Img variant="top" src="https://seeklogo.com/images/Z/zoom-fondo-blanco-vertical-logo-F819E1C283-seeklogo.com.png" height="150px" width="150px" objectFit="cover" />
+                <Card.Title>Zoom</Card.Title>
+              </div>
+              <div class="resCard">
+                <div class="cardCap"></div>
+                <Card.Img variant="top" src="https://seeklogo.com/images/V/visual-studio-code-logo-449D71944F-seeklogo.com.png" height="150px" width="150px" objectFit="cover" />
+                <Card.Title>VS Code</Card.Title>
+              </div>
+              <div class="resCard">
+                <div class="cardCap"></div>
+                <Card.Img variant="top" src="https://lth.engineering.asu.edu/wp-content/uploads/sites/18/2021/06/Ed.png" height="150px" width="150px" objectFit="cover" />
+                <Card.Title>Ed Discussion</Card.Title>
+              </div>
+              <div class="resCard">
+                <div class="cardCap"></div>
+                <Card.Img variant="top" src="https://seeklogo.com/images/G/gitlab-logo-757620E430-seeklogo.com.png" height="150px" width="150px" objectFit="cover" />
+                <Card.Title>GitLab</Card.Title>
+              </div>
+              <div class="resCard">
+                <div class="cardCap"></div>
+                <Card.Img variant="top" src="https://cdn.icon-icons.com/icons2/2407/PNG/512/namecheap_icon_146138.png" height="150px" width="150px" objectFit="cover" />
+                <Card.Title>Name Cheap</Card.Title>
+              </div>
+            </div>
           </div>
+          <h1>Git Overall</h1>
+          <p></p>
         </div>
       </div>
     </div>
