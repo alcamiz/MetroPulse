@@ -106,10 +106,10 @@ function App() {
             <h3>Kyston Brown</h3>
             <div class="card-footer">
               <small class="text-muted">
-                <p>UserName: {memberData.Thomas.Name}</p>
-                <p>Email: {memberData.Thomas.Email}</p>
-                <p>Role: {memberData.Thomas.Role}</p>
-                <p>Bio: {memberData.Thomas.Bio}</p>
+                <p>UserName: {memberData.Kyston.Name}</p>
+                <p>Email: {memberData.Kyston.Email}</p>
+                <p>Role: {memberData.Kyston.Role}</p>
+                <p>Bio: {memberData.Kyston.Bio}</p>
                 <p>Commits : {commitNum['Ky5t0nbr']}</p>
               </small>
             </div>
@@ -119,7 +119,7 @@ function App() {
       </div>
       <div class="Resources">
         <div class="card">
-          <h1>Resources</h1>
+        <div class="footblock" ><h1>Resources</h1></div>
           <div class="Team">
             <div class="teamGrid">
               <div class="resCard">
@@ -164,7 +164,7 @@ function App() {
               </div>
             </div>
           </div>
-          <h1>Git Overall</h1>
+          <div class="footblock" ><h1>Git Overall</h1></div>
           <p></p>
         </div>
       </div>

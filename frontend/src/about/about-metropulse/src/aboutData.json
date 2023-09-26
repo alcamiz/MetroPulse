@@ -1,29 +1,29 @@
 {
     "Alex": {
         "Name": "Alex Cabrera",
-        "Email": "test",
-        "Role": "",
+        "Email": "alcamiz@icloud.com",
+        "Role": "Model Instances",
         "Bio": "",
         "Usertests": ""
     },
     "Thomas": {
-        "Name:": "Thomas Moody",
-        "Email": "",
-        "Role": "",
+        "Name": "Thomas Moody",
+        "Email": "tjmoody18@gmail.com",
+        "Role": "Model PAges",
         "Bio": "",
         "Usertests": ""
     },
     "Kamil": {
-        "Name:": "Kamil Kawolski",
-        "Email": "",
-        "Role": "",
+        "Name": "Kamil Kawolski",
+        "Email": "kamilkalowski@yahoo.com",
+        "Role": "Home",
         "Bio": "",
         "Usertests": ""
     },
     "Kyston": {
-        "Name:": "Kyston Brown",
-        "Email": "",
-        "Role": "",
+        "Name": "Kyston Brown",
+        "Email": "Kbrowntx@outlook.com",
+        "Role": "About",
         "Bio": "",
         "Usertests": ""
     }
