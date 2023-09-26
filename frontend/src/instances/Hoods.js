@@ -3,12 +3,33 @@ import hood01 from '../shared/img/hood01.png';
 import hood02 from '../shared/img/hood02.png';
 import background from '../shared/img/hood_back.jpeg';
 
-
 import './Instance.css';
 import Accordion from 'react-bootstrap/Accordion';
 import Table from 'react-bootstrap/Table';
+import { Link } from 'react-router-dom';
 
 function HoodInfo({info}) {
+
+  var l_tests = []
+  var l_medical = []
+
+  var tests = require('../shared/data/test.json');
+  var medical = require('../shared/data/medic.json');
+
+  for (let i = 0; i < tests.length; i++) {
+    let val = tests[i]
+    if (val.nta === info.name) {
+      l_tests.push(i)
+    }
+  }
+
+  for (let i = 0; i < medical.length; i++) {
+    let val = medical[i]
+    if (val.nta === info.name) {
+      l_medical.push(i)
+    }
+  }
+
   return (
     <Accordion defaultActiveKey="0">
       <Accordion.Item eventKey="1">
@@ -45,20 +66,16 @@ function HoodInfo({info}) {
       <Accordion.Item eventKey="3">
         <Accordion.Header>Testing Facilities</Accordion.Header>
         <Accordion.Body>
-        <ul>
-            <li>CVS</li>
-            <li>Walgreens</li>
-            <li>Inkafarma</li>
+          <ul>
+            {l_tests.map((idx, _) => ( <li><Link to={'/test/' + idx}>{tests[idx].name}</Link></li> ))}
           </ul>
         </Accordion.Body>
       </Accordion.Item>
       <Accordion.Item eventKey="4">
         <Accordion.Header>Medical Facilities</Accordion.Header>
         <Accordion.Body>
-        <ul>
-            <li>Children's Hospital</li>
-            <li>Mayo Clinic</li>
-            <li>HonorHealth</li>
+          <ul>
+          {l_tests.map((idx, _) => ( <li><Link to={'/medical/' + idx}>{medical[idx].name}</Link></li> ))}
           </ul>
         </Accordion.Body>
       </Accordion.Item>

@@ -6,8 +6,10 @@ import background from '../shared/img/test_back.jpeg';
 import './Instance.css';
 import Accordion from 'react-bootstrap/Accordion';
 import Table from 'react-bootstrap/Table';
+import { Link } from 'react-router-dom';
 
 function CenterInfo({info}) {
+  const nta_map = {"Woodside": 0, "Astoria": 1, "Corona" : 2}
   return (
     <Accordion defaultActiveKey="0">
       <Accordion.Item eventKey="0">
@@ -22,6 +24,10 @@ function CenterInfo({info}) {
               <tr>
                 <td>Address</td>
                 <td>{info.address}, {info.nta}, NY {info.zip}</td>
+              </tr>
+              <tr>
+                <td>Neighborhood</td>
+                <td><Link to={'/hoods/' + nta_map[info.nta]}>{info.nta}</Link></td>
               </tr>
               <tr>
                 <td>Borough</td>
@@ -42,10 +48,10 @@ function CenterInfo({info}) {
       <Accordion.Item eventKey="1">
         <Accordion.Header>Nearby Medical Facilities</Accordion.Header>
         <Accordion.Body>
-        <ul>
-            <li>Children's Hospital</li>
-            <li>Mayo Clinic</li>
-            <li>Test</li>
+          <ul>
+            <li><Link to='/medical/0'>Corona Child Health Clinic</Link></li>
+            <li><Link to='/medical/1'>Junction Boulevard Child Health Clinic</Link></li>
+            <li><Link to='/medical/2'>Woodside Houses Child Health Clinic</Link></li>
           </ul>
         </Accordion.Body>
       </Accordion.Item>
