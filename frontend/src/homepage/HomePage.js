@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Home() {
+function HomePage() {
 
     const styles = {
         container: {
@@ -18,7 +18,7 @@ function Home() {
             textAlign: 'center',
             padding: '10px 0',  // Reduced top and bottom padding
             borderRadius: '10px 10px 0 0',
-            color: '#ffffff',
+            color: 'black',
             fontWeight: 'bold',
             fontSize: '2.5em',
             marginTop: '10px'  // Reduced margin for further adjustment
@@ -68,4 +68,4 @@ function Home() {
     );
 }
 
-export default Home;
+export default HomePage;
