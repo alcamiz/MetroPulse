@@ -26,6 +26,18 @@ function HoodInfo({info}) {
                 <td>Borough</td>
                 <td>{info.borough}</td>
               </tr>
+              <tr>
+                <td>Population</td>
+                <td>{info.population}</td>
+              </tr>
+              <tr>
+                <td>Area Codes</td>
+                <td>{info.acodes.map(item => {return item + " ";})}</td>
+              </tr>
+              <tr>
+                <td>Coordinates</td>
+                <td>(N: {info.xcord}, W: {info.ycord})</td>
+              </tr>
             </tbody>
           </Table>
         </Accordion.Body>
@@ -69,8 +81,13 @@ function HoodInstance({index}) {
         <h3 className="Instance-title">
           {info.name}
         </h3>
-          <HoodInfo info={info}/>
+        <HoodInfo info={info}/>
       </header>
+      <div className="Instance-images">
+        <img style={{display: `block`}} src={info.img1} className="Instance-logo" alt="logo" />
+        <img style={{display: `block`}} src={info.img2} className="Instance-logo" alt="logo" />
+      </div>
+
     </div>
   );
 }
