@@ -8,25 +8,23 @@ import Container from 'react-bootstrap/Container';
 import { useState, useEffect } from 'react';
 
 function App() {
-  const [commitNum, setCommitCount] = useState(0);
+  const [commitNum, setCommitCount] = useState({});
 
   useEffect(() => {
     const url = 'https://gitlab.com/api/v4/projects/50434557/repository/commits';
+    const members = ['Alex Cabrera', 'Kamil Kalowski', 'Ky5t0nbr', 'tjmoody18'];
 
-    const member = 'Ky5t0nbr';
-    const member0 = 'Alex Cabrera';
-    const member1 = 'tjmoody18';
-    const member2 = 'Kamil Kalowski';
-
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        const memberCommits = data.filter((commit) => commit.author_name.toLowerCase() === member.toLowerCase());
-        setCommitCount(memberCommits.length);
-      })
-      .catch((error) => {
-        console.error('error', error);
-      });
+    const fetchCommits = async () => {
+      const commits = {};
+      for (const user of members) {
+        const res = await fetch(url);
+        const data = await res.json();
+        const memberCommits = data.filter((commit) => commit.author_name.toLowerCase() === user.toLowerCase());
+        commits[user] = memberCommits.length;
+      }
+      setCommitCount(commits);
+    };
+    fetchCommits();
   }, []);
   return (
     <div>
@@ -63,12 +61,10 @@ function App() {
             <Card.Img variant="top" src="https://ia903204.us.archive.org/4/items/discordprofilepictures/discordblue.png" />
             <Card.Body>
               <Card.Title>Alex Cabrera</Card.Title>
-              <Card.Text>
-
-              </Card.Text>
             </Card.Body>
             <div class="card-footer">
               <small class="text-muted">GIT</small>
+              <p>Commits : {commitNum['Alex Cabrera']}</p>
             </div>
           </div>
 
@@ -78,12 +74,10 @@ function App() {
             <Card.Img variant="top" src="https://ia903204.us.archive.org/4/items/discordprofilepictures/discordblue.png" />
             <Card.Body>
               <Card.Title>Thomas Moody</Card.Title>
-              <Card.Text>
-
-              </Card.Text>
             </Card.Body>
             <div class="card-footer">
               <small class="text-muted">GIT</small>
+              <p>Commits : {commitNum['tjmoody18']}</p>
             </div>
           </div>
 
@@ -93,12 +87,10 @@ function App() {
             <Card.Img variant="top" src="https://ia903204.us.archive.org/4/items/discordprofilepictures/discordblue.png" />
             <Card.Body>
               <Card.Title>Kamil Kalowski</Card.Title>
-              <Card.Text>
-
-              </Card.Text>
             </Card.Body>
             <div class="card-footer">
-              <small class="text-muted">GIT</small>
+              <small class="text-muted"></small>
+              <p>Commits : {commitNum['Kamil Kalowski']}</p>
             </div>
           </div>
 
@@ -107,13 +99,10 @@ function App() {
             <Card.Img variant="top" src="https://ia903204.us.archive.org/4/items/discordprofilepictures/discordblue.png" />
             <Card.Body>
               <Card.Title>Kyston Brown</Card.Title>
-              <Card.Text>
-
-              </Card.Text>
             </Card.Body>
             <div class="card-footer">
               <small class="text-muted">url</small>
-              <p>Commits : {commitNum}</p>
+              <p>Commits : {commitNum['Ky5t0nbr']}</p>
             </div>
           </div>
 
