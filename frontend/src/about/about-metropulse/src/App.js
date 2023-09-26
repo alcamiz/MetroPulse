@@ -5,9 +5,26 @@ import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
+import { useState, useEffect } from 'react';
 
 function App() {
-  const url = "https://gitlab.com/api/v4/projects/50434557/repository/commits/ky5t0nbr";
+  const [commitNum, setCommitCount] = useState(0);
+
+  useEffect(() => {
+    const url = "https://gitlab.com/api/v4/projects/50434557/repository/commits";
+
+    const member = "ky5t0nbr"
+
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        const memberCommits = data.filter((commit) => commit.author_name === member);
+        setCommitCount(memberCommits.length);
+      })
+      .catch((error) => {
+        console.error('error', error);
+      });
+  }, []);
   return (
     <div>
       <div className="App">
@@ -72,7 +89,7 @@ function App() {
             <div class="cardCap"></div>
             <Card.Img variant="top" src="https://ia903204.us.archive.org/4/items/discordprofilepictures/discordblue.png" />
             <Card.Body>
-              <Card.Title>Kamil Kawolski</Card.Title>
+              <Card.Title>Kamil Kalowski</Card.Title>
               <Card.Text>
 
               </Card.Text>
@@ -93,6 +110,7 @@ function App() {
             </Card.Body>
             <div class="card-footer">
               <small class="text-muted">url</small>
+              <p>Commits : {commitNum}</p>
             </div>
           </div>
 
