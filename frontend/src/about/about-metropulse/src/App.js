@@ -11,14 +11,14 @@ function App() {
   const [commitNum, setCommitCount] = useState(0);
 
   useEffect(() => {
-    const url = "https://gitlab.com/api/v4/projects/50434557/repository/commits";
+    const url = 'https://gitlab.com/api/v4/projects/50434557/repository/commits';
 
-    const member = "ky5t0nbr"
+    const member = 'Ky5t0nbr';
 
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        const memberCommits = data.filter((commit) => commit.author_name === member);
+        const memberCommits = data.filter((commit) => commit.author_name.toLowerCase() === member.toLowerCase());
         setCommitCount(memberCommits.length);
       })
       .catch((error) => {
