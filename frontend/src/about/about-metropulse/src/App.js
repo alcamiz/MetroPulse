@@ -16,12 +16,22 @@ function App() {
         </div>
       </div>
       <div>
-        <h1>Our Mission</h1>
-        <p>We are</p>
+        <div class="textblock" >
+          <h1 >Our Mission</h1>
+          <p>Metropulse is an online resource aimed at providing information to African American citezens facing Hypertension.
+            We wish to equip you with the data on testing centers to gauge your risk, medical centers to get treatment, in
+            locations near to yourself, or the centers themselves!
+          </p>
+        </div>
       </div>
       <div>
-        <h1>Where does our data come from?!</h1>
-        <p>We are</p>
+        <div class="textblock">
+          <h1>Where does our data come from?!</h1>
+          <p>We get our data from the home webpages of medical centers as well as information of testing centers
+            from an expansive database aimed at easing your acces to them. We strive to give you the easiest
+            methods of accesing these centers try to give you the most releveant data to do so.
+          </p>
+        </div>
       </div>
       <div className="OurTeam">
         <Card.Body>Our Team</Card.Body>
@@ -89,8 +99,10 @@ function App() {
         </div>
       </div>
       <div>
-        <h1>Git Overall</h1>
-        <p></p>
+        <div class="textblock">
+          <h1>Git Overall</h1>
+          <p></p>
+        </div>
       </div>
     </div>
   );
