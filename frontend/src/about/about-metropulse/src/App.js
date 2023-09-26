@@ -14,6 +14,9 @@ function App() {
     const url = 'https://gitlab.com/api/v4/projects/50434557/repository/commits';
 
     const member = 'Ky5t0nbr';
+    const member0 = 'Alex Cabrera';
+    const member1 = 'tjmoody18';
+    const member2 = 'Kamil Kalowski';
 
     fetch(url)
       .then((response) => response.json())
