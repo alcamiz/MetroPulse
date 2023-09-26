@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  
+
 }
 
 .App-header {
@@ -57,16 +57,22 @@
   padding: 10px;
 }
 
-.What{
+.What {
   background-color: #000000;
   color: rgb(53, 170, 229);
-  font-size:30px;
+  font-size: 30px;
 }
 
-.textblock{
-  
+.textblock {
   background-color: #293241;
   color: #e0fbfc;
-  display:flex;
+  display: flex;
   flex-direction: column;
+}
+
+.Resources {
+  display: flex;
+  background-color: #293241;
+  flex-direction: row;
+  flex-wrap: wrap;
 }

@@ -1,10 +1,30 @@
 import './App.css';
 import {BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Navbar, Nav } from 'react-bootstrap';
 import HomePage from './homepage/HomePage';
 import HoodInstance from './instances/Hoods';
 import CenterInstance from './instances/TestCenter';
 import MedicalInstance from './instances/Facilities';
 import React from 'react';
+
+// change links here, make routes in app
+function BootstrapNavbar() {
+  return (
+      <Navbar bg="dark" variant="dark" expand="lg">
+          <Navbar.Brand style={{ marginLeft: '20px' }} href="/">MetroPulse</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="mr-auto">
+                  <Nav.Link href="/">Home</Nav.Link>
+                  <Nav.Link href="/med">Hospitals</Nav.Link>
+                  <Nav.Link href="/test/0">Test Centers</Nav.Link>
+                  <Nav.Link href="/hoods/">Neighborhoods</Nav.Link>
+                  <Nav.Link href="/about/">About</Nav.Link>
+              </Nav>
+          </Navbar.Collapse>
+      </Navbar>
+  );
+}
 
 function App() {
 
@@ -21,15 +41,16 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <div />
+        <BootstrapNavbar /> {/* Use the BootstrapNavbar here */}
         <div>
           <Routes>
-            <Route path="/" exact element={<HomePage />} />
-            {routes.map((route, idx) => ( <Route path={route.path} exact element={route.component} /> ))}
+            <Route path="/" element={<HomePage />} />
+            {routes.map((route, idx) => ( 
+              <Route path={route.path} exact element={route.component} />
+            ))}
           </Routes>
         </div>
       </Router>
-      <div />
     </div>
   );
 }

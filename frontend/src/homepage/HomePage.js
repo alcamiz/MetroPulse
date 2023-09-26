@@ -5,18 +5,17 @@ function HomePage() {
     const styles = {
         container: {
             padding: '20px',
-            maxWidth: '800px',
+            maxWidth: '100%',
             margin: '0 auto',
-            height: '100vh',  // Make it full viewport height
+            height: 'calc(100vh - 60px)',
             borderRadius: '10px',
-            boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.1)',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center'  // Centers content vertically within the container
         },
         header: {
             textAlign: 'center',
-            padding: '10px 0',  // Reduced top and bottom padding
+            padding: '5px 0',  // Reduced top and bottom padding
             borderRadius: '10px 10px 0 0',
             color: 'black',
             fontWeight: 'bold',
@@ -30,7 +29,11 @@ function HomePage() {
         },
         paragraph: {
             fontSize: '18px',
-            marginBottom: '15px'
+            marginBottom: '15px',
+            maxWidth: '800px',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            textAlign: 'center'
         },
         link: {
             color: '#007bff',

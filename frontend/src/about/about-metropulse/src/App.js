@@ -11,7 +11,7 @@ function App() {
   const [commitNum, setCommitCount] = useState({});
 
   useEffect(() => {
-    const url = 'https://gitlab.com/api/v4/projects/50434557/repository/commits';
+    const url = 'https://gitlab.com/api/v4/projects/50434557/repository/commits?per_page=100';
     const members = ['Alex Cabrera', 'Kamil Kalowski', 'Ky5t0nbr', 'tjmoody18'];
 
     const fetchCommits = async () => {
@@ -22,6 +22,7 @@ function App() {
         const memberCommits = data.filter((commit) => commit.author_name.toLowerCase() === user.toLowerCase());
         commits[user] = memberCommits.length;
       }
+
       setCommitCount(commits);
     };
     fetchCommits();
@@ -58,7 +59,7 @@ function App() {
         <div class="teamGrid">
           <div class="gridCard">
             <div class="cardCap"></div>
-            <Card.Img variant="top" src="https://ia903204.us.archive.org/4/items/discordprofilepictures/discordblue.png" />
+            <Card.Img variant="top" src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*nE0iyc9xZ8qG0UcUaIOYEw.jpeg" height="300px" width="300px" objectFit="cover" />
             <Card.Body>
               <Card.Title>Alex Cabrera</Card.Title>
             </Card.Body>
@@ -71,7 +72,7 @@ function App() {
 
           <div class="gridCard">
             <div class="cardCap"></div>
-            <Card.Img variant="top" src="https://ia903204.us.archive.org/4/items/discordprofilepictures/discordblue.png" />
+            <Card.Img variant="top" src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*_GpoQb0-rD_44PFESJv9DA.jpeg" height="300px" width="300px" objectFit="cover" />
             <Card.Body>
               <Card.Title>Thomas Moody</Card.Title>
             </Card.Body>
@@ -84,7 +85,7 @@ function App() {
 
           <div class="gridCard">
             <div class="cardCap"></div>
-            <Card.Img variant="top" src="https://ia903204.us.archive.org/4/items/discordprofilepictures/discordblue.png" />
+            <Card.Img variant="top" src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*sTL0hCT368MDNizqRcaNbA.jpeg" height="300px" width="300px" objectFit="cover" />
             <Card.Body>
               <Card.Title>Kamil Kalowski</Card.Title>
             </Card.Body>
@@ -96,7 +97,7 @@ function App() {
 
           <div class="gridCard">
             <div class="cardCap"></div>
-            <Card.Img variant="top" src="https://ia903204.us.archive.org/4/items/discordprofilepictures/discordblue.png" />
+            <Card.Img variant="top" src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*_t8OKhT-uWc2Dlr1ajGzeA.jpeg" height="300px" width="300px" objectFit="cover" />
             <Card.Body>
               <Card.Title>Kyston Brown</Card.Title>
             </Card.Body>
@@ -108,10 +109,12 @@ function App() {
 
         </div>
       </div>
-      <div>
-        <div class="textblock">
-          <h1>Git Overall</h1>
-          <p></p>
+      <div class="Resources">
+        <div class="card">
+          <div class="textblock">
+            <h1>Git Overall</h1>
+            <p></p>
+          </div>
         </div>
       </div>
     </div>
