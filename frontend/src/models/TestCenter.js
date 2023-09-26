@@ -7,10 +7,19 @@ import CenterData from '../shared/data/test.json';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import { Link } from 'react-router-dom';
 
+const styles = {
+    link: {
+        textDecoration: 'none',
+    },
+    card: {
+        width: '20rem',
+        height: 'auto'
+    }
+};
  
   function CenterModel() {
-    // const cardLink
     var image = [test00, test01, test02];
     return (
         <>
@@ -20,8 +29,8 @@ import Row from 'react-bootstrap/Row';
             <Row xs={1} md={2} lg={3}  className="g-4">
                 {CenterData && CenterData.map((center) => (
                 <Col key={center.id}>
-                    {/* <Link to = {cardLink}> */}
-                    <Card className="small-card">
+                    <Link to={`/test/${center.id}`} style={styles.link}>
+                    <Card style={styles.card}>
                     <Card.Img variant="top" src={image[center.id]}/>
                     <Card.Body>
                         <Card.Title>{center.name}</Card.Title>
@@ -31,7 +40,7 @@ import Row from 'react-bootstrap/Row';
                         <Card.Text>Nearby Medical Facilities: 3</Card.Text>
                     </Card.Body>
                     </Card>
-                    {/* </Link> */}
+                    </Link>
                 </Col>
                 ))}
             </Row>

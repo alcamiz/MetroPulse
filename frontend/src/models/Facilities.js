@@ -7,12 +7,19 @@ import MedicData from '../shared/data/medic.json';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import { Link } from 'react-router-dom';
 
+const styles = {
+    link: {
+        textDecoration: 'none',
+    },
+    card: {
+        width: '20rem',
+        height: 'auto'
+    }
+};
 
-
-  
   function FacilityModel() {
-    // const cardLink = '/medical-facilities';
     var image = [medic00, medic01, medic02];
     return (
         <>
@@ -22,7 +29,8 @@ import Row from 'react-bootstrap/Row';
             <Row xs={1} md={2} lg={3}  className="g-4">
                 {MedicData && MedicData.map((facility) => (
                 <Col key={facility.id}>
-                    <Card className="small-card">
+                    <Link to={`/medical/${facility.id}`} style={styles.link}>
+                    <Card style={styles.card}>
                     <Card.Img variant="top" src={image[facility.id]}/>
                     <Card.Body>
                         <Card.Title>{facility.name}</Card.Title>
@@ -32,6 +40,7 @@ import Row from 'react-bootstrap/Row';
                         <Card.Text>Nearby Testing Facilities: 3</Card.Text>
                     </Card.Body>
                     </Card>
+                    </Link>
                 </Col>
                 ))}
             </Row>
