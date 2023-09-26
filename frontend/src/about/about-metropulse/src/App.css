@@ -14,12 +14,6 @@
   color: white;
 }
 
-.CardStuff {
-  background-color: #293241;
-  color: rgb(53, 170, 229);
-  border: rgb(135, 135, 135);
-}
-
 .Team {
   background-color: #293241;
   color: #3d5a80;
@@ -32,9 +26,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: #61dafb;
+  color: #e0fbfc;
   min-height: 20vh;
-  font-size: 40px;
+  font-size: 50px;
 }
 
 .teamGrid {
@@ -44,12 +38,15 @@
 }
 
 .gridCard {
-  background-color: #e0fbfc;
-  border-radius: 10px;
+  background-color: #282c34;
+  color: #e0fbfc;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
   margin: 20px 20px;
   width: 300px;
+  text-indent:0.5cm;
+  font-size: 25px
 }
 
 .cardCap {
@@ -80,8 +77,7 @@
 .resCard {
   background-color: #282c34;
   color: #e0fbfc;
-  border-radius: 10px;
-  display: flex;
+  border-radius: 30px;
   flex-direction: column;
   margin: 20px 20px;
   width: 150px;

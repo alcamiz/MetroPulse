@@ -1,11 +1,8 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Card from 'react-bootstrap/Card';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-import Container from 'react-bootstrap/Container';
 import { useState, useEffect } from 'react';
+import memberData from './aboutData.json'
 
 function App() {
   const [commitNum, setCommitCount] = useState({});
@@ -59,12 +56,15 @@ function App() {
           <div class="gridCard">
             <div class="cardCap"></div>
             <Card.Img variant="top" src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*nE0iyc9xZ8qG0UcUaIOYEw.jpeg" height="300px" width="300px" objectFit="cover" />
-            <Card.Body>
-              <Card.Title>Alex Cabrera</Card.Title>
-            </Card.Body>
+            <h3>Alex Cabrera</h3>
             <div class="card-footer">
-              <small class="text-muted">GIT</small>
-              <p>Commits : {commitNum['Alex Cabrera']}</p>
+              <small class="text-muted">
+                <p>UserName: {memberData.Alex.Name}</p>
+                <p>Email: {memberData.Alex.Email}</p>
+                <p>Role: {memberData.Alex.Role}</p>
+                <p>Bio: {memberData.Alex.Bio}</p>
+                <p>Commits : {commitNum['Alex Cabrera']}</p>
+              </small>
             </div>
           </div>
 
@@ -72,12 +72,15 @@ function App() {
           <div class="gridCard">
             <div class="cardCap"></div>
             <Card.Img variant="top" src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*_GpoQb0-rD_44PFESJv9DA.jpeg" height="300px" width="300px" objectFit="cover" />
-            <Card.Body>
-              <Card.Title>Thomas Moody</Card.Title>
-            </Card.Body>
+            <h3>Thomas Moody</h3>
             <div class="card-footer">
-              <small class="text-muted">GIT</small>
-              <p>Commits : {commitNum['tjmoody18']}</p>
+              <small class="text-muted">
+                <p>UserName: {memberData.Thomas.Name}</p>
+                <p>Email: {memberData.Thomas.Email}</p>
+                <p>Role: {memberData.Thomas.Role}</p>
+                <p>Bio: {memberData.Thomas.Bio}</p>
+                <p>Commits : {commitNum['tjmoody18']}</p>
+              </small>
             </div>
           </div>
 
@@ -85,24 +88,30 @@ function App() {
           <div class="gridCard">
             <div class="cardCap"></div>
             <Card.Img variant="top" src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*sTL0hCT368MDNizqRcaNbA.jpeg" height="300px" width="300px" objectFit="cover" />
-            <Card.Body>
-              <Card.Title>Kamil Kalowski</Card.Title>
-            </Card.Body>
+            <h3>Kamil Kalowski</h3>
             <div class="card-footer">
-              <small class="text-muted"></small>
-              <p>Commits : {commitNum['Kamil Kalowski']}</p>
+              <small class="text-muted">
+                <p>UserName: {memberData.Kamil.Name}</p>
+                <p>Email: {memberData.Kamil.Email}</p>
+                <p>Role: {memberData.Kamil.Role}</p>
+                <p>Bio: {memberData.Kamil.Bio}</p>
+                <p>Commits : {commitNum['Kamil Kalowski']}</p>
+              </small>
             </div>
           </div>
 
           <div class="gridCard">
             <div class="cardCap"></div>
             <Card.Img variant="top" src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*_t8OKhT-uWc2Dlr1ajGzeA.jpeg" height="300px" width="300px" objectFit="cover" />
-            <Card.Body>
-              <Card.Title>Kyston Brown</Card.Title>
-            </Card.Body>
+            <h3>Kyston Brown</h3>
             <div class="card-footer">
-              <small class="text-muted">url</small>
-              <p>Commits : {commitNum['Ky5t0nbr']}</p>
+              <small class="text-muted">
+                <p>UserName: {memberData.Thomas.Name}</p>
+                <p>Email: {memberData.Thomas.Email}</p>
+                <p>Role: {memberData.Thomas.Role}</p>
+                <p>Bio: {memberData.Thomas.Bio}</p>
+                <p>Commits : {commitNum['Ky5t0nbr']}</p>
+              </small>
             </div>
           </div>
 
