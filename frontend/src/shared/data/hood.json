@@ -2,19 +2,37 @@
   {
     "name": "Woodside",
     "borough": "Queens",
+    "population": 45099,
+    "acodes": [718, 347, 929, 917],
+    "xcord": 40.745,
+    "ycord": 73.905,
     "desc": "Woodside is a residential and commercial neighborhood in the western portion of the borough of Queens in New York City. It is bordered on the south by Maspeth, on the north by Astoria, on the west by Sunnyside, and on the east by Elmhurst, Jackson Heights, and East Elmhurst. Some areas are widely residential and very quiet, while other parts, especially the ones around Roosevelt Avenue, are busier.",
+    "img1": "https://farm1.staticflickr.com/115/283071107_de171b6fb5_z.jpg?zz=1",
+    "img2": "https://c2.staticflickr.com/2/1138/541387922_a1db9361e9_b.jpg",
     "id": 0
   },
   {
     "name": "Astoria",
     "borough": "Queens",
+    "population": 78793,
+    "acodes": [718, 347, 929, 917],
+    "xcord": 40.767,
+    "ycord": 73.921,
     "desc": "Astoria is a neighborhood in the western portion of the New York City borough of Queens. Astoria is bounded by the East River and is adjacent to four other Queens neighborhoods: Long Island City to the southwest, Sunnyside to the southeast, and Woodside and East Elmhurst to the east. As of 2019, Astoria has an estimated population of 95,446.[2]",
+    "img1": "https://upload.wikimedia.org/wikipedia/commons/1/13/Astoria%2C_Queens_(8111830530).jpg",
+    "img2": "https://live.staticflickr.com/3338/3520746912_a34365a1df_b.jpg",
     "id": 1
   },
   {
     "name": "Corona",
     "borough": "Queens",
+    "population": 109695,
+    "acodes": [718, 347, 929, 917],
+    "xcord": 40.735,
+    "ycord": 73.865,
     "desc": "Corona is a neighborhood in the borough of Queens in New York City. It borders Flushing and Flushing Meadows–Corona Park to the east, Jackson Heights to the west, Forest Hills and Rego Park to the south, Elmhurst to the southwest, and East Elmhurst to the north. Corona's main thoroughfares include Corona Avenue, Roosevelt Avenue, Northern Boulevard, Junction Boulevard, and 108th Street.",
+    "img1": "https://live.staticflickr.com/2306/1699466997_f136d42c2f_b.jpg",
+    "img2": "https://live.staticflickr.com/157/365080014_9c7a2564f7_b.jpg",
     "id": 2
   }
 ]

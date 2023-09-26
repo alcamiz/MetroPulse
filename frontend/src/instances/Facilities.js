@@ -64,8 +64,11 @@ function MedicalInstance({index}) {
         <h3 className="Instance-title">
           {info.name}
         </h3>
-          <MedicalInfo info={info}/>
+        <MedicalInfo info={info}/>
       </header>
+      <div className="Instance-images">
+        <img style={{display: `block`}} src={info.img1} className="Instance-logo" alt="logo" />
+      </div>
     </div>
   );
 }

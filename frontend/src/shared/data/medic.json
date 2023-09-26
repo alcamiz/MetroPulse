@@ -7,6 +7,7 @@
     "zip": "11103",
     "phone": "718-334-6100",
     "council": "21",
+    "img1": "https://www.choc.org/wp/wp-content/uploads/2014/10/location-corona-e1413833462474.jpg",
     "id": 0
   },
   {
@@ -17,6 +18,7 @@
     "zip": "11103",
     "phone": "718-334-6150",
     "council": "21",
+    "img1": "https://junctionhealth.ca/main/wp-content/uploads/2020/03/JUNCTION-HEALTH-11.jpg",
     "id": 1
   },
   {
@@ -27,6 +29,7 @@
     "zip": "11104",
     "phone": "718-334-6140",
     "council": "26",
+    "img1": "https://patch.com/img/cdn20/users/26266521/20230412/100114/styles/patch_image/public/screen-shot-2023-04-12-at-100035-am___12100041250.png?width=1200",
     "id": 2
   }
 ]

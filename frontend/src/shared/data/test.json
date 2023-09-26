@@ -8,6 +8,7 @@
     "phone": "(718) 278-1402",
     "council": "22",
     "howto": "Ask a staff member to check your blood pressure",
+    "img1": "https://c1.staticflickr.com/1/24/47839482_58a728de8d_b.jpg",
     "id": 0
   },
   {
@@ -19,6 +20,7 @@
     "phone": "(718) 956-0060",
     "council": "22",
     "howto": "Ask a staff member to check your blood pressure",
+    "img1": "https://s3-media0.fl.yelpcdn.com/bphoto/t-dBs-RCYui10T0Nl5wqLg/l.jpg",
     "id": 1
   },
   {
@@ -30,6 +32,7 @@
     "phone": "(718) 956-0060",
     "council": "22",
     "howto": "Ask a staff member to check your blood pressure",
+    "img1": "https://lh5.googleusercontent.com/p/AF1QipOiT4SsIyWUuOVU9XPsLSAUYz2MdpHKYGDADo6g",
     "id": 2
   }
 ]
