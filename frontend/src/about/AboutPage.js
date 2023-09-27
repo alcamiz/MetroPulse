@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './About.css';
 import Card from 'react-bootstrap/Card';
 import { useState, useEffect } from 'react';
 import memberData from './aboutData.json'
@@ -29,12 +29,12 @@ function About() {
     const fetchIssues = async () => {
       const issues = {};
       for (const user of members) {
-          const res = await fetch(urlIssues); 
-          const data = await res.json();
-          const memberIssues = data.filter(
-            (issue) => issue.author && issue.author.name.toLowerCase() === user.toLowerCase()
-          );
-          issues[user] = memberIssues.length;
+        const res = await fetch(urlIssues);
+        const data = await res.json();
+        const memberIssues = data.filter(
+          (issue) => issue.author && issue.author.name.toLowerCase() === user.toLowerCase()
+        );
+        issues[user] = memberIssues.length;
       }
 
       setIssueCount(issues);
@@ -142,7 +142,7 @@ function About() {
       </div>
       <div class="Resources">
         <div class="card">
-        <div class="footblock" ><h1>Resources</h1></div>
+          <div class="footblock" ><h1>Resources</h1></div>
           <div class="Team">
             <div class="teamGrid">
               <div class="resCard">
