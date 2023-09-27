@@ -2,7 +2,6 @@ import './App.css';
 import React, { useState } from 'react';
 import {BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
-import { FaSearch } from 'react-icons/fa';
 import HomePage from './homepage/HomePage';
 import HoodInstance from './instances/Hoods';
 import CenterInstance from './instances/TestCenter';
