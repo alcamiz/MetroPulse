@@ -2,4 +2,4 @@ website:
     image: node:20
 
     script:
-    - make check
+    - make exec
