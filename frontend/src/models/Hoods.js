@@ -36,6 +36,7 @@ const styles = {
                     <Card.Body>
                         <Card.Title>{Hood.name}</Card.Title>
                         <Card.Text>Borough: {Hood.borough}</Card.Text>
+                        <Card.Text>Population: {Hood.population}</Card.Text>
                         <Card.Text>Testing Facilities: 3</Card.Text>
                         <Card.Text>Testing Centers: 3</Card.Text>
                     </Card.Body>
