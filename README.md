@@ -1,7 +1,7 @@
 **— Group 06 —**
 
-Project Site: https://www.metropulse.link
-API Link: https://documenter.getpostman.com/view/29785582/2s9YJZ3jGy
+- Project Site: https://www.metropulse.link
+- API Link: https://documenter.getpostman.com/view/29785582/2s9YJZ3jGy
 
 **Team Members:**
 
