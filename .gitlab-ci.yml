@@ -1,5 +1,5 @@
 website:
+    image: node:20
+
     script:
-    - cd frontend
-    - npm install
-    - npm run build
+    - make check
