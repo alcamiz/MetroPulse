@@ -1,7 +1,7 @@
 import React from 'react'
 
 function HomePage() {
-
+    const MAYO_CLINIC_URL = "https://www.mayoclinic.org/diseases-conditions/high-blood-pressure/symptoms-causes/syc-20373410";
     const styles = {
         container: {
             padding: '20px',
@@ -51,18 +51,15 @@ function HomePage() {
             <header style={styles.header}>
                 <h1>MetroPulse</h1>
             </header>
-            
             <section>
                 <h2 style={styles.title}>Hypertension Awareness in New York City</h2>
-                
                 <p style={styles.paragraph}>
                     Hypertension, commonly known as high blood pressure, is a pressing health concern that affects approximately <strong>30 percent</strong> of New York City's residents.
                 </p>
-                
                 <p style={styles.paragraph}>
-                    A significant number of New Yorkers are either unaware of their hypertension status or know they have the condition but don't seek treatment. This lack of awareness and action can lead to severe health complications. <a style={styles.link} href="#" target="_blank" rel="noopener noreferrer">Learn more</a>.
+                    A significant number of New Yorkers are either unaware of their hypertension status or know they have the condition but don't seek treatment.
+                    This lack of awareness and action can lead to severe health complications. <a style={styles.link} href={MAYO_CLINIC_URL}>Learn more</a>.
                 </p>
-
                 <footer style={styles.footer}>
                     Join us in spreading awareness and making a difference in our community.
                 </footer>

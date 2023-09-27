@@ -19,7 +19,7 @@ function BootstrapNavbar() {
           <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="mr-auto">
                   <Nav.Link href="/">Home</Nav.Link>
-                  <Nav.Link href="/medical/">Hospitals</Nav.Link>
+                  <Nav.Link href="/medical/">Medical Facilities</Nav.Link>
                   <Nav.Link href="/test/">Test Centers</Nav.Link>
                   <Nav.Link href="/hoods/">Neighborhoods</Nav.Link>
                   <Nav.Link href="/about/">About</Nav.Link>
