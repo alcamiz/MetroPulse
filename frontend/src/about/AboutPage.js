@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card';
 import { useState, useEffect } from 'react';
 import memberData from './aboutData.json'
 
-function App() {
+function About() {
   const [commitNum, setCommitCount] = useState({});
   const [totalCommits, totalCommitCount] = useState(0);
   const [totalIssue, totalIssueCount] = useState(0);
@@ -196,4 +196,4 @@ function App() {
   );
 }
 
-export default App;
+export default About;

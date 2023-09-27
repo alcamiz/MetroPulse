@@ -9,6 +9,7 @@ import React from 'react';
 import CenterModel from './models/TestCenter';
 import HoodModel from './models/Hoods';
 import FacilityModel from './models/Facilities';
+import About from './about/AboutPage';
 
 // change links here, make routes in app
 function BootstrapNavbar() {
@@ -52,6 +53,7 @@ function App() {
             <Route path="/test" element={<CenterModel />} />
             <Route path="/medical" element={<FacilityModel/>} />
             <Route path="/hoods" element={<HoodModel />} />
+            <Route path="/about" element={<About />} />
             {routes.map((route, idx) => ( 
               <Route path={route.path} exact element={route.component} />
             ))}
