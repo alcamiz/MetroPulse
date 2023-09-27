@@ -5,19 +5,13 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 50vh;
+  min-height: 30vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: 50px;
   color: white;
-}
-
-.Team {
-  background-color: #293241;
-  color: #3d5a80;
-  font-size: 20px;
 }
 
 .OurTeam {
@@ -33,6 +27,7 @@
 
 .teamGrid {
   display: flex;
+  background-color: #293241;
   flex-wrap: wrap;
   justify-content: center;
 }
@@ -54,12 +49,6 @@
   padding: 10px;
 }
 
-.What {
-  background-color: #000000;
-  color: rgb(53, 170, 229);
-  font-size: 30px;
-}
-
 .textblock {
   background-color: #293241;
   color: #e0fbfc;
@@ -74,13 +63,16 @@
   color: #e0fbfc;
   padding-left: 20px;
   padding-right: 20px;
+  flex-direction: row;
+  display: flex;
 }
 
 .Resources {
   display: flex;
   background-color: #293241;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
+  text-align: left;
 }
 
 .resCard {
