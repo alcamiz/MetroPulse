@@ -3,28 +3,28 @@
         "Name": "Alex Cabrera",
         "Email": "alcamiz@icloud.com",
         "Role": "Model Instances",
-        "Bio": "",
+        "Bio": "I'm a fourth-year CS major at UT Austin interested in app development. I enjoy drumming and reading in my free time.",
         "Usertests": ""
     },
     "Thomas": {
         "Name": "Thomas Moody",
         "Email": "tjmoody18@gmail.com",
         "Role": "Model PAges",
-        "Bio": "",
+        "Bio": "I'm a third-year CS major at UT Austin interested in web development. I enjoy lifting weights and playing the guitar in my free time.",
         "Usertests": ""
     },
     "Kamil": {
         "Name": "Kamil Kawolski",
         "Email": "kamilkalowski@yahoo.com",
         "Role": "Home",
-        "Bio": "",
+        "Bio": "I'm a third-year CS major here at UT interested in systems programming. I love playing sports, lifting weights, and being creative in my free time.",
         "Usertests": ""
     },
     "Kyston": {
         "Name": "Kyston Brown",
         "Email": "Kbrowntx@outlook.com",
         "Role": "About",
-        "Bio": "",
+        "Bio": "Im a third year CS Major at UT wanting to learn more about how software is designed! I like playing videogames, and recetly started lifting",
         "Usertests": ""
     }
 }

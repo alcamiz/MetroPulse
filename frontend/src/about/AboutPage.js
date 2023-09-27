@@ -6,22 +6,41 @@ import memberData from './aboutData.json'
 
 function App() {
   const [commitNum, setCommitCount] = useState({});
+  const [totalCommits, totalCommitCount] = useState(0);
+  const [totalIssue, totalIssueCount] = useState(0);
+  const [issueNum, setIssueCount] = useState({});
   useEffect(() => {
     const url = 'https://gitlab.com/api/v4/projects/50434557/repository/commits?per_page=100';
     const members = ['Alex Cabrera', 'Kamil Kalowski', 'Ky5t0nbr', 'tjmoody18'];
-
+    const urlIssues = `https://gitlab.com/api/v4/projects/50434557/issues?per_page=100`;
     const fetchCommits = async () => {
       const commits = {};
       for (const user of members) {
         const res = await fetch(url);
         const data = await res.json();
+        totalCommitCount(data.length);
         const memberCommits = data.filter((commit) => commit.author_name.toLowerCase() === user.toLowerCase());
         commits[user] = memberCommits.length;
       }
 
       setCommitCount(commits);
     };
+
+    const fetchIssues = async () => {
+      const issues = {};
+      for (const user of members) {
+          const res = await fetch(urlIssues); 
+          const data = await res.json();
+          const memberIssues = data.filter(
+            (issue) => issue.author && issue.author.name.toLowerCase() === user.toLowerCase()
+          );
+          issues[user] = memberIssues.length;
+      }
+
+      setIssueCount(issues);
+    };
     fetchCommits();
+    fetchIssues();
   }, []);
   return (
     <div>
@@ -64,6 +83,7 @@ function App() {
                 <p>Role: {memberData.Alex.Role}</p>
                 <p>Bio: {memberData.Alex.Bio}</p>
                 <p>Commits : {commitNum['Alex Cabrera']}</p>
+                <p>Issues : {issueNum['Alex Cabrera']}</p>
               </small>
             </div>
           </div>
@@ -80,6 +100,7 @@ function App() {
                 <p>Role: {memberData.Thomas.Role}</p>
                 <p>Bio: {memberData.Thomas.Bio}</p>
                 <p>Commits : {commitNum['tjmoody18']}</p>
+                <p>Issues : {issueNum['tjmoody18']}</p>
               </small>
             </div>
           </div>
@@ -96,6 +117,7 @@ function App() {
                 <p>Role: {memberData.Kamil.Role}</p>
                 <p>Bio: {memberData.Kamil.Bio}</p>
                 <p>Commits : {commitNum['Kamil Kalowski']}</p>
+                <p>Issues : {issueNum['Kamil Kalowski']}</p>
               </small>
             </div>
           </div>
@@ -111,6 +133,7 @@ function App() {
                 <p>Role: {memberData.Kyston.Role}</p>
                 <p>Bio: {memberData.Kyston.Bio}</p>
                 <p>Commits : {commitNum['Ky5t0nbr']}</p>
+                <p>Issues : {issueNum['Ky5t0nbr']}</p>
               </small>
             </div>
           </div>
@@ -165,6 +188,7 @@ function App() {
             </div>
           </div>
           <div class="footblock" ><h1>Git Overall</h1></div>
+          <div class="footblock" ><h3>Total Commits: {totalCommits}</h3></div>
           <p></p>
         </div>
       </div>
