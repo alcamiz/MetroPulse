@@ -54,14 +54,14 @@ function HomePage() {
             <section>
                 <h2 style={styles.title}>Hypertension Awareness in New York City</h2>
                 <p style={styles.paragraph}>
-                    Hypertension, commonly known as high blood pressure, is a pressing health concern that affects approximately <strong>30 percent</strong> of New York City's residents.
+                    Hypertension, commonly known as high blood pressure, is a pressing health concern that affects disproportionately affects approximately <strong>44 percent</strong> of New York City's African American residents.
                 </p>
                 <p style={styles.paragraph}>
-                    A significant number of New Yorkers are either unaware of their hypertension status or know they have the condition but don't seek treatment.
+                    A significant number of African American New Yorkers are either unaware of their hypertension status or know they have the condition but don't seek treatment.
                     This lack of awareness and action can lead to severe health complications. <a style={styles.link} href={MAYO_CLINIC_URL}>Learn more</a>.
                 </p>
                 <footer style={styles.footer}>
-                    Join us in spreading awareness and making a difference in our community.
+                    Join us in spreading awareness and making a difference in the community.
                 </footer>
             </section>
         </div>
