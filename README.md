@@ -106,7 +106,7 @@
 
 
 ## Project Leaders
-| Phase | PL        |
+| Phase | Project Leader        |
 | :---: | :-------: |
 | 1     | Alex Cabrera   |
 
@@ -114,7 +114,7 @@
 ### Phase 1
 | Name               | Estimated     | Actual        |
 | ------------------ | :-----------: | :-----------: |
-| Kamil Kalowski    |             |                  |
+| Kamil Kalowski    |  10           | 10                 |
 | Alex Cabrera      |             |                  |
 | Thomas Moody      |             |                  |
 | Kyston Brown      |             |                  |
