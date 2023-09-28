@@ -102,3 +102,20 @@
 * How can black NYC residents suffering from hypertension control their blood pressure consistently?
 * Where can black NYC residents find urgent medical care due to high blood pressure?
 * What facilities geared at aiding their high blood pressure can be found in their district?
+
+
+
+## Project Leaders
+| Phase | Project Leader        |
+| :---: | :-------: |
+| 1     | Alex Cabrera   |
+
+## Completion Time
+### Phase 1
+| Name               | Estimated     | Actual        |
+| ------------------ | :-----------: | :-----------: |
+| Kamil Kalowski    |  10           | 10                 |
+| Alex Cabrera      |             |                  |
+| Thomas Moody      |             |                  |
+| Kyston Brown      |             |                  |
+
