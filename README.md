@@ -117,5 +117,5 @@
 | Kamil Kalowski    |  10           | 10                 |
 | Alex Cabrera      |             |                  |
 | Thomas Moody      |  20           | 15                 |
-| Kyston Brown      |             |                  |
+| Kyston Brown      |  20           | 20                 |
 
