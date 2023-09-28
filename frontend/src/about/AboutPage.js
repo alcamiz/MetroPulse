@@ -12,16 +12,17 @@ function About() {
   const [issueNum, setIssueCount] = useState({});
   useEffect(() => {
     const url = 'https://gitlab.com/api/v4/projects/50434557/repository/commits?per_page=100';
-    const members = ['Alex Cabrera', 'Kamil Kalowski', 'Ky5t0nbr', 'Thomas Moody'];
+    const members = ['Alex Cabrera', 'Kamil Kalowski', 'Ky5t0nbr', 'Thomas Moody', 'tjmoody18'];
     const urlIssues = `https://gitlab.com/api/v4/projects/50434557/issues?per_page=100`;
 
     const fetchCommits = async () => {
       const commits = {};
-      for (const user of members) {
-        const res = await fetch(url);
-        const data = await res.json();
-        totalCommitCount(data.length);
-        const memberCommits = data.filter((commit) => commit.author_name.toLowerCase() === user.toLowerCase());
+      const res = await fetch(url);
+      const data = await res.json();
+      totalCommitCount(data.length);
+      for (let user of members) {
+        console.log(user);
+        const memberCommits = data.filter((commit) => commit.author_name === user);
         commits[user] = memberCommits.length;
       }
       setCommitCount(commits);
@@ -102,8 +103,8 @@ function About() {
               <p>Email: {memberData.Thomas.Email}</p>
               <p>Role: {memberData.Thomas.Role}</p>
               <p>Bio: {memberData.Thomas.Bio}</p>
-              <p>Commits : {commitNum['Thomas Moody']}</p>
-              <p>Issues : {issueNum['Thomas Moody']}</p>
+              <p>Commits : {commitNum['Thomas Moody'] + commitNum['tjmoody18']}</p>
+              <p>Issues : {issueNum['Thomas Moody'] + issueNum['tjmoody18']}</p>
               <p>UnitTests : 0</p>
             </small>
           </div>
