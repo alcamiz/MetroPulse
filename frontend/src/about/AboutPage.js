@@ -12,7 +12,7 @@ function About() {
   const [issueNum, setIssueCount] = useState({});
   useEffect(() => {
     const url = 'https://gitlab.com/api/v4/projects/50434557/repository/commits?per_page=100';
-    const members = ['Alex Cabrera', 'Kamil Kalowski', 'Ky5t0nbr', 'tjmoody18'];
+    const members = ['Alex Cabrera', 'Kamil Kalowski', 'Ky5t0nbr', 'Thomas Moody'];
     const urlIssues = `https://gitlab.com/api/v4/projects/50434557/issues?per_page=100`;
 
     const fetchCommits = async () => {
@@ -66,6 +66,10 @@ function About() {
             from an expansive database, aimed at easing your access to them. We strive to give you the easiest
             methods of accessing these centers and try to give you the most relevant data to do so.
           </p>
+          <h1>Where Can You Get Our Data?</h1>
+          <div class="linkColor">
+          <h1><Link to="https://documenter.getpostman.com/view/29785582/2s9YJZ3jGy">Our API</Link></h1>
+        </div>
         </div>
       </div>
       <div className="OurTeam">
@@ -98,8 +102,8 @@ function About() {
               <p>Email: {memberData.Thomas.Email}</p>
               <p>Role: {memberData.Thomas.Role}</p>
               <p>Bio: {memberData.Thomas.Bio}</p>
-              <p>Commits : {commitNum['tjmoody18']}</p>
-              <p>Issues : {issueNum['tjmoody18']}</p>
+              <p>Commits : {commitNum['Thomas Moody']}</p>
+              <p>Issues : {issueNum['Thomas Moody']}</p>
               <p>UnitTests : 0</p>
             </small>
           </div>
@@ -187,7 +191,6 @@ function About() {
       <div class="footblock" ><h3>Total Issues: {totalIssue}</h3></div>
       <div class="footblock" ><h3>Total UnitTests: 0</h3></div>
       <div class="textblock">
-        <h1><Link to="https://documenter.getpostman.com/view/29785582/2s9YJZ3jGy">Our API</Link></h1>
       </div>
       <h1></h1>
     </div>
