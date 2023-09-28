@@ -69,7 +69,8 @@ function About() {
           </p>
           <h1>Where Can You Get Our Data?</h1>
           <div class="linkColor">
-          <h1><Link to="https://documenter.getpostman.com/view/29785582/2s9YJZ3jGy">Our API</Link></h1>
+          <h1><Link to="https://documenter.getpostman.com/view/29785582/2s9YJZ3jGy" style={{ color: 'black' }}>Our API</Link>
+      </h1>
         </div>
         </div>
       </div>
