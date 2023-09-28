@@ -115,7 +115,7 @@
 | Name               | Estimated     | Actual        |
 | ------------------ | :-----------: | :-----------: |
 | Kamil Kalowski    |  10           | 10                 |
-| Alex Cabrera      |             |                  |
+| Alex Cabrera      |  20           | 17                 |
 | Thomas Moody      |  20           | 15                 |
 | Kyston Brown      |  20           | 20                 |
 
