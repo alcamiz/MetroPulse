@@ -4,7 +4,7 @@ import json
 # Just obtain the JSON file
 def get_test_centers():
     response = requests.get(
-        "https://data.cityofnewyork.us/resource/8eux-rfe8.json"
+       "https://data.cityofnewyork.us/resource/8eux-rfe8.json"
     )
     data = response.json()
 
