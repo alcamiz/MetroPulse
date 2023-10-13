@@ -1,4 +1,5 @@
 import requests
+import json
 
 # Just obtain the JSON file
 def get_test_centers():
@@ -8,7 +9,8 @@ def get_test_centers():
     data = response.json()
 
     center_list = []
-    for idx, center in enumerate(data.items()):
+    for idx, center in enumerate(data):
+
         new_center = {}
 
         new_center["name"] = center.get("input_1_facilityname")
@@ -31,10 +33,9 @@ def get_test_centers():
 
     return center_list
 
-# Will need authentication to run
-def get_center_yelp(center_list):
+def get_center_google():
 
-    # TODO: Auth
+    api_key = "API_KEY"
 
     for center in center_list:
 
@@ -42,20 +43,74 @@ def get_center_yelp(center_list):
         rating = None
 
         # Set intersection
-        if center["longitude"] == None or center["latitude"] == None:
+        if center["longitude"] != None and center["latitude"] != None:
+
             response = requests.get(
-                "https://api.yelp.com/v3/businesses/search?sort_by=distancelimit=1&longitude={long}&latitude={lat}}".format(long = center["longitude"], lat = center["latitude"])
+                "https://maps.googleapis.com/maps/api/place/nearbysearch/output?",
+                params = {"radius": "1", "key": api_key, "location": f"{center.get('longitude')},{center.get("latitude")}}",
+                headers = {"Authorization": f"Bearer {api_key}", "accept": "application/json"}
             )
-            tmp = response.json()
+            tmp = response.json()["businesses"]
+
+            if len(tmp) > 0:
+                image_arr = tmp[0].get("photos")
+
+                if len(image_arr) > 0:
+                    image_obj = image_arr[0]
+                    
+
+                if image_url == "":
+                    image_url = None
+
+                rating = tmp[0].get("rating")
+                if rating == "":
+                    rating = None
+
+        center["image_url"] = image_url
+        center["rating"] = rating
+
+
+# Will need authentication to run
+def get_center_yelp(center_list):
+
+    api_key = "Kzk1IfHs9AAhC3bHvrXpxrU3MZ7OMlq_nm8S9DZQI3rHELRGVRrtz3qLpM18iTJmlk8WsW4HGWqhzsswE-PyNDr5dhr7ZDNC-osnMsP-JMG2pRlujmhLjUikHHYpZXYx"
+
+    for center in center_list:
+
+        image_url = None
+        rating = None
+
+        # Set intersection
+        if center["longitude"] != None and center["latitude"] != None:
+
+            response = requests.get(
+                f"https://api.yelp.com/v3/businesses/search?radius=1&sort_by=distance&limit=1",
+                params = {"radius": "1", "longitude": center.get('longitude'), "latitude": center.get("latitude")},
+                headers = {"Authorization": f"Bearer {api_key}", "accept": "application/json"}
+            )
+            tmp = response.json()["results"]
 
             if len(tmp) > 0:
                 image_url = tmp[0].get("image_url")
-                rating = tmp[0].get("rating")
+                if image_url == "":
+                    image_url = None
+
+                rating = string(tmp[0].get("rating"))
+                if rating == "":
+                    rating = None
 
         center["image_url"] = image_url
         center["rating"] = rating
 
 def center_scraper():
-    center_list = get_test_centers
+    center_list = get_test_centers()
     get_center_yelp(center_list)
     return center_list
+
+def main():
+    center_list = get_test_centers()
+    print(json.dumps(center_list, indent=4))
+    # get_center_yelp(center_list)
+
+if __name__ == "__main__":
+    main()
