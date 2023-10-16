@@ -16,7 +16,7 @@ def get_test_centers():
         new_center["name"] = center.get("input_1_facilityname")
         new_center["address"] = center.get("input_1_address")
         new_center["borough"] = center.get("input_1_borough")
-        new_center["nta"] = center.get("output_nta_name")
+        new_center["nta_name"] = center.get("output_nta_name")
         new_center["zip_code"] = center.get("input_1_zipcode")
         new_center["phone"] = center.get("input_1_phone2")
         new_center["council"] = center.get("output_city_council_district")
@@ -24,10 +24,10 @@ def get_test_centers():
         new_center["howto"] = center.get("input_1_additionalinfo2")
         new_center["longitude"] = center.get("longitude2")
         new_center["latitude"] = center.get("latitude2")
-        new_center["id"] = idx
+        new_center["id_t"] = idx
 
         new_center["nearby_hospitals"] = []
-        new_center["at_neighborhood"] = []
+        new_center["parent_neighborhood"] = []
 
         center_list.append(new_center)
 
@@ -50,15 +50,12 @@ def get_center_google(center_list):
             response_json = response.json()["businesses"]
 
             if len(response_json) > 0:
-
                 target_obj = response_json[0]
-
                 if "photos" in target_obj:
                     image_arr = target_obj.get("photos")
                     if len(image_arr) > 0:
                         image_obj = image_arr[0]
-                        image_url = f"https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference={image_obj.get('photo_reference')}"
-
+                        image_url = f"https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference={image_obj.get('photo_reference')}&key={api_key}"
                 if "rating" in target_obj:
                     rating = str(target_obj.get("rating"))
 

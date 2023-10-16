@@ -1,7 +1,8 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
-from sqlalchemy.types import JSON
+from sqlalchemy.orm import mapped_column, DeclarativeBase
+
 from scrapers.center import center_scraper
 
 app = Flask(__name__)
@@ -13,32 +14,61 @@ db = SQLAlchemy(app)
 
 class TestCenter(Base):
     __tablename__ = 'users'
-    name = Column(String(100))
+    name = mapped_column(String(100))
+    address = mapped_column(String(100))
+    borough = mapped_column(String(100))
+    nta_name = mapped_column(String(100))
+    zip_code = mapped_column(String(100))
+    phone = mapped_column(String(100))
+    council = mapped_column(String(100))
+    community = mapped_column(String(100))
+    howto = mapped_column(String(100))
+    longitude = mapped_column(String(100))
+    latitude = mapped_column(String(100))
+
+    map_url = mapped_column(String(100))
+    image_url = mapped_column(String(100))
+    rating = mapped_column(String(100))
+
+    id_t = mapped_column(Integer, unique=True, primary_key=True)
+    nearby_hospitals = db.relationship("Hospital", back_populates="nearby_centers")
+    parent_neighborhood = db.relationship("Neighborhood", back_populates="test_centers_in_neighborhood")
+
+class Neighborhood(Base):
+    __tablename__ = "Neighborhoods"
+    borough = mapped_column(String(100))
+    year = mapped_column(String(100))
+    flips_county_code = mapped_column(String(100))
+    nta_code = mapped_column(String(100))
+    nta_name = mapped_column(String(100))
+    population = mapped_column(String(100))
+
+    map_url = mapped_column(String(100))
+    image_url = mapped_column(String(100))
+
+    id_t = mapped_column(Integer, unique=True, primary_key=True)
+    hospitals_in_neighborhood = db.relationship("Hospital", back_populates="parent_neighborhood")
+    test_centers_in_neighborhood = db.relationship("TestCenter", back_populates="parent_neighborhood")
+
+class Hospital(Base):
+    __tablename__ = 'Hospitals'
+    facility_type = Column(String(100))
+    facility_name = Column(String(100))
     address = Column(String(100))
     borough = Column(String(100))
     nta = Column(String(100))
     zip_code = Column(String(100))
     phone = Column(String(100), unique=True)
     council = Column(String(100), unique=True)
-    community = Column(String(100))
-    howto = Column(String(100))
     longitude = Column(String(100))
     latitude = Column(String(100))
+
     id_t = Column(Integer, unique=True, primary_key=True)
-    nearby_hospitals = db.relationship("Hospital", secondary=hospital_centers, back_populates="nearby_centers")
-    at_neighborhood = db.relationship("Neighborhood", secondary=neighborhoods, back_populates="at_centers")
+    nearby_centers = db.relationship("TestCenter", back_populates="nearby_hospitals")
+    at_neighborhood = db.relationship("Neighborhood", back_populates="hospitals_in_neighborhood")
 
     def __repr__(self):
-        return "Center Name:" + self.name
-
-class Neighborhoods(Base):
-    __tablename__ = "Neighborhoods"
-    borough = Column(String(100))
-    year = Column(String(100))
-    flips_county_code = Column(String(100))
-    nta_code = Column(String(100))
-    nta_name = Column(String(100))
-    population = Column(String(100))
+        return "Hosptial name:" + self.facility_name
     
 def db_neighborhood_population():
     neighborhood_list = neighborhood_scraper()
@@ -54,35 +84,16 @@ def db_neighborhood_population():
 
 def db_centers_population(center_list):
     center_list = center_scraper()
-    for t_row in center_list:
+    for center in center_list:
 
-        if t_row["nta"] != None:
-            near_hospitals = Hospital.query.filter_by(nta=t_row["nta"]).all()
-            t_row["nearby_hospitals"].append(near_hospitals)
+        if center["nta"] != None:
+            nearby_hospitals = Hospital.query.filter_by(nta=center["nta"]).all()
+            center["nearby_hospitals"].append(nearby_hospitals)
 
-            neighborhood = Neighborhood.query.filter_by(name=t_row["nta"]).first()
-            t_row["at_neighborhood"] = neighborhood
+            neighborhood = Neighborhood.query.filter_by(name=center["nta"]).first()
+            center["at_neighborhood"] = neighborhood
+
         park_data = Park(**db_row)
         db.session.add(park_data)
 
     db.session.commit()
-
-class Hospitals(Base):
-    __tablename__ = 'Hospitals'
-    facility_type = Column(String(100))
-    facility_name = Column(String(100))
-    address = Column(String(100))
-    borough = Column(String(100))
-    nta = Column(String(100))
-    zip_code = Column(String(100))
-    phone = Column(String(100), unique=True)
-    council = Column(String(100), unique=True)
-    longitude = Column(String(100))
-    latitude = Column(String(100))
-    id_t = Column(Integer, unique=True, primary_key=True)
-    nearby_hospitals = db.relationship("Hospital", secondary=Hospitals, back_populates="nearby_hospitals")
-    nearby_centers = db.relationship("Centers", secondary=centers, back_populates="nearby_centers")
-    at_neighborhood = db.relationship("Neighborhood", secondary=neighborhoods, back_populates="at_centers")
-
-    def __repr__(self):
-        return "Hosptial name:" + self.facility_name

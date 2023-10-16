@@ -18,7 +18,6 @@ def get_Med():
         med_data["latitude"] = n.get("latitude")
         med_data["id"] = i
 
-        med_data["nearby_hospitals"] = []
         med_data["at_neighborhood"] = []
         med_data["nearby_centers"] = []
 
