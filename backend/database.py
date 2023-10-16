@@ -67,4 +67,22 @@ def db_centers_population(center_list):
 
     db.session.commit()
 
-# TODO: Hospitals/Neighborhoods
+class Hospitals(Base):
+    __tablename__ = 'Hospitals'
+    facility_type = Column(String(100))
+    facility_name = Column(String(100))
+    address = Column(String(100))
+    borough = Column(String(100))
+    nta = Column(String(100))
+    zip_code = Column(String(100))
+    phone = Column(String(100), unique=True)
+    council = Column(String(100), unique=True)
+    longitude = Column(String(100))
+    latitude = Column(String(100))
+    id_t = Column(Integer, unique=True, primary_key=True)
+    nearby_hospitals = db.relationship("Hospital", secondary=Hospitals, back_populates="nearby_hospitals")
+    nearby_centers = db.relationship("Centers", secondary=centers, back_populates="nearby_centers")
+    at_neighborhood = db.relationship("Neighborhood", secondary=neighborhoods, back_populates="at_centers")
+
+    def __repr__(self):
+        return "Hosptial name:" + self.facility_name

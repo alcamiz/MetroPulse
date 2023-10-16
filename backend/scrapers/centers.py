@@ -46,8 +46,8 @@ def get_center_google():
         if center["longitude"] != None and center["latitude"] != None:
 
             response = requests.get(
-                "https://maps.googleapis.com/maps/api/place/nearbysearch/output?",
-                params = {"radius": "1", "key": api_key, "location": f"{center.get('longitude')},{center.get("latitude")}}",
+                f"https://maps.googleapis.com/maps/api/place/nearbysearch/output?",
+                params = {"radius": "1", "key": api_key, "location": f"{center.get('longitude')},{center.get('latitude')}"},
                 headers = {"Authorization": f"Bearer {api_key}", "accept": "application/json"}
             )
             tmp = response.json()["businesses"]
