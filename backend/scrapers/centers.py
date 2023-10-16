@@ -33,9 +33,7 @@ def get_test_centers():
 
     return center_list
 
-def get_center_google():
-
-    api_key = "API_KEY"
+def get_center_google(center_list):
 
     for center in center_list:
 
@@ -46,25 +44,23 @@ def get_center_google():
         if center["longitude"] != None and center["latitude"] != None:
 
             response = requests.get(
-                f"https://maps.googleapis.com/maps/api/place/nearbysearch/output?",
-                params = {"radius": "1", "key": api_key, "location": f"{center.get('longitude')},{center.get('latitude')}"},
-                headers = {"Authorization": f"Bearer {api_key}", "accept": "application/json"}
+                "https://maps.googleapis.com/maps/api/place/nearbysearch/output?",
+                params = {"radius": "1", "location": f"{center.get('longitude')},{center.get("latitude")}}",
             )
-            tmp = response.json()["businesses"]
+            response_json = response.json()["businesses"]
 
-            if len(tmp) > 0:
-                image_arr = tmp[0].get("photos")
+            if len(response_json) > 0:
 
-                if len(image_arr) > 0:
-                    image_obj = image_arr[0]
-                    
+                target_obj = response_json[0]
 
-                if image_url == "":
-                    image_url = None
+                if "photos" in target_obj:
+                    image_arr = target_obj.get("photos")
+                    if len(image_arr) > 0:
+                        image_obj = image_arr[0]
+                        image_url = f"https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference={image_obj.get('photo_reference')}"
 
-                rating = tmp[0].get("rating")
-                if rating == "":
-                    rating = None
+                if "rating" in target_obj:
+                    rating = str(target_obj.get("rating"))
 
         center["image_url"] = image_url
         center["rating"] = rating
@@ -73,7 +69,7 @@ def get_center_google():
 # Will need authentication to run
 def get_center_yelp(center_list):
 
-    api_key = "Kzk1IfHs9AAhC3bHvrXpxrU3MZ7OMlq_nm8S9DZQI3rHELRGVRrtz3qLpM18iTJmlk8WsW4HGWqhzsswE-PyNDr5dhr7ZDNC-osnMsP-JMG2pRlujmhLjUikHHYpZXYx"
+    api_key = ""
 
     for center in center_list:
 
@@ -102,6 +98,7 @@ def get_center_yelp(center_list):
         center["image_url"] = image_url
         center["rating"] = rating
 
+
 def center_scraper():
     center_list = get_test_centers()
     get_center_yelp(center_list)
@@ -110,7 +107,6 @@ def center_scraper():
 def main():
     center_list = get_test_centers()
     print(json.dumps(center_list, indent=4))
-    # get_center_yelp(center_list)
 
 if __name__ == "__main__":
     main()
