@@ -9,7 +9,7 @@ app = Flask(__name__)
 CORS(app)
 app.debug = True
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://example.com"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite+pysqlite:///:memory:"
 db = SQLAlchemy(app)
 
 class TestCenter(Base):
@@ -56,16 +56,19 @@ class Hospital(Base):
     facility_name = Column(String(100))
     address = Column(String(100))
     borough = Column(String(100))
-    nta = Column(String(100))
+    nta_name = Column(String(100))
     zip_code = Column(String(100))
     phone = Column(String(100), unique=True)
     council = Column(String(100), unique=True)
     longitude = Column(String(100))
     latitude = Column(String(100))
+    
+    map_url = mapped_column(String(100))
+    image_url = mapped_column(String(100))
 
     id_t = Column(Integer, unique=True, primary_key=True)
     nearby_centers = db.relationship("TestCenter", back_populates="nearby_hospitals")
-    at_neighborhood = db.relationship("Neighborhood", back_populates="hospitals_in_neighborhood")
+    parent_neighborhood = db.relationship("Neighborhood", back_populates="hospitals_in_neighborhood")
 
     def __repr__(self):
         return "Hosptial name:" + self.facility_name

@@ -13,12 +13,12 @@ def get_Med():
         med_data["phone"] = n.get("phone")
         med_data["address"] = n.get("location_1.human_address")
         med_data["council_district"] = n.get("council_district")
-        med_data["nta"] = n.get("nta")
+        med_data["nta_name"] = n.get("nta")
         med_data["longitude"] = n.get("longitude")
         med_data["latitude"] = n.get("latitude")
-        med_data["id"] = i
+        med_data["id_t"] = i
 
-        med_data["at_neighborhood"] = []
+        med_data["parent_neighborhood"] = None
         med_data["nearby_centers"] = []
 
         med_list.append(med_data)
