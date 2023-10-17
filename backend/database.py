@@ -96,6 +96,7 @@ class Hospital(db.Model):
     facility_type = mapped_column(String(100))
     facility_name = mapped_column(String(100))
     address = mapped_column(String(100))
+    zip_code = mapped_column(String(100))
     borough = mapped_column(String(100))
     nta_name = mapped_column(String(100))
     zip_code = mapped_column(String(100))
