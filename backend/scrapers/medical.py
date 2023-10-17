@@ -62,7 +62,7 @@ def get_med_google(med_List):
         fac["image_url"] = image_url
         fac["rating"] = rating
 
-def med_scrapper():
+def med_scraper():
     med_list = get_Med()
-    get_med_google(med_list)
+    # get_med_google(med_list)
     return med_list

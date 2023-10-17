@@ -24,10 +24,12 @@ def get_test_centers():
         new_center["howto"] = center.get("input_1_additionalinfo2")
         new_center["longitude"] = center.get("longitude2")
         new_center["latitude"] = center.get("latitude2")
-        new_center["id_t"] = idx
 
+        new_center["id_t"] = idx
         new_center["nearby_hospitals"] = []
-        new_center["parent_neighborhood"] = []
+
+        new_center["parent_id"] = -1
+        new_center["parent_neighborhood"] = None
 
         center_list.append(new_center)
 
@@ -45,7 +47,7 @@ def get_center_google(center_list):
 
             response = requests.get(
                 "https://maps.googleapis.com/maps/api/place/nearbysearch/output?",
-                params = {"radius": "1", "location": f"{center.get('longitude')},{center.get("latitude")}}",
+                params = {"radius": "1", "location": f"{center.get('longitude')},{center.get('latitude')}"}
             )
             response_json = response.json()["businesses"]
 
@@ -62,43 +64,9 @@ def get_center_google(center_list):
         center["image_url"] = image_url
         center["rating"] = rating
 
-
-# Will need authentication to run
-def get_center_yelp(center_list):
-
-    api_key = ""
-
-    for center in center_list:
-
-        image_url = None
-        rating = None
-
-        # Set intersection
-        if center["longitude"] != None and center["latitude"] != None:
-
-            response = requests.get(
-                f"https://api.yelp.com/v3/businesses/search?radius=1&sort_by=distance&limit=1",
-                params = {"radius": "1", "longitude": center.get('longitude'), "latitude": center.get("latitude")},
-                headers = {"Authorization": f"Bearer {api_key}", "accept": "application/json"}
-            )
-            tmp = response.json()["results"]
-
-            if len(tmp) > 0:
-                image_url = tmp[0].get("image_url")
-                if image_url == "":
-                    image_url = None
-
-                rating = string(tmp[0].get("rating"))
-                if rating == "":
-                    rating = None
-
-        center["image_url"] = image_url
-        center["rating"] = rating
-
-
 def center_scraper():
     center_list = get_test_centers()
-    get_center_yelp(center_list)
+    # get_center_yelp(center_list)
     return center_list
 
 def main():

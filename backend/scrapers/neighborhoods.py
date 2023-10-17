@@ -16,8 +16,8 @@ def get_neighborhoods():
         new_neighborhood["population"] = neighborhood.get("population")
         new_neighborhood["id_t"] = idx
 
-        new_center["hospitals_in_neighborhood"] = []
-        new_center["test_centers_in_neighborhood"] = []
+        new_neighborhood["hospitals_in_neighborhood"] = []
+        new_neighborhood["test_centers_in_neighborhood"] = []
 
         neighborhood_list.append(new_neighborhood)
     return neighborhood_list
