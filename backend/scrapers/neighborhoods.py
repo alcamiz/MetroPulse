@@ -1,4 +1,5 @@
 import requests
+import json
 
 def get_neighborhoods():
     response = requests.get(
@@ -7,9 +8,13 @@ def get_neighborhoods():
     data = response.json()
     neighborhood_list = []
     for idx, neighborhood in enumerate(data):
+
+        if neighborhood.get("year") != "2010":
+            continue
+
         new_neighborhood = {}
         new_neighborhood["borough"] = neighborhood.get("borough")
-        new_neighborhood["year"] = neighborhood.get("year")
+        # new_neighborhood["year"] = neighborhood.get("year")
         new_neighborhood["fips_county_code"] = neighborhood.get("fips_county_code")
         new_neighborhood["nta_code"] = neighborhood.get("nta_code")
         new_neighborhood["nta_name"] = neighborhood.get("nta_name")
@@ -25,3 +30,11 @@ def get_neighborhoods():
 def neighborhood_scraper():
     neighborhood_list = get_neighborhoods()
     return neighborhood_list
+
+def main():
+    n_list = neighborhood_scraper()
+    print(json.dumps(n_list, indent=4))
+
+if __name__ == "__main__":
+    main()
+

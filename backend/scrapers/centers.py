@@ -28,8 +28,8 @@ def get_test_centers():
         new_center["id_t"] = idx
         new_center["nearby_hospitals"] = []
 
-        new_center["parent_id"] = -1
-        new_center["parent_neighborhood"] = None
+        # new_center["parent_id"] = -1
+        new_center["parent_neighborhood"] = []
 
         center_list.append(new_center)
 
