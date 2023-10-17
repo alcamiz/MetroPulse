@@ -1,6 +1,6 @@
 import requests
 import json
-from image import places_scraper
+from scrapers.image import places_scraper
 
 def none_strip(s):
     if s != None:
@@ -41,7 +41,7 @@ def get_Med():
 
 def med_scraper():
     med_list = get_Med()
-    # get_med_google(med_list)
+    # places_scraper(med_list)
     return med_list
 
 def main():

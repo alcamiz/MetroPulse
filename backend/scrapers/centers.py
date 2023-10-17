@@ -36,7 +36,7 @@ def get_test_centers():
 
 def center_scraper():
     center_list = get_test_centers()
-    # get_center_yelp(center_list)
+    # places_scraper(center_list)
     return center_list
 
 def main():

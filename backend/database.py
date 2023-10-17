@@ -166,7 +166,6 @@ def main():
     with app.app_context():
         db.create_all()
         populate_database()
-        print(Hospital.query.filter_by(nta_name="Corona").first().parent_neighborhood)
 
 if __name__ == "__main__":
     main()
