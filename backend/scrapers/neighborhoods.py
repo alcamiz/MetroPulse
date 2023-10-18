@@ -7,7 +7,9 @@ def get_neighborhoods():
     )
     data = response.json()
     neighborhood_list = []
-    for idx, neighborhood in enumerate(data):
+
+    idx = 0
+    for neighborhood in data:
 
         # Avoid duplicated years
         if neighborhood.get("year") != "2010":
@@ -25,6 +27,8 @@ def get_neighborhoods():
         new_neighborhood["test_centers_in_neighborhood"] = []
 
         neighborhood_list.append(new_neighborhood)
+        idx += 1
+
     return neighborhood_list
 
 def neighborhood_scraper():

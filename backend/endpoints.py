@@ -201,6 +201,101 @@ def get_neighborhoods():
 
     response = jsonify({"size": len(result_list), "data": result_list})
     return response
+
+# Get a specific park
+@app.route("/centers/<center_id>")
+def get_center_id(center_id):
+    center = db.session.query(TestCenter).filter_by(id_t=center_id).first()
+    if center == None:
+        return jsonify({"data": None, "state": "Error"})
+
+    dict_center = center_schema.dump(center)
+    nearby_hospitals = []
+
+    for idx, hospital in enumerate(center.nearby_hospitals):
+        if idx > 10:
+            break
+        nearby_hospitals.append(
+            {
+                "name": hospital.facility_name,
+                "id_t": hospital.id_t,
+                "image_url": hospital.image_url,
+            }
+        )
+    
+    dict_center["nearby_hospitals"] = nearby_hospitals
+    if len(center.parent_neighborhood) > 0:
+        dict_center["parent_neighborhood"] = center.parent_neighborhood[0].id_t
+
+    response = jsonify({"data": dict_center, "state": "Ok"})
+    return response
+
+# Get a specific park
+@app.route("/hospitals/<hospital_id>")
+def get_hospital_id(hospital_id):
+    hospital = db.session.query(Hospital).filter_by(id_t=hospital_id).first()
+    if hospital == None:
+        return jsonify({"data": None, "state": "Error"})
+
+    dict_hospital = hosptial_schema.dump(hospital)
+    nearby_centers = []
+
+    for idx, center in enumerate(hospital.nearby_centers):
+        if idx > 10:
+            break
+        nearby_centers.append(
+            {
+                "name": center.name,
+                "id_t": center.id_t,
+                "image_url": center.image_url,
+            }
+        )
+    
+    dict_hospital["nearby_centers"] = nearby_centers
+    if len(hospital.parent_neighborhood) > 0:
+        dict_hospital["parent_neighborhood"] = hospital.parent_neighborhood[0].id_t
+
+    response = jsonify({"data": dict_hospital, "state": "Ok"})
+    return response
+
+# Get a specific park
+@app.route("/neighborhoods/<neighborhood_id>")
+def get_neighborhood_id(neighborhood_id):
+    neighborhood = db.session.query(Neighborhood).filter_by(id_t=neighborhood_id).first()
+    if neighborhood == None:
+        return jsonify({"data": None, "state": "Error"})
+
+    dict_neighborhood = neighborhood_schema.dump(neighborhood)
+    nearby_hospitals = []
+    nearby_centers = []
+
+    for idx, hospital in enumerate(neighborhood.hospitals_in_neighborhood):
+        if idx > 10:
+            break
+        nearby_hospitals.append(
+            {
+                "name": hospital.facility_name,
+                "id_t": hospital.id_t,
+                "image_url": hospital.image_url,
+            }
+        )
+
+    for idx, center in enumerate(neighborhood.test_centers_in_neighborhood):
+        if idx > 10:
+            break
+        nearby_centers.append(
+            {
+                "name": center.name,
+                "id_t": center.id_t,
+                "image_url": center.image_url,
+            }
+        )
+
+    dict_neighborhood["nearby_hospitals"] = nearby_hospitals
+    dict_neighborhood["nearby_centers"] = nearby_centers
+
+    response = jsonify({"data": dict_neighborhood, "state": "Ok"})
+    return response
     
 if __name__ == "__main__":
     app.run(port=5000, debug=True)
