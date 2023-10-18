@@ -20,11 +20,9 @@ def wiki_scraper(in_list):
                     "https://en.wikipedia.org/w/api.php?exintro&explaintext",
                     params = {"action": "query", "format": "json", "prop": "extracts", "exsentences": "2", "titles": f"{wiki_name}"}
                 )
-
-                print(response.json())
+                
                 inner_json = next(iter(response.json()["query"]["pages"].values()))
-                # print(inner_json)
-                # if "extract" in inner_json:
-                #     wiki_text = inner_json["extract"]
+                if "extract" in inner_json:
+                    wiki_text = inner_json["extract"]
 
         model["desc"] = wiki_text

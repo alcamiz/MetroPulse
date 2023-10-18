@@ -41,14 +41,13 @@ def get_neighborhoods():
 def neighborhood_scraper():
     neighborhood_list = get_neighborhoods()
     # wiki_scraper(neighborhood_list)
-    #static_google_maps_scraper(neighborhood_list, horizontal_value = 400, 
+    # static_google_maps_scraper(neighborhood_list, horizontal_value = 400, 
     #     vertical_value = 400, zoom = 10)
     return neighborhood_list
 
 def main():
     n_list = neighborhood_scraper()
-    #wiki_scraper(neighborhood_list)
-    #print(json.dumps(n_list, indent=4))
+    print(json.dumps(n_list, indent=4))
 
 if __name__ == "__main__":
     main()
