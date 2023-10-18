@@ -1,59 +1,48 @@
-from flask import Flask
+from flask import Flask, jsonify, request, Response
+from database import app, db, Neighborhood, TestCenter, Hospital, populate_database
+from marshmallow_sqlalchemy import SQLAlchemyAutoSchema
 
-flaskApp = Flask(__name__)
+with app.app_context():
+    db.create_all()
+    populate_database()
 
-@flaskApp.route("/")
+@app.route("/")
 def home():
-    return "Hello I Am Here!"
-
-@flaskApp.route("/whois/<name>")
-def whois(name):
-    return "Hello, " + name + ", that is your name!"
+    return "Invalid Query"
 
 class TestCenterSchema(SQLAlchemyAutoSchema):
     class Meta:
         model = TestCenter
 
-
 class HospitalSchema(SQLAlchemyAutoSchema):
     class Meta:
         model = Hospital
-
 
 class NeighborhoodSchema(SQLAlchemyAutoSchema):
     class Meta:
         model = Neighborhood
 
 
-center_schema = AnimalSchema()
-hosptial_schema = ParkSchema()
-neighborhood_schema = StateSchema()
-
+center_schema = TestCenterSchema()
+hosptial_schema = HospitalSchema()
+neighborhood_schema = NeighborhoodSchema()
 
 # Default page size for pagination
 PAGE_SIZE = 25
-
-# Dictionary for mapping activity tags to their IDs
-
-# Define the home route
-@app.route("/")
-def home():
-    return "Invalid Query"
-
 
 # TODO: Incomplete
 @app.route("/centers")
 def get_centers():
 
     page = request.args.get("page", type=int)
-    if page == one:
+    if page == None:
         page = 1
 
     per_page = request.args.get("per_page", type=int)
     if per_page == None:
         per_page = PAGE_SIZE
 
-    query = db.session.query(TestCenter)
+    query = TestCenter.query
 
     # Filtering
     borough = request.args.get("borough")
@@ -68,16 +57,15 @@ def get_centers():
     if borough != None:
         query = query.filter(TestCenter.species_group == group)
 
-    query = query.paginate(page=page, per_page=per_page, error_out=False).items
+    query = query.paginate(page=page, per_page=per_page, error_out=False)
 
-    response_list = []
-    center_list = query.all()
+    result_list = []
+    center_list = query.items
 
     for center in center_list:
 
-        # Not sure if needed
-        raw_center = center_schema.dump(center)
-        
+        dict_center = center_schema.dump(center)
+
         # print(json.dumps(raw_center, indent=4))
         nearby_hospitals = []
         for hospital in center.nearby_hospitals:
@@ -88,8 +76,14 @@ def get_centers():
                     "image_url": hospital.image_url,
                 }
             )
+        
+        dict_center["nearby_hospitals"] = nearby_hospitals
+        if len(center.parent_neighborhood) > 0:
+            dict_center["parent_neighborhood"] = center.parent_neighborhood[0].id_t
+        result_list.append(dict_center)
 
+    response = jsonify({"size": len(result_list), "data": result_list})
     return response
 
 if __name__ == "__main__":
-    flaskApp.run(port=5000, debug=True);
+    app.run(port=5000, debug=True)
