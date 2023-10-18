@@ -68,10 +68,13 @@ def get_centers():
 
         # print(json.dumps(raw_center, indent=4))
         nearby_hospitals = []
-        for hospital in center.nearby_hospitals:
+        print(center.nearby_hospitals)
+        for idx, hospital in enumerate(center.nearby_hospitals):
+            if idx > 10:
+                break
             nearby_hospitals.append(
                 {
-                    "name": hospital.name,
+                    "name": hospital.facility_name,
                     "id_t": hospital.id_t,
                     "image_url": hospital.image_url,
                 }
@@ -84,6 +87,8 @@ def get_centers():
 
     response = jsonify({"size": len(result_list), "data": result_list})
     return response
+    
 
+    
 if __name__ == "__main__":
     app.run(port=5000, debug=True)
