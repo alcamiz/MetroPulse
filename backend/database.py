@@ -54,7 +54,6 @@ hc_association = db.Table(
 class Neighborhood(db.Model):
     __tablename__ = "neighborhood_table"
     borough = mapped_column(String(100))
-    # year = mapped_column(String(100))
     fips_county_code = mapped_column(String(100))
     nta_code = mapped_column(String(100))
     nta_name = mapped_column(String(100))
