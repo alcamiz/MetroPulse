@@ -1,5 +1,36 @@
-website:
-    image: node:20
+#website:
+image: node:latest
 
+script:
+    - build 
+    - test
+
+cache:
+    paths:
+    - frontend/node_modules/
+
+build_front_end:
+  stage: build
+  script:
+    - cd front-end
+    - npm install
+    - npm run-script build
+
+backend_unit_tests:
+  stage: test
+  image: python:3.10
+  before_script:
+    - pip install -r backend/requirements.txt
+  script:
+    - python3 backend/unit_tests.py
+
+
+postman_tests:
+    stage: test
+    image: 
+        name: postman/newman:alpine
+        entrypoint: [""]
     script:
-    - make exec
+        - cd backend
+        - newman --version
+        - newman run postman_collection.json
