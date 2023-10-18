@@ -1,6 +1,9 @@
 import requests
 import json
-from image import places_scraper
+try:
+    from image import places_scraper
+except:
+    from scrapers.image import places_scraper
 
 # Just obtain the JSON file
 def get_test_centers():
@@ -42,7 +45,7 @@ def center_scraper():
 def main():
     center_list = get_test_centers()
     small_list = center_list[0:10]
-    places_scraper(small_list)
+    # places_scraper(small_list)
     print(json.dumps(small_list, indent=4))
 
 if __name__ == "__main__":

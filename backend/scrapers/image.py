@@ -17,7 +17,7 @@ def places_scraper(in_list):
                 "https://maps.googleapis.com/maps/api/place/nearbysearch/json?",
                 params = {"keyword": model.get("name"), "radius": "30", "location": f"{model.get('latitude')},{model.get('longitude')}", "key": API_KEY}
             )
-            print(response.json())
+            # print(response.json())
             response_json = response.json()["results"]
 
             if len(response_json) > 0:

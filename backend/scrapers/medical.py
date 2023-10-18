@@ -1,6 +1,9 @@
 import requests
 import json
-from scrapers.image import places_scraper
+try:
+    from image import places_scraper
+except:
+    from scrapers.image import places_scraper
 
 def none_strip(s):
     if s != None:
