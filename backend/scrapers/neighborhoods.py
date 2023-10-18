@@ -4,7 +4,10 @@ try:
     from google_static_maps import static_google_maps_scraper
 except:
     from scrapers.google_static_maps import static_google_maps_scraper
-
+try:
+    from wiki import wiki_scraper
+except:
+    from scrapers.wiki import wiki_scraper
 
 def get_neighborhoods():
     response = requests.get(
@@ -37,14 +40,15 @@ def get_neighborhoods():
 
 def neighborhood_scraper():
     neighborhood_list = get_neighborhoods()
+    wiki_scraper(neighborhood_list)
     # static_google_maps_scraper(neighborhood_list, horizontal_value = 400, 
     #     vertical_value = 400, zoom = 10)
     return neighborhood_list
 
 def main():
-    n_list = neighborhood_scraper()
-    #print(json.dumps(n_list, indent=4))
+    n_list = neighborhood_scraper()[0:10]
+    wiki_scraper(neighborhood_list)
+    print(json.dumps(n_list, indent=4))
 
 if __name__ == "__main__":
     main()
-

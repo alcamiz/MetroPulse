@@ -59,6 +59,7 @@ class Neighborhood(db.Model):
     nta_name = mapped_column(String(100))
     population = mapped_column(String(100))
 
+    desc = mapped_column(String(100))
     map_url = mapped_column(String(100))
     image_url = mapped_column(String(100))
 
