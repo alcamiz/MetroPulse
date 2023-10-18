@@ -155,6 +155,8 @@ def db_final_relations():
         if center.borough != None:
             nearby_hospitals = Hospital.query.filter(func.lower(Hospital.borough) == func.lower(center.borough)).all()
             center.nearby_hospitals.extend(nearby_hospitals)
+    
+    db.session.commit()
 
 def populate_database():
     db_populate_hospitals()
