@@ -107,6 +107,7 @@ class Hospital(db.Model):
     
     map_url = mapped_column(String(100))
     image_url = mapped_column(String(100))
+    rating = mapped_column(String(100))
 
     id_t = mapped_column(Integer, unique=True, primary_key=True)
     nearby_centers = relationship("TestCenter", secondary=hc_association)

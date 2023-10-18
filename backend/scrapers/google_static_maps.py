@@ -5,8 +5,6 @@ import base64
 
 API_KEY = "AIzaSyDh3IrFeC6Qr188VbidMaL0cpxS-eyUwqw"
 
-#keep in mind test centers
-
 def static_google_maps_scraper(in_list, horizontal_value, vertical_value, zoom):
     for model in in_list:
         image_url = None
