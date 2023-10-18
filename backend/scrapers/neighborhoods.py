@@ -1,6 +1,9 @@
 import requests
 import json
-from google_static_maps import static_google_maps_scraper
+try:
+    from google_static_maps import static_google_maps_scraper
+except:
+    from scrapers.google_static_maps import static_google_maps_scraper
 
 
 def get_neighborhoods():
