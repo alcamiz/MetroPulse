@@ -1,5 +1,9 @@
 import requests
 import json
+try:
+    from image import places_scraper
+except:
+    from scrapers.image import places_scraper
 
 # Just obtain the JSON file
 def get_test_centers():
@@ -27,51 +31,22 @@ def get_test_centers():
 
         new_center["id_t"] = idx
         new_center["nearby_hospitals"] = []
-
-        new_center["parent_id"] = -1
-        new_center["parent_neighborhood"] = None
+        new_center["parent_neighborhood"] = []
 
         center_list.append(new_center)
 
     return center_list
 
-def get_center_google(center_list):
-
-    for center in center_list:
-
-        image_url = None
-        rating = None
-
-        # Set intersection
-        if center["longitude"] != None and center["latitude"] != None:
-
-            response = requests.get(
-                "https://maps.googleapis.com/maps/api/place/nearbysearch/output?",
-                params = {"radius": "1", "location": f"{center.get('longitude')},{center.get('latitude')}"}
-            )
-            response_json = response.json()["businesses"]
-
-            if len(response_json) > 0:
-                target_obj = response_json[0]
-                if "photos" in target_obj:
-                    image_arr = target_obj.get("photos")
-                    if len(image_arr) > 0:
-                        image_obj = image_arr[0]
-                        image_url = f"https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference={image_obj.get('photo_reference')}&key={api_key}"
-                if "rating" in target_obj:
-                    rating = str(target_obj.get("rating"))
-
-        center["image_url"] = image_url
-        center["rating"] = rating
-
 def center_scraper():
     center_list = get_test_centers()
-    # get_center_yelp(center_list)
+    # places_scraper(center_list)
     return center_list
 
 def main():
     center_list = get_test_centers()
-    print(json.dumps(center_list, indent=4))
+    small_list = center_list[0:10]
+    # places_scraper(small_list)
+    print(json.dumps(small_list, indent=4))
 
 if __name__ == "__main__":
     main()

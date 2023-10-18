@@ -1,5 +1,14 @@
 import requests
 import json
+try:
+    from image import places_scraper
+except:
+    from scrapers.image import places_scraper
+
+def none_strip(s):
+    if s != None:
+        return s.strip()
+    return None
 
 def get_Med():
     med_list = []
@@ -11,58 +20,38 @@ def get_Med():
         med_data["borough"] = n.get("borough")
         med_data["facility_name"] = n.get("facility_name")
         med_data["phone"] = n.get("phone")
-        med_data["address"] = n.get("location_1.human_address")
+        if n.get("location_1") != None:
+            human_address = n.get("location_1").get("human_address")
+            if human_address != None:
+                t = json.loads(human_address)
+                med_data["address"] = t.get("address")
+                med_data["zip_code"] = t.get("zip")
+        else:
+            med_data["address"] = None
+            med_data["zip"] = None
         med_data["council_district"] = n.get("council_district")
-        med_data["nta_name"] = n.get("nta")
+        med_data["nta_name"] = none_strip(n.get("nta"))
         med_data["longitude"] = n.get("longitude")
         med_data["latitude"] = n.get("latitude")
-        med_data["id_t"] = i
 
-        med_data["parent_neighborhood"] = None
+        med_data["id_t"] = i
+        med_data["parent_neighborhood"] = []
         med_data["nearby_centers"] = []
 
         med_list.append(med_data)
     
     return med_list
 
-#Same as center?
-def get_med_google(med_List):
-
-    api_key = "API_KEY"
-
-    for fac in med_List:
-
-        image_url = None
-        rating = None
-
-        # Set intersection
-        if fac["longitude"] != None and fac["latitude"] != None:
-
-            response = requests.get(
-                f"https://maps.googleapis.com/maps/api/place/nearbysearch/output?",
-                params = {"radius": "1", "key": api_key, "location": f"{fac.get('longitude')},{fac.get('latitude')}"},
-                headers = {"Authorization": f"Bearer {api_key}", "accept": "application/json"}
-            )
-            tmp = response.json()["businesses"]
-
-            if len(tmp) > 0:
-                image_arr = tmp[0].get("photos")
-
-                if len(image_arr) > 0:
-                    image_obj = image_arr[0]
-                    
-
-                if image_url == "":
-                    image_url = None
-
-                rating = tmp[0].get("rating")
-                if rating == "":
-                    rating = None
-
-        fac["image_url"] = image_url
-        fac["rating"] = rating
-
 def med_scraper():
     med_list = get_Med()
-    # get_med_google(med_list)
+    # places_scraper(med_list)
     return med_list
+
+def main():
+    hospital_list = med_scraper()
+    small_list = hospital_list[0:10]
+    # places_scraper(small_list)
+    print(json.dumps(small_list, indent=4))
+
+if __name__ == "__main__":
+    main()
