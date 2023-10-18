@@ -1,36 +1,24 @@
-#website:
-image: node:latest
+stages:
+  - deploy_backend
+  - build_frontend
 
-script:
-    - build 
-    - test
-
-cache:
+build_frontend:
+  stage: build_frontend
+  image: node:20  # Use a Node.js image
+  script:
+    - make exec  # Run the Makefile task for frontend build
+  artifacts:
     paths:
-    - frontend/node_modules/
+      - frontend/dist # Define the path to the frontend build artifacts
 
-build_front_end:
-  stage: build
+deploy_backend:
+  stage: deploy_backend
   script:
-    - cd front-end
-    - npm install
-    - npm run-script build
-
-backend_unit_tests:
-  stage: test
-  image: python:3.10
-  before_script:
-    - pip install -r backend/requirements.txt
-  script:
-    - python3 backend/unit_tests.py
-
-
-postman_tests:
-    stage: test
-    image: 
-        name: postman/newman:alpine
-        entrypoint: [""]
-    script:
-        - cd backend
-        - newman --version
-        - newman run postman_collection.json
+    - apt-get update
+    - apt-get install -y ssh  # Install SSH client
+    - mkdir -p ~/.ssh
+    - echo "${SSH_PRIVATE_KEY}" > ~/.ssh/id_rsa  # Use the secret variable
+    - chmod 600 ~/.ssh/id_rsa
+    - ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@ec2-18-222-13-146.us-east-2.compute.amazonaws.com "cd /MetroPulse/backend && git fetch && git rebase && docker-compose up -d"
+  only:
+    - master

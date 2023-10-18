@@ -1,5 +1,11 @@
 import requests
 import json
+
+try:
+    from google_static_maps import static_google_maps_scraper
+except:
+    from scrapers.google_static_maps import static_google_maps_scraper
+
 try:
     from image import places_scraper
 except:
@@ -39,14 +45,16 @@ def get_test_centers():
 
 def center_scraper():
     center_list = get_test_centers()
-    # places_scraper(center_list)
+    places_scraper(center_list)
+    static_google_maps_scraper(center_list, horizontal_value = 400, 
+        vertical_value = 400, zoom = 10)
     return center_list
 
 def main():
-    center_list = get_test_centers()
+    center_list = center_scraper()
     small_list = center_list[0:10]
     # places_scraper(small_list)
-    print(json.dumps(small_list, indent=4))
+    #print(json.dumps(small_list, indent=4))
 
 if __name__ == "__main__":
     main()

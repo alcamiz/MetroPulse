@@ -51,7 +51,7 @@ def main():
     hospital_list = med_scraper()
     small_list = hospital_list[0:10]
     # places_scraper(small_list)
-    print(json.dumps(small_list, indent=4))
+    # print(json.dumps(small_list, indent=4))
 
 if __name__ == "__main__":
     main()

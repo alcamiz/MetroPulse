@@ -54,12 +54,12 @@ hc_association = db.Table(
 class Neighborhood(db.Model):
     __tablename__ = "neighborhood_table"
     borough = mapped_column(String(100))
-    # year = mapped_column(String(100))
     fips_county_code = mapped_column(String(100))
     nta_code = mapped_column(String(100))
     nta_name = mapped_column(String(100))
     population = mapped_column(String(100))
 
+    desc = mapped_column(String(100))
     map_url = mapped_column(String(100))
     image_url = mapped_column(String(100))
 
@@ -107,6 +107,7 @@ class Hospital(db.Model):
     
     map_url = mapped_column(String(100))
     image_url = mapped_column(String(100))
+    rating = mapped_column(String(100))
 
     id_t = mapped_column(Integer, unique=True, primary_key=True)
     nearby_centers = relationship("TestCenter", secondary=hc_association)
