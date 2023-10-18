@@ -1,5 +1,7 @@
 import requests
 import json
+from google_static_maps import static_google_maps_scraper
+
 
 def get_neighborhoods():
     response = requests.get(
@@ -21,7 +23,6 @@ def get_neighborhoods():
         new_neighborhood["nta_code"] = neighborhood.get("nta_code")
         new_neighborhood["nta_name"] = neighborhood.get("nta_name")
         new_neighborhood["population"] = neighborhood.get("population")
-
         new_neighborhood["id_t"] = idx
         new_neighborhood["hospitals_in_neighborhood"] = []
         new_neighborhood["test_centers_in_neighborhood"] = []
@@ -33,11 +34,13 @@ def get_neighborhoods():
 
 def neighborhood_scraper():
     neighborhood_list = get_neighborhoods()
+    # static_google_maps_scraper(neighborhood_list, horizontal_value = 400, 
+    #     vertical_value = 400, zoom = 10)
     return neighborhood_list
 
 def main():
     n_list = neighborhood_scraper()
-    print(json.dumps(n_list, indent=4))
+    #print(json.dumps(n_list, indent=4))
 
 if __name__ == "__main__":
     main()
