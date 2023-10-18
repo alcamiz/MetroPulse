@@ -11,9 +11,9 @@ function About() {
   const [totalIssue, totalIssueCount] = useState(0);
   const [issueNum, setIssueCount] = useState({});
   useEffect(() => {
-    const url = 'https://gitlab.com/api/v4/projects/50434557/repository/commits?per_page=100';
+    const url = 'https://gitlab.com/api/v4/projects/50434557/repository/commits?per_page=200';
     const members = ['Alex Cabrera', 'Kamil Kalowski', 'Ky5t0nbr', 'Thomas Moody', 'tjmoody18'];
-    const urlIssues = `https://gitlab.com/api/v4/projects/50434557/issues?per_page=100`;
+    const urlIssues = `https://gitlab.com/api/v4/projects/50434557/issues?per_page=200`;
 
     const fetchCommits = async () => {
       const commits = {};
