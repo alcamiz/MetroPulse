@@ -16,12 +16,13 @@ db = SQLAlchemy(model_class=Base)
 app = Flask(__name__)
 app.debug = True
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite+pysqlite:///:memory:"
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://master:IsMhBiSlQCpC1AlD5Plw@metropulse.ccwakrptuj51.us-east-2.rds.amazonaws.com:5432/postgres"
 db.init_app(app)
 
 # CORS(app)
 
 # engine = create_engine("sqlite+pysqlite:///:memory:", echo=True)
+
 
 center_association = db.Table(
     "center_association",
@@ -60,7 +61,7 @@ class Neighborhood(db.Model):
     population = mapped_column(String(100))
 
     desc = mapped_column(String(100))
-    map_url = mapped_column(String(100))
+    static_map_url = mapped_column(String(100))
     image_url = mapped_column(String(100))
 
     id_t = mapped_column(Integer, unique=True, primary_key=True)
@@ -81,7 +82,7 @@ class TestCenter(db.Model):
     longitude = mapped_column(String(100))
     latitude = mapped_column(String(100))
 
-    map_url = mapped_column(String(100))
+    static_map_url = mapped_column(String(100))
     image_url = mapped_column(String(100))
     rating = mapped_column(String(100))
 
@@ -105,7 +106,7 @@ class Hospital(db.Model):
     longitude = mapped_column(String(100))
     latitude = mapped_column(String(100))
     
-    map_url = mapped_column(String(100))
+    static_map_url = mapped_column(String(100))
     image_url = mapped_column(String(100))
     rating = mapped_column(String(100))
 
