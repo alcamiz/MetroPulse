@@ -9,6 +9,9 @@ from scrapers.centers import center_scraper
 from scrapers.medical import med_scraper
 from scrapers.neighborhoods import neighborhood_scraper
 
+from requests import Request
+from urllib.parse import urlparse, parse_qs
+
 class Base(DeclarativeBase):
     pass
 db = SQLAlchemy(model_class=Base)
@@ -163,6 +166,42 @@ def populate_database():
     db_populate_centers()
     db_populate_neighborhoods()
     db_final_relations()
+
+def fix_key(url, new_key):
+    runner = urlparse(url)
+    params = parse_qs(runner.query)
+    base_url = runner._replace(query=None).geturl()
+
+    if 'key' in params:
+        params['key'] = new_key
+
+    new_url = Request('GET', base_url, params=params).prepare().url
+    return new_url
+
+def update_key(new_key):
+    center_list = TestCenter.query.all()
+    hospital_list = Hospital.query.all()
+    n_list = Neighborhood.query.all()
+
+    for hospital in hospital_list:
+        if hospital.static_map_url != None:
+            hospital.static_map_url = fix_key(hospital.static_map_url, new_key)
+        if hospital.image_url != None:
+            hospital.image_url = fix_key(hospital.image_url, new_key)
+
+    for center in center_list:
+        if center.static_map_url != None:
+            center.static_map_url = fix_key(center.static_map_url, new_key)
+        if center.image_url != None:
+            center.image_url = fix_key(center.image_url, new_key)
+
+    for hood in n_list:
+        if hood.static_map_url != None:
+            hood.static_map_url = fix_key(hood.static_map_url, new_key)
+        if hood.image_url != None:
+            hood.image_url = fix_key(hood.image_url, new_key)
+
+    db.session.commit()
 
 def main():
     with app.app_context():
