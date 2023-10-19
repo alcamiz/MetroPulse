@@ -1,9 +1,13 @@
 import requests
 import json
 try:
-    from image import places_scraper
+    from google_static_maps import static_google_maps_scraper
 except:
-    from scrapers.image import places_scraper
+    from scrapers.google_static_maps import static_google_maps_scraper
+try:
+    from google_images import places_scraper
+except:
+    from scrapers.google_images import places_scraper
 
 def none_strip(s):
     if s != None:
@@ -18,7 +22,7 @@ def get_Med():
         med_data = {}
         med_data["facility_type"] = n.get("facility_type")
         med_data["borough"] = n.get("borough")
-        med_data["facility_name"] = n.get("facility_name")
+        med_data["name"] = n.get("facility_name")
         med_data["phone"] = n.get("phone")
         if n.get("location_1") != None:
             human_address = n.get("location_1").get("human_address")
@@ -44,7 +48,9 @@ def get_Med():
 
 def med_scraper():
     med_list = get_Med()
-    # places_scraper(med_list)
+    places_scraper(med_list)
+    static_google_maps_scraper(med_list, horizontal_value = 400,
+        vertical_value = 400, zoom = 15)
     return med_list
 
 def main():

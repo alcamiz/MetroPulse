@@ -7,9 +7,9 @@ except:
     from scrapers.google_static_maps import static_google_maps_scraper
 
 try:
-    from image import places_scraper
+    from google_images import places_scraper
 except:
-    from scrapers.image import places_scraper
+    from scrapers.google_images import places_scraper
 
 # Just obtain the JSON file
 def get_test_centers():
@@ -45,9 +45,9 @@ def get_test_centers():
 
 def center_scraper():
     center_list = get_test_centers()
-    # places_scraper(center_list)
-    # static_google_maps_scraper(center_list, horizontal_value = 400, 
-    #    vertical_value = 400, zoom = 10)
+    places_scraper(center_list)
+    static_google_maps_scraper(center_list, horizontal_value = 400, 
+       vertical_value = 400, zoom = 15)
     return center_list
 
 def main():

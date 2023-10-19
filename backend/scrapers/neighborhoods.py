@@ -40,9 +40,9 @@ def get_neighborhoods():
 
 def neighborhood_scraper():
     neighborhood_list = get_neighborhoods()
-    # wiki_scraper(neighborhood_list)
-    # static_google_maps_scraper(neighborhood_list, horizontal_value = 400, 
-    #     vertical_value = 400, zoom = 10)
+    wiki_scraper(neighborhood_list)
+    static_google_maps_scraper(neighborhood_list, horizontal_value = 400, 
+        vertical_value = 400, zoom = 10)
     return neighborhood_list
 
 def main():

@@ -90,7 +90,7 @@ class TestCenter(db.Model):
 class Hospital(db.Model):
     __tablename__ = 'hospital_table'
     facility_type = mapped_column(String(100))
-    facility_name = mapped_column(String(100))
+    name = mapped_column(String(100))
     address = mapped_column(String(100))
     zip_code = mapped_column(String(100))
     borough = mapped_column(String(100))

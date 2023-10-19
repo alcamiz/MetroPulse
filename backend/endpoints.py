@@ -67,7 +67,7 @@ def get_centers():
                 break
             nearby_hospitals.append(
                 {
-                    "name": hospital.facility_name,
+                    "name": hospital.name,
                     "id_t": hospital.id_t,
                     "image_url": hospital.image_url,
                 }
@@ -174,7 +174,7 @@ def get_neighborhoods():
                 break
             nearby_hospitals.append(
                 {
-                    "name": hospital.facility_name,
+                    "name": hospital.name,
                     "id_t": hospital.id_t,
                     "image_url": hospital.image_url,
                 }
@@ -213,7 +213,7 @@ def get_center_id(center_id):
             break
         nearby_hospitals.append(
             {
-                "name": hospital.facility_name,
+                "name": hospital.,
                 "id_t": hospital.id_t,
                 "image_url": hospital.image_url,
             }
@@ -270,7 +270,7 @@ def get_neighborhood_id(neighborhood_id):
             break
         nearby_hospitals.append(
             {
-                "name": hospital.facility_name,
+                "name": hospital.name,
                 "id_t": hospital.id_t,
                 "image_url": hospital.image_url,
             }
