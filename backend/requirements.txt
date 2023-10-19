@@ -11,4 +11,5 @@ gunicorn
 requests
 SQLAlchemy
 Flask-SQLAlchemy
+psycopg2-binary
 marshmallow_sqlalchemy
