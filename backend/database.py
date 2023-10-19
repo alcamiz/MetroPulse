@@ -17,6 +17,7 @@ app = Flask(__name__)
 app.debug = True
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://master:IsMhBiSlQCpC1AlD5Plw@metropulse.ccwakrptuj51.us-east-2.rds.amazonaws.com:5432/postgres"
+app.config["SQLALCHEMY_ENGINE_OPTIONS"] = {"pool_pre_ping": True}
 db.init_app(app)
 
 center_association = db.Table(
@@ -55,9 +56,9 @@ class Neighborhood(db.Model):
     nta_name = mapped_column(String(100))
     population = mapped_column(String(100))
 
-    desc = mapped_column(String(100))
-    static_map_url = mapped_column(String(100))
-    image_url = mapped_column(String(100))
+    desc = mapped_column(String(2000))
+    static_map_url = mapped_column(String(500))
+    image_url = mapped_column(String(500))
 
     id_t = mapped_column(Integer, unique=True, primary_key=True)
     hospitals_in_neighborhood = relationship("Hospital", secondary=hospital_association, back_populates="parent_neighborhood")
@@ -77,14 +78,12 @@ class TestCenter(db.Model):
     longitude = mapped_column(String(100))
     latitude = mapped_column(String(100))
 
-    static_map_url = mapped_column(String(100))
-    image_url = mapped_column(String(100))
+    static_map_url = mapped_column(String(500))
+    image_url = mapped_column(String(500))
     rating = mapped_column(String(100))
 
     id_t = mapped_column(Integer, unique=True, primary_key=True)
     nearby_hospitals = relationship("Hospital", secondary=ch_association)
-
-    # parent_id = mapped_column(Integer, ForeignKey("neighborhood_table.id_t"))
     parent_neighborhood = relationship("Neighborhood", secondary=center_association, back_populates="test_centers_in_neighborhood")
 
 class Hospital(db.Model):
@@ -101,14 +100,12 @@ class Hospital(db.Model):
     longitude = mapped_column(String(100))
     latitude = mapped_column(String(100))
     
-    static_map_url = mapped_column(String(100))
-    image_url = mapped_column(String(100))
+    static_map_url = mapped_column(String(500))
+    image_url = mapped_column(String(500))
     rating = mapped_column(String(100))
 
     id_t = mapped_column(Integer, unique=True, primary_key=True)
     nearby_centers = relationship("TestCenter", secondary=hc_association)
-
-    # parent_id = mapped_column(Integer, ForeignKey("neighborhood_table.id_t")) 
     parent_neighborhood = relationship("Neighborhood", secondary=hospital_association, back_populates="hospitals_in_neighborhood")
     
 def db_populate_neighborhoods():
