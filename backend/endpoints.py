@@ -213,7 +213,7 @@ def get_center_id(center_id):
             break
         nearby_hospitals.append(
             {
-                "name": hospital.,
+                "name": hospital,
                 "id_t": hospital.id_t,
                 "image_url": hospital.image_url,
             }
