@@ -2,10 +2,6 @@ from flask import Flask, jsonify, request, Response
 from database import app, db, Neighborhood, TestCenter, Hospital, populate_database
 from marshmallow_sqlalchemy import SQLAlchemyAutoSchema
 
-with app.app_context():
-    db.create_all()
-    populate_database()
-
 @app.route("/")
 def home():
     return "Invalid Query"

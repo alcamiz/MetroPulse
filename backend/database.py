@@ -19,11 +19,6 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://master:IsMhBiSlQCpC1AlD5Plw@metropulse.ccwakrptuj51.us-east-2.rds.amazonaws.com:5432/postgres"
 db.init_app(app)
 
-# CORS(app)
-
-# engine = create_engine("sqlite+pysqlite:///:memory:", echo=True)
-
-
 center_association = db.Table(
     "center_association",
     Base.metadata,
@@ -160,7 +155,13 @@ def db_final_relations():
     
     db.session.commit()
 
+def reset_database():
+    db.session.remove()
+    db.drop_all()
+    db.create_all()
+
 def populate_database():
+    reset_database()
     db_populate_hospitals()
     db_populate_centers()
     db_populate_neighborhoods()
@@ -168,7 +169,6 @@ def populate_database():
 
 def main():
     with app.app_context():
-        db.create_all()
         populate_database()
 
 if __name__ == "__main__":
