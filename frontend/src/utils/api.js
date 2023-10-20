@@ -1,6 +1,8 @@
 import axios from "axios";
 import { frontend_website } from "../frontend_website";
 
+// called in pages/*/*.instance.js files
+
 export const getMedical = async (medical_id) => {
   const response = await axios.get(
     frontend_website + `hospitals/${medical_id}`

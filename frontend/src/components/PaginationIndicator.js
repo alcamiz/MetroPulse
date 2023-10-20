@@ -1,5 +1,4 @@
 import React from "react";
-import "../styles/Pagination.css";
 
 const max = (val1, val2) => {
   return val1 > val2 ? val1 : val2;

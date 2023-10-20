@@ -1,6 +1,6 @@
 import React from "react";
 import "../../instances/Instance.css";
-import CenterPlaceholder from "../../placeholders/center_placeholder.png"; // ADD PLACEHOLDER IMAGE
+import MedicalPlaceholder from "../../placeholders/medical_placeholder.png"; 
 
 import background from '../../shared/img/test_back.jpeg';
 import '../../instances/Instance.css';
@@ -9,7 +9,7 @@ import Table from 'react-bootstrap/Table';
 import { Link } from 'react-router-dom';
 
 
-function CenterInfo({ center }) {
+function MedicalInfo({ medical }) {
   return (
     <Accordion defaultActiveKey="0">
       <Accordion.Item eventKey="0">
@@ -19,39 +19,35 @@ function CenterInfo({ center }) {
             <tbody>
               <tr>
                 <td>Phone Number</td>
-                <td>{center.phone}</td>
+                <td>{medical.phone}</td>
               </tr>
               <tr>
                 <td>Address</td>
-                <td>{center.address}, {center.nta_name}, NY {center.zip_code}</td>
+                <td>{medical.address}</td>
               </tr>
               <tr>
                 <td>Neighborhood</td>
-                <td><Link to={`/hoods/${center.parent_neighborhood}`}>{center.nta_name}</Link></td>
+                <td><Link to={'/hoods/' + medical.parent_neighborhood}>{medical.nta}</Link></td>
               </tr>
               <tr>
                 <td>Borough</td>
-                <td>{center.borough}</td>
+                <td>{medical.borough}</td>
               </tr>
               <tr>
                 <td>Council District</td>
-                <td>{center.council}</td>
-              </tr>
-              <tr>
-                <td>Instructions</td>
-                <td>{center.howto}</td>
+                <td>{medical.council}</td>
               </tr>
             </tbody>
           </Table>
         </Accordion.Body>
       </Accordion.Item>
       <Accordion.Item eventKey="1">
-        <Accordion.Header>Nearby Medical Facilities</Accordion.Header>
+        <Accordion.Header>Nearby Testing Centers</Accordion.Header>
         <Accordion.Body>
           <ul>
-            {center.nearby_hospitals.map((hospital) => (
-              <li key={hospital.id_t}>
-                <Link to={`/medical/${hospital.id_t}`}>{hospital.name}</Link>
+            {medical.nearby_centers.map((center) => (
+              <li key={center.id_t}>
+                <Link to={`/center/${center.id_t}`}>{center.name}</Link>
               </li>
             ))}
           </ul>
@@ -61,22 +57,21 @@ function CenterInfo({ center }) {
   );
 }
 
-function CenterDetails({ center }) {
-  // console.log(center)
+function MedicalDetails({medical}) {
   return (
     <div className="Instance">
       <header className="Instance-header">
-        <img src={center.static_map_url} className="Instance-logo" alt="logo" /> 
+          <img src={medical.static_map_url || "https://www.google.com/maps/d/thumbnail?mid=1rN8fFwktkFQlwWkL8mlSoximF6E"} className="Instance-logo" alt="logo" /> 
         <h3 className="Instance-title">
-          {center.name}
+          {medical.facility_name}
         </h3>
-        <CenterInfo center={center} />
+        <MedicalInfo medical={medical}/>
       </header>
       <div className="Instance-images">
-        <img style={{ display: `block` }} src={center.image_url || "https://media.istockphoto.com/id/472149497/photo/goofy-pharmacist.jpg?s=612x612&w=0&k=20&c=OBV_lo-TKcZD3DwuYa23sVGvFeT8IsSNBjjfZbtWuts="} className="Instance-logo" alt="logo" />
+        <img style={ {display: `block`}} width="400" height="400" src={medical.image_url || "https://s3-prod.modernhealthcare.com/s3fs-public/styles/width_792/public/rural-health2_i.png"} className="Instance-logo" alt="logo" />
       </div>
     </div>
   );
 }
 
-export default CenterDetails;
+export default MedicalDetails;

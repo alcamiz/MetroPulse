@@ -15,14 +15,15 @@ const styles = {
 };
 
 function CenterCard({ center }) {
+  console.log(center);
 
   return (
-    <Link to={`/test/${center.id_t}`}>
+    <Link to={`/test/${center.id_t}`} style={styles.link}>
       <Card style={styles.card}>
         <Card.Img variant="top" src={center.static_map_url} />
         <Card.Body>
           <Card.Title>{center.name}</Card.Title>
-          <Card.Text>Borough: {center.borough}</Card.Text>
+          <Card.Text><strong>Borough:</strong> {center.borough}</Card.Text>
           <Card.Text>Council Number: {center.council}</Card.Text>
           <Card.Text>Zipcode: {center.zip_code}</Card.Text>
           <Card.Text>Nearby Medical Facilities: {center.nearby_hospitals.length}</Card.Text>
