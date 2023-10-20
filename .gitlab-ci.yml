@@ -51,7 +51,7 @@ pytest_unit_tests:
       - python3 unit_tests.py
 
 frontend_ui_test:
-  stage: test
+  stage: frontend_ui_test
   image: python:3.10
   script:
   - cd frontend
