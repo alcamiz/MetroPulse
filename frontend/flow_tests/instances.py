@@ -30,16 +30,16 @@ class test(unittest.TestCase):
         #return super().tearDownClass()
     
     def test_facilities(cls):
-        cls.driver.get(url + "medical/")
-        cls.assertEqual(cls.driver.current_url, url + "medical/")
+        cls.driver.get(url + "medical")
+        cls.assertEqual(cls.driver.current_url, url + "medical")
 
     def test_centers(cls):
-        cls.driver.get(url + "test/")
-        cls.assertEqual(cls.driver.current_url, url + "test/")
+        cls.driver.get(url + "test")
+        cls.assertEqual(cls.driver.current_url, url + "test")
 
     def test_neighborhoods(cls):
-        cls.driver.get(url + "hoods/")
-        cls.assertEqual(cls.driver.current_url, url + "hoods/")
+        cls.driver.get(url + "hoods")
+        cls.assertEqual(cls.driver.current_url, url + "hoods")
 
 if __name__ == '__main__':
     unittest.main()

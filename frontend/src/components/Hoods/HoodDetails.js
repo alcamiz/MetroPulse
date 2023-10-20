@@ -82,7 +82,7 @@ function HoodDetails({hood}) {
         <HoodInfo hood={hood}/>
       </header>
       <div className="Instance-images">
-        <img style={{display: `block`}} src={hood.image_url || ""} className="Instance-logo" alt="logo" />
+        <img style={{display: `block`}} src={hood.image_url || "https://www.elikarealestate.com/blog/wp-content/uploads/2015/09/village-streets-nyc.jpg"} className="Instance-logo" alt="logo" />
       </div>
     </div>
   );
