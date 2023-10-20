@@ -23,9 +23,14 @@ center_schema = TestCenterSchema()
 hosptial_schema = HospitalSchema()
 neighborhood_schema = NeighborhoodSchema()
 
-center_count = TestCenter.query.count()
-hospital_count = Hospital.query.count()
-n_count = Neighborhood.query.count()
+center_count = None
+hospital_count = None
+n_count = None
+
+with app.app_context():
+    center_count = TestCenter.query.count()
+    hospital_count = Hospital.query.count()
+    n_count = Neighborhood.query.count()
 
 # Default page size for pagination
 PAGE_SIZE = 25

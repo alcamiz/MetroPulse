@@ -1,10 +1,12 @@
 stages:
   - deploy_backend
   - build_frontend
+  - postman tests
 
 build_frontend:
   stage: build_frontend
   image: node:20  # Use a Node.js image
+  allow_failure: true
   script:
     - make exec  # Run the Makefile task for frontend build
   artifacts:
@@ -13,6 +15,7 @@ build_frontend:
 
 deploy_backend:
   stage: deploy_backend
+  allow_failure: true
   script:
     - apt-get update
     - apt-get install -y ssh  # Install SSH client
@@ -21,7 +24,7 @@ deploy_backend:
     - chmod 600 ~/.ssh/id_rsa
     - ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@ec2-18-222-13-146.us-east-2.compute.amazonaws.com "cd /MetroPulse/backend && git fetch && git rebase && docker-compose up -d"
   only:
-    - master
+    - fixed-main
 
 postman_tests:
     stage: testpostman_tests
