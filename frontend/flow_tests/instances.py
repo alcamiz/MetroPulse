@@ -10,7 +10,7 @@ class test(unittest.TestCase):
     
     @classmethod
     def setUpClass(cls) -> None:
-        options.webdriver.ChromeOptions()
+        options = webdriver.ChromeOptions()
         options.add_experimental_option('excludeSwitches', ['enable-logging'])
         options.add_argument("--headless")
         options.add_argument("--no-sandbox")

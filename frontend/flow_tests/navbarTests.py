@@ -60,11 +60,11 @@ class Test(unittest.TestCase):
         try:
             WebDriverWait(self.driver, 10).until(
                 EC.element_to_be_clickable(
-                    (By.XPATH, '//*[@id="basic-navbar-nav"]/div/div/a[2]')
+                    (By.XPATH, '//*[@id="basic-navbar-nav"]/div/div/a[1]')
                 )
             )
             element = self.driver.find_element(
-                By.XPATH, '//*[@id="basic-navbar-nav"]/div/div/a[2]'
+                By.XPATH, '//*[@id="basic-navbar-nav"]/div/div/a[1]'
             )
             element.click()
         except Exception as ex:
