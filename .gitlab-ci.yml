@@ -15,7 +15,7 @@ build_frontend:
 
 deploy_backend:
   stage: deploy_backend
-  image: debian
+  image: ubuntu
   allow_failure: true
   before_script:
     - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
@@ -25,7 +25,7 @@ deploy_backend:
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
   script:
-    - ssh ubuntu@ec2-18-222-13-146.us-east-2.compute.amazonaws.com 'cd /MetroPulse/backend && git pull && sudo docker stop $(sudo docker ps -aqf name=backend) && sudo docker build --tag backend --file ./Dockerfile . && sudo docker run -d --name metropulse --rm --network=host -i -t -v /home/ubuntu/MetroPulse/backend/:/usr/python backend'
+    - ssh -o StrictHostKeyChecking=no ubuntu@ec2-18-222-13-146.us-east-2.compute.amazonaws.com 'cd /MetroPulse/backend && git pull && sudo docker stop $(sudo docker ps -aqf name=backend) && sudo docker build --tag backend --file ./Dockerfile . && sudo docker run -d --name metropulse --rm --network=host -i -t -v /home/ubuntu/MetroPulse/backend/:/usr/python backend'
   only:
     - fixed-main
 
