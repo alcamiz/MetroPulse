@@ -22,3 +22,12 @@ deploy_backend:
     - ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@ec2-18-222-13-146.us-east-2.compute.amazonaws.com "cd /MetroPulse/backend && git fetch && git rebase && docker-compose up -d"
   only:
     - master
+
+postman_tests:
+    stage: testpostman_tests
+    image: 
+        name: postman/newman:alpine
+        entrypoint: [""]
+    script:
+        - cd backend
+        - newman run postman_tests.json

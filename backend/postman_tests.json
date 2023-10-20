@@ -1,0 +1,357 @@
+{
+	"info": {
+		"_postman_id": "9b5ffc93-2e92-43db-bc90-61758d2f8809",
+		"name": "MetroPulse API",
+		"description": "A public API of data used by the MetroPulse project. These includes infomation about all medial facilities, blood-pressure test centers, and neighborhoods in New York City. All data aggregated from the following public data sources: New York Open Data, WIkipedia, OpenStreetMaps, ... (This might change in later phases of the project).",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29785582",
+		"_collection_link": "https://restless-meadow-915671.postman.co/workspace/MetroPulse~b7801225-39e4-45cd-be33-4a83176d010c/collection/29785582-9b5ffc93-2e92-43db-bc90-61758d2f8809?action=share&source=collection_link&creator=29785582"
+	},
+	"item": [
+		{
+			"name": "Medical Facilities",
+			"item": [
+				{
+					"name": "All Facilities",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Correctness Test\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    pm.response.to.be.ok;",
+									"    pm.response.to.be.json;",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://backend.metropulse.link/hospitals?page=1&per_page=2",
+							"protocol": "https",
+							"host": [
+								"backend",
+								"metropulse",
+								"link"
+							],
+							"path": [
+								"hospitals"
+							],
+							"query": [
+								{
+									"key": "borough",
+									"value": "Bronx",
+									"description": "Filter list by borough",
+									"disabled": true
+								},
+								{
+									"key": "nta",
+									"value": "Fordham",
+									"description": "Filter list by neighborhood",
+									"disabled": true
+								},
+								{
+									"key": "zip",
+									"value": "10459",
+									"description": "Filter list by zip code",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"description": "Choose which page of results to get"
+								},
+								{
+									"key": "per_page",
+									"value": "2"
+								}
+							]
+						},
+						"description": "Request a list of all medical facilities in NYC from the database. The API is able to filter by the different query values listed below."
+					},
+					"response": []
+				},
+				{
+					"name": "Specific Facility",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Correctness Test\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    pm.response.to.be.ok;",
+									"    pm.response.to.be.json;",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://backend.metropulse.link/hospitals/:id",
+							"protocol": "https",
+							"host": [
+								"backend",
+								"metropulse",
+								"link"
+							],
+							"path": [
+								"hospitals",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "0",
+									"description": "ID of Hospital"
+								}
+							]
+						},
+						"description": "Request information about a specific medical faciliy in NYC using its internal database ID. This can be obtained graphically from our website or from a previous facility list request."
+					},
+					"response": []
+				}
+			],
+			"description": "These GET requests interact with the medical facility data on our database. You are able to request a specific facility through its internal ID, or request a list filtered by a number of different attributes."
+		},
+		{
+			"name": "Test Centers",
+			"item": [
+				{
+					"name": "All Centers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Correctness Test\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    pm.response.to.be.ok;",
+									"    pm.response.to.be.json;",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://backend.metropulse.link/centers?page=1&per_page=2",
+							"protocol": "https",
+							"host": [
+								"backend",
+								"metropulse",
+								"link"
+							],
+							"path": [
+								"centers"
+							],
+							"query": [
+								{
+									"key": "borough",
+									"value": "Queens",
+									"description": "Filter list by borough",
+									"disabled": true
+								},
+								{
+									"key": "nta",
+									"value": "Corona",
+									"description": "Filter list by neighborhood",
+									"disabled": true
+								},
+								{
+									"key": "zip",
+									"value": "10459",
+									"description": "Filter list by zip code",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"description": "Choose which page of results to get"
+								},
+								{
+									"key": "per_page",
+									"value": "2"
+								}
+							]
+						},
+						"description": "Request a list of all blood-pressure test center in NYC, from the database. The API is able to filter by the different query values listed below."
+					},
+					"response": []
+				},
+				{
+					"name": "Center Instance",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Correctness Test\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    pm.response.to.be.ok;",
+									"    pm.response.to.be.json;",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://backend.metropulse.link/centers/:id",
+							"protocol": "https",
+							"host": [
+								"backend",
+								"metropulse",
+								"link"
+							],
+							"path": [
+								"centers",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "0",
+									"description": "ID of Test Center"
+								}
+							]
+						},
+						"description": "Request information about a specific medical faciliy in NYC using its internal database ID. This can be obtained graphically from our website or from a previous test center list request."
+					},
+					"response": []
+				}
+			],
+			"description": "These GET requests interact with the blood-pressure test center data on our database. You are able to request information about a specific test center through its internal ID, or request a list filtered by a number of different attributes."
+		},
+		{
+			"name": "Neighborhoods",
+			"item": [
+				{
+					"name": "All Neighborhoods",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Correctness Test\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    pm.response.to.be.ok;",
+									"    pm.response.to.be.json;",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://backend.metropulse.link/neighborhoods?page=1&per_page=2",
+							"protocol": "https",
+							"host": [
+								"backend",
+								"metropulse",
+								"link"
+							],
+							"path": [
+								"neighborhoods"
+							],
+							"query": [
+								{
+									"key": "borough",
+									"value": "Manhattan",
+									"description": "Filter list by   borough",
+									"disabled": true
+								},
+								{
+									"key": "fips",
+									"value": "01",
+									"description": "Filter list by fips code",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"description": "Choose which page of results to get"
+								},
+								{
+									"key": "per_page",
+									"value": "2"
+								}
+							]
+						},
+						"description": "Request a list of all neighborhoods in NYC, from the database. The API is able to filter by the different query values listed below."
+					},
+					"response": []
+				},
+				{
+					"name": "Neighborhood Instance",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Correctness Test\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    pm.response.to.be.ok;",
+									"    pm.response.to.be.json;",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://backend.metropulse.link/neighborhoods/:id",
+							"protocol": "https",
+							"host": [
+								"backend",
+								"metropulse",
+								"link"
+							],
+							"path": [
+								"neighborhoods",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "0",
+									"description": "ID of Neighborhood"
+								}
+							]
+						},
+						"description": "Request information about a specific neighborhood in NYC using its internal database ID. This can be obtained graphically from our website or from a previous neighborhood request."
+					},
+					"response": []
+				}
+			],
+			"description": "These GET requests interact with the neighborhoods data on our database. You are able to request information about a neighborhood through its internal ID, or request a list filtered by a number of different attributes."
+		}
+	]
+}
