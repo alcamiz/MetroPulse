@@ -15,6 +15,7 @@ build_frontend:
 
 deploy_backend:
   stage: deploy_backend
+  image: ubuntu
   allow_failure: true
   script:
     - apt-get update
