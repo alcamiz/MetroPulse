@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 //import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
 import HomePage from './homepage/HomePage';
 import HoodInstance from './instances/Hoods';
-import CenterInstance from './instances/TestCenter';
+import CenterInstance from './pages/Centers/CenterInstance';
 import MedicalInstance from './instances/Facilities';
 import CenterModel from './models/TestCenter';
 import HoodModel from './models/Hoods';
@@ -13,17 +13,6 @@ import About from './about/AboutPage';
 import Navbar from "./components/Navbar"
 
 function App() {
-
-  var routes = [];
-  const t_names = [{ name: "test", comp: <CenterInstance /> }, { name: "medical", comp: <MedicalInstance /> }, { name: "hoods", comp: <HoodInstance /> }]
-
-
-  for (var i = 0; i < 3; i++) {
-    for (var j = 0; j < 3; j++) {
-      routes.push({ path: "/" + t_names[i].name + "/" + j, exact: true, component: React.cloneElement(t_names[i].comp, { index: j }) })
-      console.log(routes[i])
-    }
-  }
 
   return (
     <div className="App">
@@ -36,9 +25,8 @@ function App() {
             <Route path="/medical" element={<FacilityModel />} />
             <Route path="/hoods" element={<HoodModel />} />
             <Route path="/about" element={<About />} />
-            {routes.map((route, idx) => (
-              <Route path={route.path} exact element={route.component} />
-            ))}
+            <Route path="/test/:test_id" element={<CenterInstance />}/>
+          {/*  <Route path="/medical/:id_t" element={<MedicalInstance />}/>*/}
           </Routes>
         </div>
       </Router>

@@ -1,15 +1,15 @@
+import React from "react";
+import "../../instances/Instance.css";
+import CenterPlaceholder from "../../placeholders/center_placeholder.png"; // ADD PLACEHOLDER IMAGE
 
-import background from '../shared/img/test_back.jpeg';
-import CenterCard from '../components/Centers/CenterCard';
-
-import './Instance.css';
+import background from '../../shared/img/test_back.jpeg';
+import '../../instances/Instance.css';
 import Accordion from 'react-bootstrap/Accordion';
 import Table from 'react-bootstrap/Table';
-import { Link, useParams } from 'react-router-dom';
-// import CenterPlaceholder from '../placeholders/center_placeholder.png'
+import { Link } from 'react-router-dom';
 
-function CenterInfo({center}) {
 
+function CenterInfo({ center }) {
   return (
     <Accordion defaultActiveKey="0">
       <Accordion.Item eventKey="0">
@@ -27,11 +27,11 @@ function CenterInfo({center}) {
               </tr>
               <tr>
                 <td>Neighborhood</td>
-                <td><Link to={'/hoods/' + center.parent_neighborhood}>{center.nta_name}</Link></td>
+                <td><Link to={'/hoods/' + center.nta_map[center.info.nta]}>{center.info.nta}</Link></td>
               </tr>
               <tr>
                 <td>Borough</td>
-                <td>{center.borough}</td> 
+                <td>{center.borough}</td>
               </tr>
               <tr>
                 <td>Council District</td>
@@ -48,40 +48,34 @@ function CenterInfo({center}) {
       <Accordion.Item eventKey="1">
         <Accordion.Header>Nearby Medical Facilities</Accordion.Header>
         <Accordion.Body>
-          {center.nearby_hospitals.length === 0 ? (
-              <p>No Nearby Medical Facilities</p>
-            ) : (
-              <ul>
-                {center.nearby_hospitals.map((center) => (
-                  <li key={center.id_t}>
-                    <Link to={`/test/${center.id_t}`}>{center.name}</Link>
-                  </li>
-                ))}
-              </ul>
-            )}
+          <ul>
+            {center.nearby_hospitals.map((hospital) => (
+              <li key={hospital.id_t}>
+                <Link to={`/medical/${hospital.id_t}`}>{hospital.name}</Link>
+              </li>
+            ))}
+          </ul>
         </Accordion.Body>
       </Accordion.Item>
     </Accordion>
   );
 }
 
-function CenterInstance({center}) {
-
-
+function CenterDetails({ center }) {
   return (
-    <div className="Instance" style={{backgroundImage: `url(${background})`}}>
+    <div className="Instance" style={{ backgroundImage: `url(${background})` }}>
       <header className="Instance-header">
-        <img src={'../placeholders/center_placeholder.png'} className="Instance-logo" alt="logo" />
+        <img src={center.map_url} className="Instance-logo" alt="logo" />  {/*FIX MAP URL */}
         <h3 className="Instance-title">
           {center.name}
         </h3>
-        <CenterInfo center={center}/>
+        <CenterInfo center={center} />
       </header>
       <div className="Instance-images">
-        <img style={{display: `block`}} src={center.image_url || '../placeholders/center_placeholder.png'} className="Instance-logo" alt="logo" />
+        <img style={{ display: `block` }} src={center.image_url} className="Instance-logo" alt="logo" />
       </div>
     </div>
   );
 }
 
-export default CenterInstance;
+export default CenterDetails;
