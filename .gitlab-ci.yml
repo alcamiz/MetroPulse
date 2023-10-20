@@ -1,7 +1,7 @@
 stages:
   - deploy_backend
   - build_frontend
-  - postman tests
+  - postman_tests
 
 build_frontend:
   stage: build_frontend
@@ -27,7 +27,7 @@ deploy_backend:
     - fixed-main
 
 postman_tests:
-    stage: testpostman_tests
+    stage: postman_tests
     image: 
         name: postman/newman:alpine
         entrypoint: [""]
