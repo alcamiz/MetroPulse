@@ -79,6 +79,7 @@ def get_centers():
         result_list.append(dict_center)
 
     response = jsonify({"size": len(result_list), "data": result_list})
+    response.headers.add("Access-Control-Allow-Origin", "*")
     return response
     
 @app.route("/hospitals")
@@ -134,6 +135,7 @@ def get_hospitals():
         result_list.append(dict_hospital)
 
     response = jsonify({"size": len(result_list), "data": result_list})
+    response.headers.add("Access-Control-Allow-Origin", "*")
     return response
 
 @app.route("/neighborhoods")
@@ -196,6 +198,7 @@ def get_neighborhoods():
         result_list.append(dict_neighborhood)
 
     response = jsonify({"size": len(result_list), "data": result_list})
+    response.headers.add("Access-Control-Allow-Origin", "*")
     return response
 
 # Get a specific park
@@ -224,6 +227,7 @@ def get_center_id(center_id):
         dict_center["parent_neighborhood"] = center.parent_neighborhood[0].id_t
 
     response = jsonify({"data": dict_center, "state": "Ok"})
+    response.headers.add("Access-Control-Allow-Origin", "*")
     return response
 
 # Get a specific park
@@ -252,6 +256,7 @@ def get_hospital_id(hospital_id):
         dict_hospital["parent_neighborhood"] = hospital.parent_neighborhood[0].id_t
 
     response = jsonify({"data": dict_hospital, "state": "Ok"})
+    response.headers.add("Access-Control-Allow-Origin", "*")
     return response
 
 # Get a specific park
@@ -291,6 +296,7 @@ def get_neighborhood_id(neighborhood_id):
     dict_neighborhood["nearby_centers"] = nearby_centers
 
     response = jsonify({"data": dict_neighborhood, "state": "Ok"})
+    response.headers.add("Access-Control-Allow-Origin", "*")
     return response
     
 if __name__ == "__main__":
