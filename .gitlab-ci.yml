@@ -23,7 +23,7 @@ deploy_backend:
     - mkdir -p ~/.ssh
     - echo "${SSH_PRIVATE_KEY}" > ~/.ssh/id_rsa  # Use the secret variable
     - chmod 600 ~/.ssh/id_rsa
-    - ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@ec2-18-222-13-146.us-east-2.compute.amazonaws.com "cd /MetroPulse/backend && git pull && sudo docker stop $(sudo docker ps -aqf name=backend) && sudo docker build --tag backend --file ./Dockerfile . && sudo docker run -d --name metropulse --rm --network=host -i -t -v /home/ubuntu/MetroPulse/backend/:/usr/python backend"
+    - ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@ec2-18-222-13-146.us-east-2.compute.amazonaws.com 'cd /MetroPulse/backend && git pull && sudo docker stop $(sudo docker ps -aqf name=backend) && sudo docker build --tag backend --file ./Dockerfile . && sudo docker run -d --name metropulse --rm --network=host -i -t -v /home/ubuntu/MetroPulse/backend/:/usr/python backend'
   only:
     - fixed-main
 
