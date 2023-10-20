@@ -1,6 +1,7 @@
 stages:
   - deploy_backend
   - build_frontend
+  - pytest_unit_tests
   - postman_tests
 
 build_frontend:
@@ -37,3 +38,9 @@ postman_tests:
     script:
         - cd backend
         - newman run postman_tests.json
+        
+pytest_unit_tests:
+    stage: pytest_unit_tests
+    script:
+      - cd backend
+      - python3 unit_tests.py
