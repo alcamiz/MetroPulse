@@ -27,13 +27,13 @@ deploy_backend:
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
   script:
-    - ssh -o StrictHostKeyChecking=no ubuntu@ec2-18-222-13-146.us-east-2.compute.amazonaws.com 'cd ~ && rm -r MetroPulse && git clone https://gitlab.com/ky5t0nbr/MetroPulse.git --depth=1 --branch fixed-main --single-branch && sudo docker stop $(sudo docker ps -aqf name=metropulse) && sudo docker build --tag backend --file ./Dockerfile . && sudo docker run -d --name metropulse --rm --network=host -i -t -v /home/ubuntu/MetroPulse/backend/:/usr/python backend'
+    - ssh -o StrictHostKeyChecking=no ubuntu@ec2-18-222-13-146.us-east-2.compute.amazonaws.com 'cd ~ && sudo rm -r MetroPulse && git clone https://gitlab.com/ky5t0nbr/MetroPulse.git --depth=1 --branch fixed-main --single-branch && cd MetroPulse/backend && if [[ $(sudo docker ps -aqf name=metropulse) ]]; then sudo docker stop $(sudo docker ps -aqf name=metropulse); fi && sudo docker build --tag backend --file ./Dockerfile . && sudo docker run -d --name metropulse --rm --network=host -i -t -v /home/ubuntu/MetroPulse/backend/:/usr/python backend'
   only:
     - fixed-main
 
 postman_tests:
     stage: postman_tests
-    image: 
+    image:
         name: postman/newman:alpine
         entrypoint: [""]
     script:
