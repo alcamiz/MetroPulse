@@ -23,6 +23,10 @@ center_schema = TestCenterSchema()
 hosptial_schema = HospitalSchema()
 neighborhood_schema = NeighborhoodSchema()
 
+center_count = TestCenter.query.count()
+hospital_count = Hospital.query.count()
+n_count = Neighborhood.query.count()
+
 # Default page size for pagination
 PAGE_SIZE = 25
 
@@ -78,7 +82,7 @@ def get_centers():
             dict_center["parent_neighborhood"] = center.parent_neighborhood[0].id_t
         result_list.append(dict_center)
 
-    response = jsonify({"size": len(result_list), "data": result_list})
+    response = jsonify({"total_size": center_count, "size": len(result_list), "data": result_list})
     response.headers.add("Access-Control-Allow-Origin", "*")
     return response
     
@@ -134,7 +138,7 @@ def get_hospitals():
             dict_hospital["parent_neighborhood"] = hospital.parent_neighborhood[0].id_t
         result_list.append(dict_hospital)
 
-    response = jsonify({"size": len(result_list), "data": result_list})
+    response = jsonify({"total_size": hospital_count, "size": len(result_list), "data": result_list})
     response.headers.add("Access-Control-Allow-Origin", "*")
     return response
 
@@ -197,7 +201,7 @@ def get_neighborhoods():
         dict_neighborhood["nearby_centers"] = nearby_centers
         result_list.append(dict_neighborhood)
 
-    response = jsonify({"size": len(result_list), "data": result_list})
+    response = jsonify({"total_size": n_count, "size": len(result_list), "data": result_list})
     response.headers.add("Access-Control-Allow-Origin", "*")
     return response
 
