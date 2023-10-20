@@ -46,7 +46,7 @@ class Test(unittest.TestCase):
         except Exception as ex:
             print("Couldn't find link to Neighborhood Instance: " + str(ex))
 
-        self.assertEqual(self.driver.current_url, url + "hood/34")
+        self.assertEqual(self.driver.current_url, url + "hoods/34")
 
     def test_center_instance(self):
         self.driver.get(url + "test")
