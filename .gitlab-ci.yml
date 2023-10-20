@@ -15,15 +15,17 @@ build_frontend:
 
 deploy_backend:
   stage: deploy_backend
-  image: ubuntu
+  image: debian
   allow_failure: true
-  script:
-    - apt-get update
-    - apt-get install -y ssh  # Install SSH client
+  before_script:
+    - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
+    - eval $(ssh-agent -s)
+    - chmod 400 "$SSH_PRIVATE_KEY"
+    - ssh-add "$SSH_PRIVATE_KEY"
     - mkdir -p ~/.ssh
-    - echo "${SSH_PRIVATE_KEY}" > ~/.ssh/id_rsa  # Use the secret variable
-    - chmod 600 ~/.ssh/id_rsa
-    - ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@ec2-18-222-13-146.us-east-2.compute.amazonaws.com 'cd /MetroPulse/backend && git pull && sudo docker stop $(sudo docker ps -aqf name=backend) && sudo docker build --tag backend --file ./Dockerfile . && sudo docker run -d --name metropulse --rm --network=host -i -t -v /home/ubuntu/MetroPulse/backend/:/usr/python backend'
+    - chmod 700 ~/.ssh
+  script:
+    - ssh ubuntu@ec2-18-222-13-146.us-east-2.compute.amazonaws.com 'cd /MetroPulse/backend && git pull && sudo docker stop $(sudo docker ps -aqf name=backend) && sudo docker build --tag backend --file ./Dockerfile . && sudo docker run -d --name metropulse --rm --network=host -i -t -v /home/ubuntu/MetroPulse/backend/:/usr/python backend'
   only:
     - fixed-main
 
