@@ -26,7 +26,7 @@ deploy_backend:
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
   script:
-    - ssh -o StrictHostKeyChecking=no ubuntu@ec2-18-222-13-146.us-east-2.compute.amazonaws.com 'cd ~/MetroPulse/backend && git pull && sudo docker stop $(sudo docker ps -aqf name=metropulse) && sudo docker build --tag backend --file ./Dockerfile . && sudo docker run -d --name metropulse --rm --network=host -i -t -v /home/ubuntu/MetroPulse/backend/:/usr/python backend'
+    - ssh -o StrictHostKeyChecking=no ubuntu@ec2-18-222-13-146.us-east-2.compute.amazonaws.com 'cd ~ && rm -r MetroPulse && git clone https://gitlab.com/ky5t0nbr/MetroPulse.git --depth=1 --branch fixed-main --single-branch && sudo docker stop $(sudo docker ps -aqf name=metropulse) && sudo docker build --tag backend --file ./Dockerfile . && sudo docker run -d --name metropulse --rm --network=host -i -t -v /home/ubuntu/MetroPulse/backend/:/usr/python backend'
   only:
     - fixed-main
 
