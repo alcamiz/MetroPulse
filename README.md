@@ -1,7 +1,8 @@
 **— Group 06 —**
 
 - Project Site: https://www.metropulse.link
-- API Link: https://documenter.getpostman.com/view/29785582/2s9YJZ3jGy
+- API Docs Link: https://documenter.getpostman.com/view/29785582/2s9YJZ3jGy
+- API Link: https://backend.metropulse.link (endpoints are centers/hospitals/neighborhoods)
 
 **Team Members:**
 
