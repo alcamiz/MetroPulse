@@ -111,8 +111,10 @@
 
 
 ## Project Leaders
-| Phase | Project Leader        | Responsibilities |
-| :---: | :-------: |         Scheduled meeting times, partly delegated roles, thought of high-level architecture, made sure everyone was on track. |
+Responsibilities: 
+Scheduled meeting times, partly delegated roles, thought of high-level architecture, made sure everyone was on track.
+| Phase | Project Leader
+| :---: | :-------: |        
 | 1     | Alex Cabrera   |
 | 2     | Thomas Moody |
 
