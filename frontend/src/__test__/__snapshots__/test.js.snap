@@ -3,6 +3,7 @@
 exports[`Test whether the Navbar works 1`] = `
 <nav
   className="navbar navbar-expand-lg navbar-dark bg-dark"
+  data-testid="navbar"
 >
   <a
     className="navbar-brand"
@@ -93,4 +94,676 @@ exports[`Test whether the Navbar works 1`] = `
     </div>
   </div>
 </nav>
+`;
+
+exports[`test center card 1`] = `
+<a
+  href="/test/undefined"
+  onClick={[Function]}
+  style={
+    Object {
+      "textDecoration": "none",
+    }
+  }
+>
+  <div
+    className="card"
+    style={
+      Object {
+        "height": "auto",
+        "width": "20rem",
+      }
+    }
+  >
+    <img
+      className="card-img-top"
+    />
+    <div
+      className="card-body"
+    >
+      <div
+        className="card-title h5"
+      />
+      <p
+        className="card-text"
+      >
+        <strong>
+          Borough:
+        </strong>
+         
+      </p>
+      <p
+        className="card-text"
+      >
+        Council Number: 
+      </p>
+      <p
+        className="card-text"
+      >
+        Zipcode: 
+      </p>
+      <p
+        className="card-text"
+      >
+        Nearby Medical Facilities: 
+        0
+      </p>
+    </div>
+  </div>
+</a>
+`;
+
+exports[`test center details 1`] = `
+<div
+  className="Instance"
+>
+  <div
+    class="container"
+  >
+    <div
+      class="row"
+    >
+      <div
+        class="col-sm"
+      >
+        <header
+          className="Instance-header"
+        >
+          <img
+            alt="logo"
+            className="Instance-logo"
+          />
+          <h3
+            className="Instance-title"
+          />
+          <div
+            className="accordion"
+          >
+            <div
+              className="accordion-item"
+            >
+              <h2
+                className="accordion-header"
+              >
+                <button
+                  aria-expanded={true}
+                  className="accordion-button"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Contact Information
+                </button>
+              </h2>
+              <div
+                aria-expanded={null}
+                className="accordion-collapse collapse show"
+              >
+                <div
+                  className="accordion-body"
+                >
+                  <table
+                    className="table table-striped table-bordered table-hover"
+                  >
+                    <tbody>
+                      <tr>
+                        <td>
+                          Phone Number
+                        </td>
+                        <td />
+                      </tr>
+                      <tr>
+                        <td>
+                          Address
+                        </td>
+                        <td>
+                          , 
+                          , NY 
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          Neighborhood
+                        </td>
+                        <td>
+                          <a
+                            href="/hoods/undefined"
+                            onClick={[Function]}
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          Borough
+                        </td>
+                        <td />
+                      </tr>
+                      <tr>
+                        <td>
+                          Council District
+                        </td>
+                        <td />
+                      </tr>
+                      <tr>
+                        <td>
+                          Instructions
+                        </td>
+                        <td />
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div
+              className="accordion-item"
+            >
+              <h2
+                className="accordion-header"
+              >
+                <button
+                  aria-expanded={false}
+                  className="accordion-button collapsed"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Nearby Medical Facilities
+                </button>
+              </h2>
+              <div
+                aria-expanded={null}
+                className="accordion-collapse collapse"
+              >
+                <div
+                  className="accordion-body"
+                >
+                  <ul>
+                    0
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+      </div>
+      <div
+        class="col-sm"
+      >
+        <div
+          className="Instance-images"
+        >
+          <img
+            alt="logo"
+            className="Instance-logo"
+            height="400"
+            src="https://media.istockphoto.com/id/472149497/photo/goofy-pharmacist.jpg?s=612x612&w=0&k=20&c=OBV_lo-TKcZD3DwuYa23sVGvFeT8IsSNBjjfZbtWuts="
+            style={
+              Object {
+                "display": "block",
+              }
+            }
+            width="400"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`test hood card 1`] = `
+<a
+  href="/hoods/undefined"
+  onClick={[Function]}
+  style={
+    Object {
+      "textDecoration": "none",
+    }
+  }
+>
+  <div
+    className="card"
+    style={
+      Object {
+        "height": "auto",
+        "width": "20rem",
+      }
+    }
+  >
+    <img
+      className="card-img-top"
+    />
+    <div
+      className="card-body"
+    >
+      <div
+        className="card-title h5"
+      />
+      <p
+        className="card-text"
+      >
+        Borough: 
+      </p>
+      <p
+        className="card-text"
+      >
+        Population: 
+      </p>
+      <p
+        className="card-text"
+      >
+        County Code: 
+      </p>
+      <p
+        className="card-text"
+      >
+        NTA Code: 
+      </p>
+      <p
+        className="card-text"
+      >
+        Nearby Hospitals: 
+        0
+      </p>
+    </div>
+  </div>
+</a>
+`;
+
+exports[`test hood details 1`] = `
+<div
+  className="Instance"
+>
+  <div
+    class="container"
+  >
+    <div
+      class="row"
+    >
+      <div
+        class="col-sm"
+      >
+        <header
+          className="Instance-header"
+        >
+          <img
+            alt="logo"
+            className="Instance-logo"
+            src="test-file-stub"
+          />
+            
+          <h3
+            className="Instance-title"
+          />
+          <div
+            className="accordion"
+          >
+            <div
+              className="accordion-item"
+            >
+              <h2
+                className="accordion-header"
+              >
+                <button
+                  aria-expanded={false}
+                  className="accordion-button collapsed"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Description
+                </button>
+              </h2>
+              <div
+                aria-expanded={null}
+                className="accordion-collapse collapse"
+              >
+                <div
+                  className="accordion-body"
+                >
+                  <p />
+                </div>
+              </div>
+            </div>
+            <div
+              className="accordion-item"
+            >
+              <h2
+                className="accordion-header"
+              >
+                <button
+                  aria-expanded={false}
+                  className="accordion-button collapsed"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Information
+                </button>
+              </h2>
+              <div
+                aria-expanded={null}
+                className="accordion-collapse collapse"
+              >
+                <div
+                  className="accordion-body"
+                >
+                  <table
+                    className="table table-striped table-bordered table-hover"
+                  >
+                    <tbody>
+                      <tr>
+                        <td>
+                          Borough
+                        </td>
+                        <td />
+                      </tr>
+                      <tr>
+                        <td>
+                          Population
+                        </td>
+                        <td />
+                      </tr>
+                      <tr>
+                        <td>
+                          County Code
+                        </td>
+                        <td />
+                      </tr>
+                      <tr>
+                        <td>
+                          NTA Code
+                        </td>
+                        <td />
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div
+              className="accordion-item"
+            >
+              <h2
+                className="accordion-header"
+              >
+                <button
+                  aria-expanded={false}
+                  className="accordion-button collapsed"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Nearby Testing Centers
+                </button>
+              </h2>
+              <div
+                aria-expanded={null}
+                className="accordion-collapse collapse"
+              >
+                <div
+                  className="accordion-body"
+                >
+                  <ul>
+                    0
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div
+              className="accordion-item"
+            >
+              <h2
+                className="accordion-header"
+              >
+                <button
+                  aria-expanded={false}
+                  className="accordion-button collapsed"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Nearby Hospitals
+                </button>
+              </h2>
+              <div
+                aria-expanded={null}
+                className="accordion-collapse collapse"
+              >
+                <div
+                  className="accordion-body"
+                >
+                  <ul>
+                    0
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+      </div>
+      <div
+        class="col-sm"
+      >
+        <div
+          className="Instance-images"
+        >
+          <img
+            alt="logo"
+            className="Instance-logo"
+            height="400"
+            src="https://www.elikarealestate.com/blog/wp-content/uploads/2015/09/village-streets-nyc.jpg"
+            style={
+              Object {
+                "display": "block",
+              }
+            }
+            width="400"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`test medical card 1`] = `
+<a
+  href="/medical/undefined"
+  onClick={[Function]}
+  style={
+    Object {
+      "textDecoration": "none",
+    }
+  }
+>
+  <div
+    className="card"
+    style={
+      Object {
+        "height": "auto",
+        "width": "20rem",
+      }
+    }
+  >
+    <img
+      className="card-img-top"
+      height="400"
+      src="https://www.google.com/maps/d/thumbnail?mid=1rN8fFwktkFQlwWkL8mlSoximF6E"
+      width="400"
+    />
+    <div
+      className="card-body"
+    >
+      <div
+        className="card-title h5"
+      />
+      <p
+        className="card-text"
+      >
+        Borough: 
+      </p>
+      <p
+        className="card-text"
+      >
+        Council District: 
+      </p>
+      <p
+        className="card-text"
+      >
+        Zipcode: 
+      </p>
+      <p
+        className="card-text"
+      >
+        Nearby Testing Centers: 
+        0
+      </p>
+    </div>
+  </div>
+</a>
+`;
+
+exports[`test medical details 1`] = `
+<div
+  className="Instance"
+>
+  <div
+    class="container"
+  >
+    <div
+      class="row"
+    >
+      <div
+        class="col-sm"
+      >
+        <header
+          className="Instance-header"
+        >
+          <img
+            alt="logo"
+            className="Instance-logo"
+            src="https://www.google.com/maps/d/thumbnail?mid=1rN8fFwktkFQlwWkL8mlSoximF6E"
+          />
+          <h3
+            className="Instance-title"
+          />
+          <div
+            className="accordion"
+          >
+            <div
+              className="accordion-item"
+            >
+              <h2
+                className="accordion-header"
+              >
+                <button
+                  aria-expanded={true}
+                  className="accordion-button"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Contact Information
+                </button>
+              </h2>
+              <div
+                aria-expanded={null}
+                className="accordion-collapse collapse show"
+              >
+                <div
+                  className="accordion-body"
+                >
+                  <table
+                    className="table table-striped table-bordered table-hover"
+                  >
+                    <tbody>
+                      <tr>
+                        <td>
+                          Phone Number
+                        </td>
+                        <td />
+                      </tr>
+                      <tr>
+                        <td>
+                          Address
+                        </td>
+                        <td />
+                      </tr>
+                      <tr>
+                        <td>
+                          Neighborhood
+                        </td>
+                        <td>
+                          <a
+                            href="/hoods/undefined"
+                            onClick={[Function]}
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          Borough
+                        </td>
+                        <td />
+                      </tr>
+                      <tr>
+                        <td>
+                          Council District
+                        </td>
+                        <td />
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div
+              className="accordion-item"
+            >
+              <h2
+                className="accordion-header"
+              >
+                <button
+                  aria-expanded={false}
+                  className="accordion-button collapsed"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Nearby Testing Centers
+                </button>
+              </h2>
+              <div
+                aria-expanded={null}
+                className="accordion-collapse collapse"
+              >
+                <div
+                  className="accordion-body"
+                >
+                  <ul>
+                    0
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+      </div>
+      <div
+        class="col-sm"
+      >
+        <div
+          className="Instance-images"
+        >
+          <img
+            alt="logo"
+            className="Instance-logo"
+            height="400"
+            src="https://s3-prod.modernhealthcare.com/s3fs-public/styles/width_792/public/rural-health2_i.png"
+            style={
+              Object {
+                "display": "block",
+              }
+            }
+            width="400"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 `;

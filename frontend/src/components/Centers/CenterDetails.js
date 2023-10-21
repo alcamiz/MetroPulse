@@ -49,11 +49,11 @@ function CenterInfo({ center }) {
         <Accordion.Header>Nearby Medical Facilities</Accordion.Header>
         <Accordion.Body>
           <ul>
-            {center.nearby_hospitals.map((hospital) => (
+            { (center.nearby_hospitals == null)? 0 : center.nearby_hospitals.map((hospital) => (
               <li key={hospital.id_t}>
                 <Link to={`/medical/${hospital.id_t}`}>{hospital.name}</Link>
               </li>
-            ))}
+            )) }
           </ul>
         </Accordion.Body>
       </Accordion.Item>

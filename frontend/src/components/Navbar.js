@@ -20,7 +20,7 @@ function NavBar() {
   };
 
   return (
-    <Navbar bg="dark" variant="dark" expand="lg">
+    <Navbar bg="dark" variant="dark" expand="lg" data-testid="navbar">
       <Navbar.Brand style={{ marginLeft: '20px' }} href="/">MetroPulse</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">

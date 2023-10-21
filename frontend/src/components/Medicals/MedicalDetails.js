@@ -45,7 +45,7 @@ function MedicalInfo({ medical }) {
         <Accordion.Header>Nearby Testing Centers</Accordion.Header>
         <Accordion.Body>
           <ul>
-            {medical.nearby_centers.map((center) => (
+            {(medical.nearby_centers == null) ? 0 : medical.nearby_centers.map((center) => (
               <li key={center.id_t}>
                 <Link to={`/center/${center.id_t}`}>{center.name}</Link>
               </li>

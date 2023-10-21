@@ -26,7 +26,7 @@ function CenterCard({ center }) {
           <Card.Text><strong>Borough:</strong> {center.borough}</Card.Text>
           <Card.Text>Council Number: {center.council}</Card.Text>
           <Card.Text>Zipcode: {center.zip_code}</Card.Text>
-          <Card.Text>Nearby Medical Facilities: {center.nearby_hospitals.length}</Card.Text>
+          <Card.Text>Nearby Medical Facilities: {(center.nearby_hospitals == null) ? 0 : center.nearby_hospitals.length}</Card.Text>
         </Card.Body>
       </Card>
     </Link>

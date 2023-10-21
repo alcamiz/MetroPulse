@@ -47,7 +47,7 @@ function HoodInfo({ hood }) {
       <Accordion.Header>Nearby Testing Centers</Accordion.Header>
       <Accordion.Body>
         <ul>
-          {hood.nearby_centers.map((center) => (
+          {(hood.nearby_centers == null) ? 0 : hood.nearby_centers.map((center) => (
             <li key={center.id_t}>
               <Link to={`/test/${center.id_t}`}>{center.name}</Link>
             </li>
@@ -59,7 +59,7 @@ function HoodInfo({ hood }) {
       <Accordion.Header>Nearby Hospitals</Accordion.Header>
       <Accordion.Body>
         <ul>
-          {hood.nearby_hospitals.map((hospital) => (
+          {(hood.nearby_hospitals == null) ? 0 : hood.nearby_hospitals.map((hospital) => (
             <li key={hospital.id_t}>
               <Link to={`/medical/${hospital.id_t}`}>{hospital.name}</Link>
             </li>

@@ -25,7 +25,7 @@ function MedicalCard({ medical }) {
         <Card.Text>Borough: {medical.borough}</Card.Text>
         <Card.Text>Council District: {medical.council_district}</Card.Text>
         <Card.Text>Zipcode: {medical.zip_code}</Card.Text>
-        <Card.Text>Nearby Testing Centers: {medical.nearby_centers.length}</Card.Text>
+        <Card.Text>Nearby Testing Centers: {(medical.nearby_centers == null) ? 0 : medical.nearby_centers.length}</Card.Text>
       </Card.Body>
     </Card>
     </Link>
