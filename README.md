@@ -140,5 +140,5 @@ Scheduled meeting times, partly delegated roles, thought of high-level architect
 | Phase               | SHA           |
 | ------------------- | :-----------: |
 | 1                   |  870d3e41     |
-| 2                   |  ce34270b     |
+| 2                   |  712c6123     |
 
