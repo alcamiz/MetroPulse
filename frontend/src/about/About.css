@@ -82,6 +82,10 @@
   width: 150px;
   text-align: center;
   padding: 10px;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover; 
+  display: block; 
 }
 
 .linkColor{

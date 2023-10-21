@@ -11,21 +11,29 @@ function About() {
   const [totalIssue, totalIssueCount] = useState(0);
   const [issueNum, setIssueCount] = useState({});
   useEffect(() => {
-    const url = 'https://gitlab.com/api/v4/projects/50434557/repository/commits?per_page=200';
+
+    const urlBase = 'https://gitlab.com/api/v4/projects/50434557/repository/commits?ref_name=fixed-main&per_page=100';
     const members = ['Alex Cabrera', 'Kamil Kalowski', 'Ky5t0nbr', 'Thomas Moody', 'tjmoody18'];
     const urlIssues = `https://gitlab.com/api/v4/projects/50434557/issues?per_page=200`;
 
     const fetchCommits = async () => {
       const commits = {};
-      const res = await fetch(url);
-      const data = await res.json();
-      totalCommitCount(data.length);
-      for (let user of members) {
-        console.log(user);
-        const memberCommits = data.filter((commit) => commit.author_name === user);
+      let commitTotal = 0
+      const allData = await Promise.all([1, 2].map(async page => {
+        const res = await fetch(`${urlBase}&page=${page}`);
+
+        return res.json()
+      }));
+      const combinedData = allData.flat();
+
+      for(let user of members) {
+        const memberCommits = combinedData.filter((commit) => commit.author_name === user);
         commits[user] = memberCommits.length;
+        commitTotal += commits[user]
       }
-      setCommitCount(commits);
+  
+      setCommitCount(commits)
+      totalCommitCount(commitTotal)
     };
 
     const fetchIssues = async () => {
@@ -78,13 +86,13 @@ function About() {
         Our Team
       </div>
       <div class="teamGrid">
-        <div class="gridCard">
+        <div class="gridCard card bg-dark text-white">
           <div class="cardCap"></div>
           <Card.Img variant="top" src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*nE0iyc9xZ8qG0UcUaIOYEw.jpeg" height="300px" width="300px" objectFit="cover" />
           <h3>Alex Cabrera</h3>
           <div class="card-footer">
             <small>
-              <p>UserName: {memberData.Alex.Name}</p>
+              <p>Username: {memberData.Alex.Name}</p>
               <p>Email: {memberData.Alex.Email}</p>
               <p>Role: {memberData.Alex.Role}</p>
               <p>Bio: {memberData.Alex.Bio}</p>
@@ -94,51 +102,51 @@ function About() {
             </small>
           </div>
         </div>
-        <div class="gridCard">
+        <div class="gridCard card bg-dark text-white">
           <div class="cardCap"></div>
           <Card.Img variant="top" src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*_GpoQb0-rD_44PFESJv9DA.jpeg" height="300px" width="300px" objectFit="cover" />
           <h3>Thomas Moody</h3>
           <div class="card-footer">
             <small>
-              <p>UserName: {memberData.Thomas.Name}</p>
+              <p>Username: {memberData.Thomas.Name}</p>
               <p>Email: {memberData.Thomas.Email}</p>
               <p>Role: {memberData.Thomas.Role}</p>
               <p>Bio: {memberData.Thomas.Bio}</p>
               <p>Commits : {commitNum['Thomas Moody'] + commitNum['tjmoody18']}</p>
               <p>Issues : {issueNum['Thomas Moody'] + issueNum['tjmoody18']}</p>
-              <p>UnitTests : 0</p>
+              <p>UnitTests : 12</p>
             </small>
           </div>
         </div>
-        <div class="gridCard">
+        <div class="gridCard card bg-dark text-white">
           <div class="cardCap"></div>
           <Card.Img variant="top" src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*sTL0hCT368MDNizqRcaNbA.jpeg" height="300px" width="300px" objectFit="cover" />
           <h3>Kamil Kalowski</h3>
           <div class="card-footer">
             <small>
-              <p>UserName: {memberData.Kamil.Name}</p>
+              <p>Username: {memberData.Kamil.Name}</p>
               <p>Email: {memberData.Kamil.Email}</p>
               <p>Role: {memberData.Kamil.Role}</p>
               <p>Bio: {memberData.Kamil.Bio}</p>
               <p>Commits : {commitNum['Kamil Kalowski']}</p>
               <p>Issues : {issueNum['Kamil Kalowski']}</p>
-              <p>UnitTests : 0</p>
+              <p>UnitTests : 10</p>
             </small>
           </div>
         </div>
-        <div class="gridCard">
+        <div class="gridCard bg-dark text-white">
           <div class="cardCap"></div>
           <Card.Img variant="top" src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*_t8OKhT-uWc2Dlr1ajGzeA.jpeg" height="300px" width="300px" objectFit="cover" />
           <h3>Kyston Brown</h3>
           <div class="card-footer">
             <small>
-              <p>UserName: {memberData.Kyston.Name}</p>
+              <p>Username: {memberData.Kyston.Name}</p>
               <p>Email: {memberData.Kyston.Email}</p>
               <p>Role: {memberData.Kyston.Role}</p>
               <p>Bio: {memberData.Kyston.Bio}</p>
               <p>Commits : {commitNum['Ky5t0nbr']}</p>
               <p>Issues : {issueNum['Ky5t0nbr']}</p>
-              <p>UnitTests : 0</p>
+              <p>UnitTests : 10</p>
             </small>
           </div>
         </div>
@@ -146,52 +154,136 @@ function About() {
       <div class="Resources">
         <div class="footblock" ><h1>Resources</h1></div>
         <div class="teamGrid">
-          <div class="resCard">
-            <div class="cardCap"></div>
-            <Card.Img variant="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png" height="150px" width="150px" objectFit="cover" />
-            <Card.Title>React</Card.Title>
+          <div className="resCard">
+            <div className= "cardCap">
+              <a href="https://legacy.reactjs.org/docs/getting-started.html" target ="_blank" rel="noopener noreferrer">
+                <Card.Img 
+                  variant="top" 
+                  src="https://www.svgrepo.com/show/452092/react.svg"
+                  height="150px" 
+                  width="150px" 
+                  objectFit="cover" 
+                />
+                <Card.Title>React</Card.Title>
+              </a>
+            </div>
           </div>
-          <div class="resCard">
-            <div class="cardCap"></div>
-            <Card.Img variant="top" src="https://www.svgrepo.com/show/354202/postman-icon.svg" height="150px" width="150px" objectFit="cover" />
-            <Card.Title>Postman</Card.Title>
+          <div className="resCard">
+            <div className= "cardCap">
+              <a href="https://docs.python.org/3/" target ="_blank" rel="noopener noreferrer">
+                <Card.Img 
+                  variant="top" 
+                  src="https://www.svgrepo.com/show/374016/python.svg"
+                  height="150px" 
+                  width="150px" 
+                  objectFit="cover" 
+                />
+                <Card.Title>Python</Card.Title>
+              </a>
+            </div>
           </div>
-          <div class="resCard">
-            <div class="cardCap"></div>
-            <Card.Img variant="top" src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/bootstrap-5-logo-icon.png" height="150px" width="150px" objectFit="cover" />
-            <Card.Title>BootStrap</Card.Title>
+          <div className="resCard">
+            <div className= "cardCap">
+              <a href="https://www.postman.com/api-documentation-tool/" target ="_blank" rel="noopener noreferrer">
+                <Card.Img 
+                  variant="top" 
+                  src="https://www.svgrepo.com/show/354202/postman-icon.svg"
+                  height="150px" 
+                  width="150px" 
+                  objectFit="cover" 
+                />
+                <Card.Title>Postman</Card.Title>
+              </a>
+            </div>
           </div>
-          <div class="resCard">
-            <div class="cardCap"></div>
-            <Card.Img variant="top" src="https://seeklogo.com/images/Z/zoom-fondo-blanco-vertical-logo-F819E1C283-seeklogo.com.png" height="150px" width="150px" objectFit="cover" />
-            <Card.Title>Zoom</Card.Title>
+          <div className="resCard">
+            <div className= "cardCap">
+              <a href="https://getbootstrap.com/" target ="_blank" rel="noopener noreferrer">
+                <Card.Img 
+                  variant="top" 
+                  src="https://www.svgrepo.com/show/353498/bootstrap.svg"
+                  height="150px" 
+                  width="150px" 
+                  objectFit="cover" 
+                />
+                <Card.Title>BootStrap</Card.Title>
+              </a>
+            </div>
           </div>
-          <div class="resCard">
-            <div class="cardCap"></div>
-            <Card.Img variant="top" src="https://seeklogo.com/images/V/visual-studio-code-logo-449D71944F-seeklogo.com.png" height="150px" width="150px" objectFit="cover" />
-            <Card.Title>VS Code</Card.Title>
+          <div className="resCard">
+            <div className= "cardCap">
+              <a href="https://code.visualstudio.com/" target ="_blank" rel="noopener noreferrer">
+                <Card.Img 
+                  variant="top" 
+                  src="https://www.svgrepo.com/show/374171/vscode.svg"
+                  height="150px" 
+                  width="150px" 
+                  objectFit="cover" 
+                />
+                <Card.Title>VS Code</Card.Title>
+              </a>
+            </div>
           </div>
-          <div class="resCard">
-            <div class="cardCap"></div>
-            <Card.Img variant="top" src="https://lth.engineering.asu.edu/wp-content/uploads/sites/18/2021/06/Ed.png" height="150px" width="150px" objectFit="cover" />
-            <Card.Title>Ed Discussion</Card.Title>
+          <div className="resCard">
+            <div className= "cardCap">
+              <a href="https://edstem.org/us/help/using-ed-discussion" target ="_blank" rel="noopener noreferrer">
+                <Card.Img 
+                  variant="top" 
+                  src="https://lth.engineering.asu.edu/wp-content/uploads/sites/18/2021/06/Ed.png" 
+                  height="150px" 
+                  width="150px" 
+                  objectFit="cover" 
+                />
+                <Card.Title>Ed</Card.Title>
+              </a>
+            </div>
           </div>
-          <div class="resCard">
-            <div class="cardCap"></div>
-            <Card.Img variant="top" src="https://seeklogo.com/images/G/gitlab-logo-757620E430-seeklogo.com.png" height="150px" width="150px" objectFit="cover" />
-            <Card.Title>GitLab</Card.Title>
+          <div className="resCard">
+            <div className= "cardCap">
+              <a href="https://about.gitlab.com/free-trial/devsecops/?utm_medium=c
+              pc&utm_source=google&utm_campaign=brand_rlsa__global_exact&utm_content=free-t
+              rial&utm_term=git%20lab&_bt=656315922370&_bk=git%20lab&_bm=e&_bn=g&_bg=1484814412
+              76&gclid=CjwKCAjwysipBhBXEiwApJOcu5oFETcfOR1EIS6iNzm5SgxD1TLVQI5esvpZNpEAzIm9o_JW5
+              h9IPRoC6k4QAvD_BwE" target ="_blank" rel="noopener noreferrer">
+                <Card.Img 
+                  variant="top" 
+                  src="https://seeklogo.com/images/G/gitlab-logo-757620E430-seeklogo.com.png" 
+                  height="150px" 
+                  width="150px" 
+                  objectFit="cover" 
+                />
+                <Card.Title>GitLab</Card.Title>
+              </a>
+            </div>
           </div>
-          <div class="resCard">
-            <div class="cardCap"></div>
-            <Card.Img variant="top" src="https://cdn.icon-icons.com/icons2/2407/PNG/512/namecheap_icon_146138.png" height="150px" width="150px" objectFit="cover" />
-            <Card.Title>Name Cheap</Card.Title>
+          <div className="resCard">
+            <div className= "cardCap">
+              <a href="https://aws.amazon.com/console/" target ="_blank" rel="noopener noreferrer">
+                <Card.Img 
+                  variant="top" 
+                  src="https://seeklogo.com/images/A/amazon-icon-logo-8F577E5C31-seeklogo.com.png" 
+                  height="150px" 
+                  width="150px" 
+                  objectFit="cover" 
+                />
+                <Card.Title>AWS</Card.Title>
+              </a>
+            </div>
           </div>
         </div>
       </div>
-      <div class="footblock" ><h1>Git Overall</h1></div>
-      <div class="footblock" ><h3>Total Commits: {totalCommits}</h3></div>
-      <div class="footblock" ><h3>Total Issues: {totalIssue}</h3></div>
-      <div class="footblock" ><h3>Total UnitTests: 0</h3></div>
+      <div className="footblock" style={{ padding: '10px', backgroundColor: '#f5f5f5', borderRadius: '5px', marginBottom: '10px', boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.1)' }}>
+      <h1 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '8px' }}>Git Overall</h1>
+      </div>
+      <div className="footblock" style={{ padding: '10px', backgroundColor: '#f5f5f5', borderRadius: '5px', marginBottom: '10px', boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.1)' }}>
+      <h3 style={{ fontSize: '18px', margin: '0' }}><i className="icon-commit"></i> Total Commits: {totalCommits}</h3>
+      </div>
+      <div className="footblock" style={{ padding: '10px', backgroundColor: '#f5f5f5', borderRadius: '5px', marginBottom: '10px', boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.1)' }}>
+      <h3 style={{ fontSize: '18px', margin: '0' }}><i className="icon-issue"></i> Total Issues: {totalIssue}</h3>
+      </div>
+      <div className="footblock" style={{ padding: '10px', backgroundColor: '#f5f5f5', borderRadius: '5px', marginBottom: '10px', boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.1)' }}>
+      <h3 style={{ fontSize: '18px', margin: '0' }}><i className="icon-tests"></i> Total Unit Tests: 31</h3>
+      </div>
       <div class="textblock">
       </div>
       <h1></h1>
