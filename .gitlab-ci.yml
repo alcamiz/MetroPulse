@@ -80,6 +80,7 @@ frontend_ui_test:
 
 test-jest:
   stage: test-jest
+  image: node:20  # Use a Node.js image
   script:
     - cd frontend
     - npm install --legacy-peer-deps
