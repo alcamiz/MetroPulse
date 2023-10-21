@@ -98,7 +98,7 @@ function About() {
               <p>Bio: {memberData.Alex.Bio}</p>
               <p>Commits : {commitNum['Alex Cabrera']}</p>
               <p>Issues : {issueNum['Alex Cabrera']}</p>
-              <p>UnitTests : 0</p>
+              <p>UnitTests : 2</p>
             </small>
           </div>
         </div>
@@ -146,7 +146,7 @@ function About() {
               <p>Bio: {memberData.Kyston.Bio}</p>
               <p>Commits : {commitNum['Ky5t0nbr']}</p>
               <p>Issues : {issueNum['Ky5t0nbr']}</p>
-              <p>UnitTests : 10</p>
+              <p>UnitTests : 8</p>
             </small>
           </div>
         </div>
