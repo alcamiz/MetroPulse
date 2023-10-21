@@ -1,5 +1,30 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Test Indicator 1`] = `
+<div
+  className="pagination-indicator"
+>
+  <button
+    className="pagination-button prev-next-pagination-button"
+    onClick={[Function]}
+  >
+    &lt;
+  </button>
+  <button
+    className="pagination-button pagination-selected"
+    onClick={[Function]}
+  >
+    <span />
+  </button>
+</div>
+`;
+
+exports[`Test Loading 1`] = `
+<div>
+  Loading...
+</div>
+`;
+
 exports[`Test whether the Navbar works 1`] = `
 <nav
   className="navbar navbar-expand-lg navbar-dark bg-dark"

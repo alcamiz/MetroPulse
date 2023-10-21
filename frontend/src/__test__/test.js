@@ -16,9 +16,11 @@ import MedicalDetails from "../components/Medicals/MedicalDetails.js"
 import HoodDetails from "../components/Hoods/HoodDetails.js"
 import CenterDetails from "../components/Centers/CenterDetails.js"
 import Navbar from "../components/Navbar.js"
+import Loading from "../components/Loading.js"
 import medical_test_json from "./medical_test.json"
 import hood_test_json from "./hood_test.json"
 import center_test_json from "./center_test.json"
+import PaginationIndicator from "../components/PaginationIndicator.js";
 
 const mockPerformanceMark = jest.fn();
 window.performance.mark = mockPerformanceMark;
@@ -112,4 +114,16 @@ test("Test the Navbar", async () => {
     expect(navbar).toHaveTextContent("Test Centers")
 })
 
+test("Test Loading", async () => {
+    const tree = renderer.create(
+        <Loading />
+    )
+    expect(tree).toMatchSnapshot()
+})
 
+test("Test Indicator", async () => {
+    const tree = renderer.create(
+        <PaginationIndicator />
+    )
+    expect(tree).toMatchSnapshot()
+})
