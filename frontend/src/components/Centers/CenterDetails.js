@@ -62,18 +62,25 @@ function CenterInfo({ center }) {
 }
 
 function CenterDetails({ center }) {
-  // console.log(center)
   return (
     <div className="Instance">
-      <header className="Instance-header">
-        <img src={center.static_map_url} className="Instance-logo" alt="logo" /> 
-        <h3 className="Instance-title">
-          {center.name}
-        </h3>
-        <CenterInfo center={center} />
-      </header>
-      <div className="Instance-images">
-        <img style={{ display: `block` }} src={center.image_url || "https://media.istockphoto.com/id/472149497/photo/goofy-pharmacist.jpg?s=612x612&w=0&k=20&c=OBV_lo-TKcZD3DwuYa23sVGvFeT8IsSNBjjfZbtWuts="} className="Instance-logo" alt="logo" />
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            <header className="Instance-header">
+              <img src={center.static_map_url} className="Instance-logo" alt="logo" /> 
+              <h3 className="Instance-title">
+                {center.name}
+              </h3>
+              <CenterInfo center={center} />
+            </header>
+          </div>
+          <div class="col-sm">
+            <div className="Instance-images">
+              <img style={{ display: `block` }} width="400" height="400" src={center.image_url || "https://media.istockphoto.com/id/472149497/photo/goofy-pharmacist.jpg?s=612x612&w=0&k=20&c=OBV_lo-TKcZD3DwuYa23sVGvFeT8IsSNBjjfZbtWuts="} className="Instance-logo" alt="logo" />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

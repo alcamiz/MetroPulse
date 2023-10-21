@@ -73,16 +73,24 @@ function HoodInfo({ hood }) {
 
 function HoodDetails({hood}) {
   return (
-    <div className="Instance" style={{backgroundImage: `url(${background})`}}>
-      <header className="Instance-header">
-          <img src={hood.static_map_url || HoodPlaceholder} className="Instance-logo" alt="logo" />  {/*FIX MAP URL */}
-        <h3 className="Instance-title">
-          {hood.nta_name}
-        </h3>
-        <HoodInfo hood={hood}/>
-      </header>
-      <div className="Instance-images">
-        <img style={{display: `block`}} src={hood.image_url || "https://www.elikarealestate.com/blog/wp-content/uploads/2015/09/village-streets-nyc.jpg"} className="Instance-logo" alt="logo" />
+    <div className="Instance">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            <header className="Instance-header">
+                <img src={hood.static_map_url || HoodPlaceholder} className="Instance-logo" alt="logo" />  {/*FIX MAP URL */}
+              <h3 className="Instance-title">
+                {hood.nta_name}
+              </h3>
+              <HoodInfo hood={hood}/>
+            </header>
+          </div>
+          <div class="col-sm">
+            <div className="Instance-images">
+              <img style={{display: `block`}} width="400" height="400" src={hood.image_url || "https://www.elikarealestate.com/blog/wp-content/uploads/2015/09/village-streets-nyc.jpg"} className="Instance-logo" alt="logo" />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
