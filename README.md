@@ -40,9 +40,9 @@
 
 **Number of Instances**
 
-* Neighborhoods: 51
+* Neighborhoods: 195
 * Medical Facilities: 78
-* Test Centers: 999
+* Test Centers: 1000
 
 **Attributes per Model**
 
@@ -140,5 +140,5 @@ Scheduled meeting times, partly delegated roles, thought of high-level architect
 | Phase               | SHA           |
 | ------------------- | :-----------: |
 | 1                   |  870d3e41     |
-| 2                   |  92ac36f2     |
+| 2                   |  ce34270b     |
 
