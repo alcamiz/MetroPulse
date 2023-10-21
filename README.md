@@ -22,25 +22,24 @@
 
 
 
-* Testing Centers ([link](https://dev.socrata.com/foundry/data.cityofnewyork.us/8eux-rfe8))
+* Testing Centers ([link](https://data.cityofnewyork.us/resource/8eux-rfe8.json))
 * Council Demographics in Each District ([link](https://data.cityofnewyork.us/City-Government/Council-district-breakdown/jqy3-ybjq))
-* District Populations ([link](https://data.cityofnewyork.us/City-Government/New-York-City-Population-By-Community-Districts/xi7c-iiu2))
-* Hospital APIs ([link](https://data.cityofnewyork.us/Health/NYC-Health-Hospitals-patient-care-locations-2011/f7b6-v6v3))
-* Maps APIs ([link](https://www.openstreetmap.org/about/api/))
+* Descriptions for all models ([link](https://en.wikipedia.org/w/api.php))
+* Hospital APIs ([link](https://data.cityofnewyork.us/resource/f7b6-v6v3.json))
+* Google Static Maps APIs ([link](https://www.openstreetmap.org/about/api/))
+* Google Places APIs ([link](https://maps.googleapis.com/maps/api/place/nearbysearch/json))
 
 **Three Models:**
 
 
 
 * Medical Facilities
-* Districts
+* Neighborhoods
 * Test Centers
 
 **Number of Instances**
 
-
-
-* Districts: 51
+* Neighborhoods: 51
 * Medical Facilities: 78
 * Test Centers: 999
 
@@ -48,15 +47,20 @@
 
 
 
-* Districts 
-    * Demographics
-    * Population
+* Neighborhoods 
     * Borough
-    * Average cardiologist price?
+    * Population
+    * County Code
+    * NTA Code
+    * County Code
+    * Nearby Hospitals
+    * Description
 * Medical Facilities
-    * Location
-    * Contact information
-    * District
+    * Facility Name
+    * Borough
+    * Council District
+    * Contact Information
+    * Zipcode
     * Borough
 * Test Centers
     * Location
@@ -70,24 +74,24 @@
 
 
 
-* District: List of test centers and hospitals
-* Test Centers: List of hospitals within 10 mile radius and link to district location.
-* Hospitals: List of test centers within 10-mile radius and link to district location.
+* Neighborhood: List of nearby testing centers and hospitals
+* Test Centers: List of hospitals within 10 mile radius and link to neighborhood.
+* Hospitals: List of test centers within 10-mile radius and link to neighborhood.
 
 **Rich Media**
 
 
 
 * Map locations (OpenStreetMaps)
-* Images (Bing Images; testing and medical centers)
+* Images (Google Images; testing and medical centers)
 
 **Types of Media per Model**
 
 
 
-* Districts
-    * Map outline of the district
-    * Pie chart showing demographics
+* Neighborhoods
+    * Map outline of the Neighborhood
+    * Picture showing off neighborhood vibe
 * Medical Facilities
     * Maps
     * Images
@@ -106,9 +110,10 @@
 
 
 ## Project Leaders
-| Phase | Project Leader        |
-| :---: | :-------: |
+| Phase | Project Leader        | Responsibilities |
+| :---: | :-------: |         Scheduled meeting times, partly delegated roles, thought of high-level architecture, made sure everyone was on track. |
 | 1     | Alex Cabrera   |
+| 2     | Thomas Moody |
 
 ## Completion Time
 ### Phase 1
@@ -118,6 +123,14 @@
 | Alex Cabrera      |  20           | 17                 |
 | Thomas Moody      |  20           | 15                 |
 | Kyston Brown      |  20           | 20                 |
+
+### Phase 2
+| Name               | Estimated     | Actual        |
+| ------------------ | :-----------: | :-----------: |
+| Kamil Kalowski    |  20           | 25                 |
+| Alex Cabrera      |  20           | 25                 |
+| Thomas Moody      |  15           | 20                 |
+| Kyston Brown      |  15           | 20                 |
 
 ## Git SHA
 
