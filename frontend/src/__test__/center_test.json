@@ -1,0 +1,78 @@
+{
+    "data": {
+      "address": "898 East 163rd Street",
+      "borough": "BRONX",
+      "community": "202",
+      "council": "17",
+      "howto": null,
+      "id_t": 0,
+      "image_url": null,
+      "latitude": null,
+      "longitude": null,
+      "name": "Rite Care Pharmacy",
+      "nearby_hospitals": [
+        {
+          "id_t": 4,
+          "image_url": null,
+          "name": "Melrose Houses Child Health Clinic"
+        },
+        {
+          "id_t": 5,
+          "image_url": null,
+          "name": "Daniel Webster Houses Child Health Clinic"
+        },
+        {
+          "id_t": 6,
+          "image_url": null,
+          "name": "Segundo Ruiz Belvis Diagnostic & Treatment Center"
+        },
+        {
+          "id_t": 13,
+          "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AcJnMuGnbOosfg-ZNkesKoUG_oZxiYMcm0pPQgJTptVUbMQ5MQTG08ndDNxVIobqlAZVIRMfrkZBx6mNLLp4DpM6nlBH4eagnwtIgjRT8sv4zOm_YZZfT7oQOKdJEvyDJb-yYvUVLCZYRYGY81I_SNfzmepS3EF-pfCxOnuaxPe0UkzrL-UY&key=AIzaSyCcKNNcG5ar9u7gMS-b_2opRkKUUGzFw5U",
+          "name": "Jacobi Medical Center"
+        },
+        {
+          "id_t": 19,
+          "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AcJnMuHpg77IEzbgVCP5S8XRgwlUVz2lJRKNCouhboXc6z_0yJNuoGPD7XTQkAzbTRCLctJE3TOEyf8iKa8UZzWR6aSObYt_tkKlP4Slya5U2L7dVKT7kFm-_TCW9iaYsoqzxca7LRjZxel3Th_XCZjDxHayG1dV_21LlM1gwzwJPeY3FVIv&key=AIzaSyCcKNNcG5ar9u7gMS-b_2opRkKUUGzFw5U",
+          "name": "North Central Bronx Hospital"
+        },
+        {
+          "id_t": 23,
+          "image_url": null,
+          "name": "Lincoln  Medical &  Mental Health Center"
+        },
+        {
+          "id_t": 27,
+          "image_url": null,
+          "name": "Segundo Ruiz Belvis Diagnostic & Treatment Center"
+        },
+        {
+          "id_t": 28,
+          "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AcJnMuHtysD0O04krSq85-3B1Kkwaxl7QPPDwN8QuQf_hDHqB42mC5tTsFma063734qDaX5fuNOMAiYp18kj9-Y7bq7BlcDeU1GhqMk2auktWR0eVgGhFRnwahSTQKKzakddiKDK3Z1I0cg0B2SKSDq0YMBQRhLNi8jIstl3Oh6GG1A_UTqN&key=AIzaSyCcKNNcG5ar9u7gMS-b_2opRkKUUGzFw5U",
+          "name": "Morrisania Diagnostic & Treatment Center"
+        },
+        {
+          "id_t": 31,
+          "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AcJnMuG1Gj45XgYPiBV-2MYIdO16iq1REAhl2aYhSyYa38KgYQeL-CEEm6sVem0DDRWm-SNnnUBRaMVr6P4vUFx4kXBPXyBV3NfBwSrs9RzWGwt-Da-03lYIHwdvCI_CDGKyvfZ62Lk6PTVLEXZsFxqWfNA_gK-uapGPXc6Gn8AgP_u849h6&key=AIzaSyCcKNNcG5ar9u7gMS-b_2opRkKUUGzFw5U",
+          "name": "Jacobi Medical Center"
+        },
+        {
+          "id_t": 52,
+          "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AcJnMuHpZ6zYkFIQ-noKm2y3UR9qX4CQH2skQin-PlTV7xNAgLBiRrtmnv46bQDqYxMJ_g-wKAaBgrPwkGH3xDnXKq5ozs1Kepx05QMsUhPk39uAjfvzBBXJ0lv09VToNK_aKp3-rrPbk5XmGdhCQjFROKjyfMIrUgyJVngGbuE1ZfKbj5R_&key=AIzaSyCcKNNcG5ar9u7gMS-b_2opRkKUUGzFw5U",
+          "name": "Gunhill Health Center"
+        },
+        {
+          "id_t": 63,
+          "image_url": null,
+          "name": "Lincoln Medical and Mental Health Center"
+        }
+      ],
+      "nta_name": "Longwood",
+      "parent_neighborhood": 18,
+      "phone": null,
+      "rating": null,
+      "static_map_url": "https://maps.googleapis.com/maps/api/staticmap?key=AIzaSyCcKNNcG5ar9u7gMS-b_2opRkKUUGzFw5U&zoom=15&size=400x400&center=Longwood%2CNY",
+      "zip_code": "10459"
+    },
+    "state": "Ok"
+  }

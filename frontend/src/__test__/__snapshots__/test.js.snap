@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test whether the Navbar works 1`] = `
+<nav
+  className="navbar navbar-expand-lg navbar-dark bg-dark"
+>
+  <a
+    className="navbar-brand"
+    href="/"
+    style={
+      Object {
+        "marginLeft": "20px",
+      }
+    }
+  >
+    MetroPulse
+  </a>
+  <button
+    aria-controls="basic-navbar-nav"
+    aria-label="Toggle navigation"
+    className="navbar-toggler collapsed"
+    onClick={[Function]}
+    type="button"
+  >
+    <span
+      className="navbar-toggler-icon"
+    />
+  </button>
+  <div
+    aria-expanded={null}
+    className="navbar-collapse collapse"
+    id="basic-navbar-nav"
+  >
+    <div
+      style={
+        Object {
+          "alignItems": "center",
+          "display": "flex",
+          "width": "100%",
+        }
+      }
+    >
+      <div
+        className="mr-auto navbar-nav"
+        onKeyDown={[Function]}
+      >
+        <a
+          className="nav-link"
+          data-rr-ui-event-key="/"
+          disabled={false}
+          href="/"
+          onClick={[Function]}
+        >
+          Home
+        </a>
+        <a
+          className="nav-link"
+          data-rr-ui-event-key="/medical/"
+          disabled={false}
+          href="/medical/"
+          onClick={[Function]}
+        >
+          Medical Facilities
+        </a>
+        <a
+          className="nav-link"
+          data-rr-ui-event-key="/test/"
+          disabled={false}
+          href="/test/"
+          onClick={[Function]}
+        >
+          Test Centers
+        </a>
+        <a
+          className="nav-link"
+          data-rr-ui-event-key="/hoods/"
+          disabled={false}
+          href="/hoods/"
+          onClick={[Function]}
+        >
+          Neighborhoods
+        </a>
+        <a
+          className="nav-link"
+          data-rr-ui-event-key="/about/"
+          disabled={false}
+          href="/about/"
+          onClick={[Function]}
+        >
+          About
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+`;

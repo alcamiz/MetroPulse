@@ -1,0 +1,76 @@
+{
+    "data": {
+      "address": "413 120th Street",
+      "borough": "Manhattan",
+      "council_district": null,
+      "facility_type": "Child Health Center",
+      "id_t": 0,
+      "image_url": null,
+      "latitude": null,
+      "longitude": null,
+      "name": "La Clinica Del Barrio",
+      "nearby_centers": [
+        {
+          "id_t": 2,
+          "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AcJnMuFuwVZx3oCSNAh9FVwuVwbNIDW-BPGq-il9_5ZI2FrDStzflyd6YW0jPflEILidCWeQPxp4qIlELdQIdkYdrnjtCJZO2SN8LHH5MNQNmWbTVRMHgnPg0ObRAtHGswVP9vR6S_qeOw_xMz29cRRavG2T0_Mub46tFiIJFsepAXFpbRJd&key=AIzaSyCcKNNcG5ar9u7gMS-b_2opRkKUUGzFw5U",
+          "name": "Rite Aid Pharmacy"
+        },
+        {
+          "id_t": 6,
+          "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AcJnMuF6jpQ5txQCzgrl__oTO6Za8Ag9l1uamaW5TcIO-0B4XmOiDdA8TABXi07xQ_LMipVME4a1tgEqi4DjH4iB7v-PEaK5gEHKRai_1dtoFUV8ABLuzIxucHb_hsxGdJzf_HFEV0AiBxoo4OR-wRBHjKtLccXyf2Sy_uav9h98R9FUBR7n&key=AIzaSyCcKNNcG5ar9u7gMS-b_2opRkKUUGzFw5U",
+          "name": "Lenda Pharmacy"
+        },
+        {
+          "id_t": 7,
+          "image_url": null,
+          "name": "Royal Care Pharmacy"
+        },
+        {
+          "id_t": 8,
+          "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AcJnMuFKRd_JzMFuQEGODjl5p3j3v8IX2WUwPQREKgQW2lAKlV31qhN7RI-wVvd4mMVWZVsgCV3n39ngO34pOOzilEzOe1FkNsH2aaMlBhhhJ5wfspKREWJom-nFDKMH4lXF3VxwvZQCriUMSMuUWqiNDRXr0Rcx9Ta50t2TBB3ir3GJ26qu&key=AIzaSyCcKNNcG5ar9u7gMS-b_2opRkKUUGzFw5U",
+          "name": "Duane Reade"
+        },
+        {
+          "id_t": 9,
+          "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AcJnMuFYoOD_TjLYmm_QOQ9-R067SdpyBHoPxs-mt_P5EwyDqeOfo82W0h64haHvJdtfKIkP2Id7wOdY816thCZg99EBgxUXpLMCz4rLBqlxRdz7jTo_T_uuGyq3Bj2EYa1qHnyvjbFHsxeDKIp5LQT0vhsKLYvZ_bnbkQ1z9IY7Yjz1dAYu&key=AIzaSyCcKNNcG5ar9u7gMS-b_2opRkKUUGzFw5U",
+          "name": "Center Pharmacy"
+        },
+        {
+          "id_t": 14,
+          "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AcJnMuHPrzzzvwCe6OElVF7DHcJP2AYQNQ-t6ia0CX3EcRaRLcjuTSSg3NN7tVReQxUTKlQA9IlZvaAdU-9CqEQCdPV6VuVQT-DI4QEzT070eOHeH5H05KrRpJ-WMg3n2t6F3iPhIT76y2FX3DiiLOIMUFP9ogqdaYok136kn9npxTFxJlyL&key=AIzaSyCcKNNcG5ar9u7gMS-b_2opRkKUUGzFw5U",
+          "name": "Duane Reade"
+        },
+        {
+          "id_t": 16,
+          "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AcJnMuFCsGYsCqLtZqnnX4nDSCaIeNeC-oBMAFoXLIqknJu3LPWsG3XBBVxFUts2Z3gc0RPMOlzXKX_pZkXH9T3OMtOh-WBJt4T11tz2YUY4ZQU-Q3BsINBh62-hPr3l3VNCo_7vQkvPDXjzuXzt2XwiHWjXHG56hux-1JYR4cigf26pzqxZ&key=AIzaSyCcKNNcG5ar9u7gMS-b_2opRkKUUGzFw5U",
+          "name": "Rite Aid Pharmacy"
+        },
+        {
+          "id_t": 17,
+          "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AcJnMuGRQoVEiWxFxfJtBXO-_6zSvPd5yVSGSSFqeyvWl4OTEg-A5IdSh51X1nGE5H59F2QIS8_WSHUwe21-wq8Tf9P5-_krm9tewHEOHpUtFnuVz7SGa4KNLuVNtR_7UDv2lTu1Ft4tt_M9YssUCLeOh6bYq98u9xl4PME7BuuQPFkE_sWO&key=AIzaSyCcKNNcG5ar9u7gMS-b_2opRkKUUGzFw5U",
+          "name": "Duane Reade"
+        },
+        {
+          "id_t": 20,
+          "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AcJnMuHQXQL-9VdiN0WGEdSdkroQ747ZS0sXpqz72_z64tMGncKHNyaabzOG5s-7htHQUPDj7Z4YiLle2Zp-3mHWc5w_5qRGtH75QMmzraJO8QaT7YDKX-q6xsCCJ7DPXrArAOqDGwG4neqQxvsLqy0LQryT1JNqb0FH58lvdEcgkHZp6FbQ&key=AIzaSyCcKNNcG5ar9u7gMS-b_2opRkKUUGzFw5U",
+          "name": "Duane Reade"
+        },
+        {
+          "id_t": 45,
+          "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AcJnMuFFPFetG6iHCjWT1P5DaTtYLAOO-zV6mn5DgDUJpJke0qIf5eS1HThSQZKMnvIU4ZtqBeX7mTnqdDIZcHQniaqYyL5v7TrU_3Fm2yQCr_Do8w3XbGodlF750k3lnFGOf26zPOAxj1s5jAe-mdijDwd5oR-MoEWBxj-ynkn2Q8qhplu6&key=AIzaSyCcKNNcG5ar9u7gMS-b_2opRkKUUGzFw5U",
+          "name": "Duane Reade"
+        },
+        {
+          "id_t": 47,
+          "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AcJnMuFiLLaW8TJdVpWKLQUKhMxlNWWljBdSHF9peRBzCxIzn9VpUFftv-eOmrLYEch4KWYjz9zrSiFTfAj5F7Bqf-QJ3kTGJde2MeFh_WgNq9SzB4vzKBCiGg9ajEVgOXWEM9pDOA4M9hZvTCMFuusBVGk_wbulCHmOw3feBOBIK4qYPac-&key=AIzaSyCcKNNcG5ar9u7gMS-b_2opRkKUUGzFw5U",
+          "name": "Duane Reade"
+        }
+      ],
+      "nta_name": null,
+      "phone": "212-410-7940",
+      "rating": null,
+      "static_map_url": null,
+      "zip_code": "10035"
+    },
+    "state": "Ok"
+  }

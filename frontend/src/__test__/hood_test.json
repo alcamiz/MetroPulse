@@ -1,0 +1,32 @@
+{
+    "data": {
+      "borough": "Bronx",
+      "desc": null,
+      "fips_county_code": "005",
+      "id_t": 0,
+      "image_url": null,
+      "nearby_centers": [
+        {
+          "id_t": 41,
+          "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AcJnMuFgh5a-3grmpOZF1oUKxzxLYZL5RznxJXZaXrEbyDGPxTQuWyDitOSIRpQbtU12ZuAvYozIQp659bXLhF0UmlUzSbqnlwmKFKOaAymLKDBLGvnUoJfJAsKCxUKVea51nuMjOrhRGKmMGSoL4GrEAeJE4UniSIebizNtgXvuLDzg0NdS&key=AIzaSyCcKNNcG5ar9u7gMS-b_2opRkKUUGzFw5U",
+          "name": "Bronx Pharmacy"
+        },
+        {
+          "id_t": 503,
+          "image_url": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AcJnMuEgevvkZvibFivkx7OCfTyLfXHpX3w4ExQbLQ1gzoZO1TeHswIhLyK1quJwKHEiyGq0qU7t5bMG8Khjdlge2DH6t7mZSWayb6aXsCw1iBaDV4sRtPxCCN7U57w6QwJ7E_5-gbpypd0qcdpnR7k5tf74qUK5vH548J5AIdWBGP6EjX6C&key=AIzaSyCcKNNcG5ar9u7gMS-b_2opRkKUUGzFw5U",
+          "name": "Kings Pharmacy"
+        },
+        {
+          "id_t": 872,
+          "image_url": null,
+          "name": "CRJ Pharmacy"
+        }
+      ],
+      "nearby_hospitals": [],
+      "nta_code": "BX01",
+      "nta_name": "Claremont-Bathgate",
+      "population": "31078",
+      "static_map_url": "https://maps.googleapis.com/maps/api/staticmap?key=AIzaSyCcKNNcG5ar9u7gMS-b_2opRkKUUGzFw5U&zoom=10&size=400x400&center=Claremont-Bathgate%2CNY"
+    },
+    "state": "Ok"
+  }

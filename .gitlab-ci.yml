@@ -4,6 +4,7 @@ stages:
   - pytest_unit_tests
   - postman_tests
   - frontend_ui_test
+  - test-jest
 
 build_frontend:
   stage: build_frontend
@@ -76,3 +77,10 @@ frontend_ui_test:
 
   # Run selenium tests
   - python3 ui_tests.py
+
+test-jest:
+  stage: test-jest
+  script:
+    - cd frontend
+    - npm install --legacy-peer-deps
+    - npm test
