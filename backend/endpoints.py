@@ -404,7 +404,7 @@ def get_neighborhood_id(neighborhood_id):
     response.headers.add("Access-Control-Allow-Origin", "*")
     return response
 
-def search_centers(query, search_terms, page, per_page):
+def search_centers(search_terms, page, per_page):
     query = TestCenter.query
     for term in search_terms:
         query = query.filter(ilike_op(TestCenter.name, f'%{term}%'))
@@ -412,7 +412,7 @@ def search_centers(query, search_terms, page, per_page):
     query = query.paginate(page=page, per_page=per_page, error_out=False)
     return center_build(query), count
 
-def search_hospitals(query, search_terms, page, per_page):
+def search_hospitals(search_terms, page, per_page):
     query = Hospital.query
     for term in search_terms:
         query = query.filter(ilike_op(Hospital.name, f'%{term}%'))
@@ -420,13 +420,13 @@ def search_hospitals(query, search_terms, page, per_page):
     query = query.paginate(page=page, per_page=per_page, error_out=False)
     return center_build(query), count
 
-def search_hoods(query, search_terms, page, per_page):
+def search_hoods(search_terms, page, per_page):
     query = Neighborhood.query
     for term in search_terms:
         query = query.filter(ilike_op(Neighborhood.nta_name, f'%{term}%'))
     count = query.count()
     query = query.paginate(page=page, per_page=per_page, error_out=False)
-    return center_build(query), cou t
+    return center_build(query), count
 
 @app.route("/search")
 def search():
@@ -448,20 +448,20 @@ def search():
     if model == None:
         model = "all"
 
-    if model == "all" || model == "center":
-        result_centers, center_count = search_centers(query, search_terms, page, per_page)
+    if model == "all" or model == "center":
+        result_centers, center_count = search_centers(search_terms, page, per_page)
     else:
         result_centers = []
         center_count = 0
 
-    if model == "all" || model == "hospital":
-        result_hospitals, hospital_count = search_hospitals(query, search_terms, page, per_page)
+    if model == "all" or model == "hospital":
+        result_hospitals, hospital_count = search_hospitals(search_terms, page, per_page)
     else:
         result_hospitals = []
         hospital_count = 0
 
-    if model == "all" || model == "neighborhood":
-        result_hoods, n_count = search_hoods(query, search_terms, page, per_page)
+    if model == "all" or model == "neighborhood":
+        result_hoods, n_count = search_hoods(search_terms, page, per_page)
     else:
         result_hoods = []
         n_count = 0
