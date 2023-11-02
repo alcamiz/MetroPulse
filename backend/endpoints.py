@@ -149,7 +149,7 @@ def hospital_build(query):
         if len(hospital.parent_neighborhood) > 0:
             dict_hospital["parent_neighborhood"] = hospital.parent_neighborhood[0].id_t
         result_list.append(dict_hospital)
-    return hospital_list
+    return result_list
     
 @app.route("/hospitals")
 def get_hospitals():
@@ -466,9 +466,11 @@ def search():
         result_hoods = []
         n_count = 0
 
-    return jsonify({"centers": {"data": result_centers, "size": len(result_centers), "total_size": center_count},
-                    "hospitals": {"data": result_hospitals, "size": len(result_hospitals), "total_size": hospital_count},
-                    "neighborhoods": {"data": result_hoods, "size": len(result_hoods), "total_size": n_count}})
+    response = jsonify({"centers": {"data": result_centers, "size": len(result_centers), "total_size": center_count},
+                        "hospitals": {"data": result_hospitals, "size": len(result_hospitals), "total_size": hospital_count},
+                        "neighborhoods": {"data": result_hoods, "size": len(result_hoods), "total_size": n_count}})
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    return response
 
 if __name__ == "__main__":
     app.run(port=5000, debug=True)
