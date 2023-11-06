@@ -80,15 +80,15 @@ def get_centers():
     # Filtering
     borough = request.args.get("borough")
     if borough != None:
-        query = query.filter(TestCenter.borough == borough)
+        query = query.filter(func.lower(TestCenter.borough) == func.lower(borough))
 
     nta = request.args.get("nta")
     if nta != None:
-        query = query.filter(TestCenter.nta_name == nta)
+        query = query.filter(func.lower(TestCenter.nta_name) == func.lower(nta))
 
     zip_code = request.args.get("zip")
     if zip_code != None:
-        query = query.filter(TestCenter.zip_code == zip_code)
+        query = query.filter(func.lower(TestCenter.zip_code) == func.lower(zip_code))
 
     # Sorting
     sort_order = request.args.get("sort_order", type=str, default="asc")
@@ -167,15 +167,15 @@ def get_hospitals():
     # Filtering
     borough = request.args.get("borough")
     if borough != None:
-        query = query.filter(Hospital.borough == borough)
+        query = query.filter(func.lower(Hospital.borough) == func.lower(borough))
 
     nta = request.args.get("nta")
     if nta != None:
-        query = query.filter(Hospital.nta_name == nta)
+        query = query.filter(func.lower(Hospital.nta_name) == func.lower(nta))
 
     zip_code = request.args.get("zip")
     if zip_code != None:
-        query = query.filter(Hospital.zip_code == zip_code)
+        query = query.filter(func.lower(Hospital.zip_code) == func.lower(zip_code))
 
     # Sorting
     sort_order = request.args.get("sort_order", type=str, default="asc")
@@ -265,11 +265,11 @@ def get_neighborhoods():
     # Filtering
     nta = request.args.get("fips")
     if nta != None:
-        query = query.filter(Neighborhood.nta_name == nta)
+        query = query.filter(func.lower(Neighborhood.nta_name) == func.lower(nta))
 
     borough = request.args.get("borough")
     if borough != None:
-        query = query.filter(Neighborhood.borough == borough)
+        query = query.filter(func.lower(Neighborhood.borough) == func.lower(borough))
 
      # Sorting
     sort_order = request.args.get("sort_order", type=str, default="asc")
