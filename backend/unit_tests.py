@@ -86,5 +86,53 @@ class Tests(unittest.TestCase):
             self.assertEqual(data["desc"], "Belmont is a village within the town of Amity in Allegany County, New York, United States. Belmont is the county seat of Allegany County.")
             self.assertEqual(len(data), 11)
 
+    def testCenterFiltering(self):
+        with self.client:
+            response = self.client.get("centers?borough=queens")
+            self.assertEqual(response.status_code, 200)
+            full_data = response.json
+            data = full_data["data"][0]
+            self.assertEqual(data["borough"].lower(), "queens")
+
+    def testHospitalFiltering(self):
+        with self.client:
+            response = self.client.get("hospitals?borough=queens")
+            self.assertEqual(response.status_code, 200)
+            full_data = response.json
+            data = full_data["data"][0]
+            self.assertEqual(data["borough"].lower(), "queens")
+
+    def testNeighborhoodFiltering(self):
+        with self.client:
+            response = self.client.get("neighborhoods?borough=queens")
+            self.assertEqual(response.status_code, 200)
+            full_data = response.json
+            data = full_data["data"][0]
+            self.assertEqual(data["borough"].lower(), "queens")
+
+    def testCenterSorting(self):
+        with self.client:
+            response = self.client.get("centers?sort_by=id")
+            self.assertEqual(response.status_code, 200)
+            full_data = response.json
+            data = full_data["data"][0]
+            self.assertEqual(data["id_t"], 0)
+
+    def testHospitalSorting(self):
+        with self.client:
+            response = self.client.get("hospitals?sort_by=id")
+            self.assertEqual(response.status_code, 200)
+            full_data = response.json
+            data = full_data["data"][0]
+            self.assertEqual(data["id_t"], 0)
+
+    def testNeighborhoodSorting(self):
+        with self.client:
+            response = self.client.get("neighborhoods?sort_by=id")
+            self.assertEqual(response.status_code, 200)
+            full_data = response.json
+            data = full_data["data"][0]
+            self.assertEqual(data["id_t"], 0)
+
 if __name__ == "__main__":
     unittest.main()
