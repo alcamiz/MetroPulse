@@ -288,12 +288,6 @@ def get_neighborhoods():
 
     elif sort_by == "name":
         if sort_order == "asc":
-            query = query.order_by(asc(Neighborhood.name))
-        elif sort_order == "desc":
-            query = query.order_by(desc(Neighborhood.name))
-
-    elif sort_by == "nta":
-        if sort_order == "asc":
             query = query.order_by(asc(Neighborhood.nta_name))
         elif sort_order == "desc":
             query = query.order_by(desc(Neighborhood.nta_name))
@@ -465,7 +459,7 @@ def search():
 
     search_string = request.args.get("string", type=str, default=None)
     if search_string == None:
-        pass
+        search_string = ""
     search_terms = search_string.split()
 
     model = request.args.get("model", type=str, default=None)
