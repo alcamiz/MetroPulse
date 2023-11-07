@@ -19,5 +19,7 @@
     row-gap: 30px;
     column-gap: 30px;
     padding: auto;
+    padding-top: 30px;
     margin-bottom: 30px;
+    justify-content: center;
   }
