@@ -27,7 +27,9 @@ function HoodCard( {hood} ) {
           <Card.Text>Population: {hood.population}</Card.Text>
           <Card.Text>County Code: {hood.fips_county_code}</Card.Text>
           <Card.Text>NTA Code: {hood.nta_code}</Card.Text>
-          <Card.Text>Nearby Hospitals: { (hood.nearby_hospitals == null)? 0 : hood.nearby_hospitals.length}</Card.Text>
+          <Card.Text>Nearby Hospitals: { (hood.nearby_hospitals == null)? 0 : hood.nearby_hospitals.filter((hospital, index, self) => {
+              return self.findIndex((h) => h.name === hospital.name) === index;
+            }).length}</Card.Text>
         </Card.Body>
       </Card>
     </Link>

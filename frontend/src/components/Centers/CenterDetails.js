@@ -49,11 +49,18 @@ function CenterInfo({ center }) {
         <Accordion.Header>Nearby Medical Facilities</Accordion.Header>
         <Accordion.Body>
           <ul>
-            { (center.nearby_hospitals == null)? 0 : center.nearby_hospitals.map((hospital) => (
-              <li key={hospital.id_t}>
-                <Link to={`/medical/${hospital.id_t}`}>{hospital.name}</Link>
-              </li>
-            )) }
+            {center.nearby_hospitals == null
+              ? 0
+              : center.nearby_hospitals
+                .filter((hospital, index, self) => {
+                  // Filter to keep only the first occurrence of each hospital.name
+                  return self.findIndex((h) => h.name === hospital.name) === index;
+                })
+                .map((hospital) => (
+                  <li key={hospital.id_t}>
+                    <Link to={`/medical/${hospital.id_t}`}>{hospital.name}</Link>
+                  </li>
+                ))}
           </ul>
         </Accordion.Body>
       </Accordion.Item>
@@ -68,7 +75,7 @@ function CenterDetails({ center }) {
         <div class="row">
           <div class="col-sm">
             <header className="Instance-header">
-              <img src={center.static_map_url} className="Instance-logo" alt="logo" /> 
+              <img src={center.static_map_url} className="Instance-logo" alt="logo" />
               <h3 className="Instance-title">
                 {center.name}
               </h3>
