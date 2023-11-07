@@ -2,7 +2,7 @@ from flask import Flask, jsonify, request, Response
 from database import app, db, Neighborhood, TestCenter, Hospital, populate_database
 from marshmallow_sqlalchemy import SQLAlchemyAutoSchema
 from sqlalchemy.sql.expression import asc, desc
-from sqlalchemy import or_, func, and_, Integer
+from sqlalchemy import or_, func, and_, Integer, cast
 from sqlalchemy.sql.operators import ilike_op
 
 @app.route("/")
@@ -117,6 +117,12 @@ def get_centers():
         elif sort_order == "desc":
             query = query.order_by(desc(TestCenter.zip_code))
 
+    elif sort_by == "borough":
+        if sort_order == "asc":
+            query = query.order_by(asc(TestCenter.borough))
+        elif sort_order == "desc":
+            query = query.order_by(desc(TestCenter.borough))
+
     center_count = query.count()
     query = query.paginate(page=page, per_page=per_page, error_out=False)
 
@@ -203,6 +209,12 @@ def get_hospitals():
             query = query.order_by(asc(Hospital.zip_code))
         elif sort_order == "desc":
             query = query.order_by(desc(Hospital.zip_code))
+
+    elif sort_by == "borough":
+        if sort_order == "asc":
+            query = query.order_by(asc(Hospital.borough))
+        elif sort_order == "desc":
+            query = query.order_by(desc(Hospital.borough))
 
     hospital_count = query.count()
     query = query.paginate(page=page, per_page=per_page, error_out=False)
@@ -291,6 +303,18 @@ def get_neighborhoods():
             query = query.order_by(asc(Neighborhood.nta_name))
         elif sort_order == "desc":
             query = query.order_by(desc(Neighborhood.nta_name))
+
+    elif sort_by == "borough":
+        if sort_order == "asc":
+            query = query.order_by(asc(Neighborhood.borough))
+        elif sort_order == "desc":
+            query = query.order_by(desc(Neighborhood.borough))
+
+    elif sort_by == "population":
+        if sort_order == "asc":
+            query = query.order_by(asc(cast(Neighborhood.population, Integer)))
+        elif sort_order == "desc":
+            query = query.order_by(desc(cast(Neighborhood.population, Integer)))
 
     n_count = query.count()
     query = query.paginate(page=page, per_page=per_page, error_out=False)
