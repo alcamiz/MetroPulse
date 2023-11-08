@@ -427,7 +427,7 @@ def search_centers(search_terms, page, per_page):
         pass
 
     # PostgreSQL specific features; do not switch to MySQL
-    post_vector = func.to_tsvector(TestCenter.name + TestCenter.address + TestCenter.borough + TestCenter.nta_name)
+    post_vector = func.to_tsvector(TestCenter.name)
     post_query = func.to_tsquery((''.join([f'{term} | ' for term in search_terms]))[:-2])
     query = TestCenter.query.filter(post_vector.bool_op("@@")(post_query))
     query = query.order_by(func.ts_rank(post_vector, post_query).desc())
@@ -443,32 +443,32 @@ def search_hospitals(search_terms, page, per_page):
         pass
 
     # PostgreSQL specific features; do not switch to MySQL
-    post_vector = func.to_tsvector(Hospital.name + Hospital.address + Hospital.borough + Hospital.nta_name)
+    post_vector = func.to_tsvector(Hospital.name)
     post_query = func.to_tsquery((''.join([f'{term} | ' for term in search_terms]))[:-2])
-    query = TestCenter.query.filter(post_vector.bool_op("@@")(post_query))
+    query = Hospital.query.filter(post_vector.bool_op("@@")(post_query))
     query = query.order_by(func.ts_rank(post_vector, post_query).desc())
 
     # for term in search_terms:
     #     query = query.filter(ilike_op(Hospital.name, f'%{term}%'))
     count = query.count()
     query = query.paginate(page=page, per_page=per_page, error_out=False)
-    return center_build(query), count
+    return hospital_build(query), count
 
 def search_hoods(search_terms, page, per_page):
     if len(search_terms) < 1:
         pass
 
     # PostgreSQL specific features; do not switch to MySQL
-    post_vector = func.to_tsvector(Neighborhood.nta_name + Neighborhood.borough)
+    post_vector = func.to_tsvector(Neighborhood.nta_name)
     post_query = func.to_tsquery((''.join([f'{term} | ' for term in search_terms]))[:-2])
-    query = TestCenter.query.filter(post_vector.bool_op("@@")(post_query))
+    query = Neighborhood.query.filter(post_vector.bool_op("@@")(post_query))
     query = query.order_by(func.ts_rank(post_vector, post_query).desc())
 
     # for term in search_terms:
     #     query = query.filter(ilike_op(Neighborhood.nta_name, f'%{term}%'))
     count = query.count()
     query = query.paginate(page=page, per_page=per_page, error_out=False)
-    return center_build(query), count
+    return hood_build(query), count
 
 @app.route("/search")
 def search():
