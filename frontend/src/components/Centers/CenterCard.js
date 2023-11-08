@@ -15,7 +15,6 @@ const styles = {
 };
 
 function CenterCard({ center }) {
-  console.log(center);
 
   return (
     <Link to={`/test/${center.id_t}`} style={styles.link}>

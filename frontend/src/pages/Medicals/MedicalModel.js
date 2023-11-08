@@ -5,6 +5,7 @@ import { getCenters } from "../../utils/api";
 import Loading from "../../components/Loading";
 import PaginationIndicator from "../../components/PaginationIndicator";
 import MedicalCard from "../../components/Medicals/MedicalCard.js";
+import CustomDropDown from "../../components/CustomDropDown";
 
 function MedicalModel() {
   const [currPage, setCurrPage] = useState(1);
@@ -13,6 +14,57 @@ function MedicalModel() {
   const [medicals, setMedicals] = useState(null);
   const [numPages, setNumPages] = useState(null);
   const [numMedicals, setNumMedicals] = useState(1);
+
+  // PHASE 3
+
+  const [reload, setReload] = useState(0);
+  const [sort, setSort] = useState(null);
+  const [order, setOrder] = useState(null);
+  const [boroughFilter, setBoroughFilter] = useState(null);
+  const [perPage, setPerPage] = useState(20);
+
+  const lower_underlines = (input_string) => {
+    return input_string.toLowerCase().replace(/ /g, "_");
+  };
+
+  const handleSubmit = () => {
+    setReload(reload + 1);
+  };
+
+  function handleSort(field) {
+    console.log(field);
+    if (field === "Sort") {
+      setSort(null);
+    } 
+    else {
+      setSort(lower_underlines(field));
+    }
+  }
+
+  function handleOrder(order) {
+    let newOrder = null;
+    switch (order) {
+      case "Ascending":
+        newOrder = "asc";
+        break;
+      case "Descending":
+        newOrder = "desc";
+        break;
+      default:
+        newOrder = null;
+    }
+    setOrder(newOrder);
+  }
+
+  function handleBoroughFilter(activity) {
+    if (activity === "Borough") {
+      setBoroughFilter(null);
+    } else {
+      activity = activity.toUpperCase(); // set borough uppercase to match data for centers
+      setBoroughFilter(activity);
+    }
+  }
+
 
   useEffect(() => {
     const load_num_medicals = async () => {
@@ -29,7 +81,12 @@ function MedicalModel() {
   useEffect(() => {
     const load_medicals = async () => {
       if (!loadingPage) {
-        const medicals = await fetch_hospitals(currPage);
+        const medicals = await fetch_hospitals(
+          currPage,
+          sort,
+          order,
+          boroughFilter,
+          perPage);
         // console.log(medicals);
         setMedicals(medicals);
         setLoading(false);
@@ -37,12 +94,58 @@ function MedicalModel() {
     };
     setLoading(true);
     load_medicals();
-  }, [loadingPage, currPage]);
+  }, [loadingPage, currPage, reload]);
 
   return (
     <React.Fragment>
       <div className="mainContainer">
         <h1 className="titleText">Medical Facilities</h1> 
+
+        {/* PHASE 3 - Sorting and Filtering */}
+        <div className="dropdownContainer">
+          {/* Sort:   */}
+          {/* Filter:  */}
+          <CustomDropDown
+            title="Sort"
+            items={["Sort", "Name", "ID", "Borough", "Zipcode"]}
+            func={handleSort}
+          />
+
+          <CustomDropDown
+            title="Order"
+            items={["Order", "Ascending", "Descending"]}
+            func={handleOrder}
+          />
+
+          <CustomDropDown
+            title="Borough"
+            items={["Borough", "Brooklyn", "Bronx", "Manhattan", "Queens"
+            ]}
+            func={handleBoroughFilter}
+            scroll
+          />
+
+           {/* <CustomDropDown
+            title="Neighborhood"
+            items={[""
+            ]}
+            func={handleBoroughFilter}
+            scroll
+          />
+
+            <CustomDropDown
+            title="Zipcode"
+            items={[""
+            ]}
+            func={handleBoroughFilter}
+            scroll
+          /> */}
+
+        </div>
+        <button className="filter-submit-button" onClick={handleSubmit}>
+          Submit
+        </button>
+
         <h5>Results: {numMedicals} </h5>
         {loading && <Loading />}
         {!loading && (

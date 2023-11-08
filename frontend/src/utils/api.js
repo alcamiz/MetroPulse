@@ -38,6 +38,7 @@ export const getNeighborhoods = async () => {
 
 export const getCenters = async () => {
   const response = await axios.get(frontend_website + `centers`);
+  console.log(frontend_website + `centers`);
   return response.data["data"];
 };
 

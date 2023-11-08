@@ -1,35 +1,76 @@
 import axios from "axios";
 import { frontend_website } from "../frontend_website";
 
-const min = (first, second) => {
-    if (first < second) {
-        return first;
-    } else {
-        return second;
+export const get_centers_length = async (
+  boroughFilter
+) => {
+    let website = `${frontend_website}/centers?page=1`;
+    if (boroughFilter) {
+      website += `&borough=${encodeURIComponent(boroughFilter)}`;
     }
-};
-
-export const get_centers_length = async () => {
-    const response = await axios.get(`${frontend_website}/centers`);
+    const response = await axios.get(website);
     return response.data["total_size"];
   };
 
-export const fetch_centers = async (page_num) => {
-    const response = await axios.get(
-        frontend_website + "centers?page=" + page_num
-    );
+export const fetch_centers = async (
+  page_num,
+  sort,
+  order,
+  boroughFilter,
+  per_page
+) => {
+  let website = `${frontend_website}/centers?page=${page_num}`;
+  if (sort) {
+      website += `&sort_by=${encodeURIComponent(sort)}`;
+    }
+    if (order) {
+      website += `&sort_order=${encodeURIComponent(order)}`;
+    }
+    if (boroughFilter) {
+      website += `&borough=${encodeURIComponent(boroughFilter)}`;
+    }
+    if (per_page) {
+      website += `&per_page=${encodeURIComponent(per_page)}`;
+    }
+    console.log(website);
+    const response = await axios.get(website);
     return response.data["data"];
-};
+  };
+
+// export const fetch_centers = async (page_num) => {
+//     const response = await axios.get(
+//         frontend_website + "centers?page=" + page_num
+//     );
+//     return response.data["data"];
+// };
 
 export const get_hospitals_length = async () => {
     const response = await axios.get(`${frontend_website}/hospitals`);
     return response.data["total_size"];
   };
 
-export const fetch_hospitals = async (page_num) => {
-    const response = await axios.get(
-        frontend_website + "hospitals?page=" + page_num
-    );
+export const fetch_hospitals = async (
+  page_num,
+  sort,
+  order,
+  boroughFilter,
+  per_page
+  ) => {
+  let website = `${frontend_website}/hospitals?page=${page_num}`;
+  if (sort) {
+      website += `&sort_by=${encodeURIComponent(sort)}`;
+    }
+    if (order) {
+      website += `&sort_order=${encodeURIComponent(order)}`;
+    }
+    if (boroughFilter) {
+      website += `&borough=${encodeURIComponent(boroughFilter)}`;
+    }
+    if (per_page) {
+      website += `&per_page=${encodeURIComponent(per_page)}`;
+    }
+    console.log(website);
+    const response = await axios.get(website);
     return response.data["data"];
 };
 
@@ -38,9 +79,27 @@ export const get_neighborhoods_length = async () => {
     return response.data["total_size"];
   };
 
-export const fetch_neighborhoods = async (page_num) => {
-    const response = await axios.get(
-        frontend_website + "neighborhoods?page=" + page_num
-    );
+export const fetch_neighborhoods = async (
+  page_num,
+  sort,
+  order,
+  boroughFilter,
+  per_page
+  ) => {
+  let website = `${frontend_website}/neighborhoods?page=${page_num}`;
+  if (sort) {
+      website += `&sort_by=${encodeURIComponent(sort)}`;
+    }
+    if (order) {
+      website += `&sort_order=${encodeURIComponent(order)}`;
+    }
+    if (boroughFilter) {
+      website += `&borough=${encodeURIComponent(boroughFilter)}`;
+    }
+    if (per_page) {
+      website += `&per_page=${encodeURIComponent(per_page)}`;
+    }
+    console.log(website);
+    const response = await axios.get(website);
     return response.data["data"];
 };
