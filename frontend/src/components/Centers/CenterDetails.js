@@ -19,7 +19,7 @@ function CenterInfo({ center }) {
             <tbody>
               <tr>
                 <td>Phone Number</td>
-                <td>{center.phone || "No phone number provided"}</td>
+                <td>{center.phone}</td>
               </tr>
               <tr>
                 <td>Address</td>
@@ -39,7 +39,7 @@ function CenterInfo({ center }) {
               </tr>
               <tr>
                 <td>Instructions</td>
-                <td>{center.howto|| "Not provided"}</td>
+                <td>{center.howto}</td>
               </tr>
             </tbody>
           </Table>
@@ -84,7 +84,7 @@ function CenterDetails({ center }) {
           </div>
           <div class="col-sm">
             <div className="Instance-images">
-              <img style={{ display: `block` }} width="400" height="400" src={center.image_url || "https://media.istockphoto.com/id/472149497/photo/goofy-pharmacist.jpg?s=612x612&w=0&k=20&c=OBV_lo-TKcZD3DwuYa23sVGvFeT8IsSNBjjfZbtWuts="} className="Instance-logo" alt="logo" />
+              <img style={{ display: `block` }} width="400" height="400" src={center.image_url || "https://motus.health/wp-content/uploads/2022/07/5187692-01-768x768.jpg"} className="Instance-logo" alt="logo" />
             </div>
           </div>
         </div>
