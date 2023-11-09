@@ -24,7 +24,28 @@ function HoodModel() {
   const [sort, setSort] = useState(null);
   const [order, setOrder] = useState(null);
   const [boroughFilter, setBoroughFilter] = useState(null);
+  const [fipsFilter, setFipsFilter] = useState(null);
   const [perPage, setPerPage] = useState(20);
+
+  // for FIPS county code filtering dropdown
+const getUniqueFips = () => {
+  const uniqueFips = new Set();
+  const fipsCodeList = hoods
+    ? hoods
+        .filter((hood) => hood.fips_county_code !== null)
+        .map((hood) => hood.fips_county_code)
+        .filter((fipsCode) => {
+          if (uniqueFips.has(fipsCode)) {
+            return false; // Skip if already added
+          }
+          uniqueFips.add(fipsCode);
+          return true;
+        })
+        .sort()
+    : [];
+
+  return ["Fips Code", ...fipsCodeList];
+};
 
   const lower_underlines = (input_string) => {
     return input_string.toLowerCase().replace(/ /g, "_");
@@ -67,10 +88,20 @@ function HoodModel() {
     }
   }
 
+  function handleFipsFilter(activity) {
+    if (activity === "FIPS Code") {
+      setFipsFilter(null);
+    } else {
+      setFipsFilter(activity);
+    }
+  }
+
 
   useEffect(() => {
       const load_num_hoods = async () => {
-          const num_hoods = await get_neighborhoods_length(); // write function
+          const num_hoods = await get_neighborhoods_length(
+            boroughFilter,
+            fipsFilter); // write function
           setNumHoods(num_hoods);
           setNumPages(Math.ceil(num_hoods/25.0));
           setLoadingPage(false);
@@ -83,11 +114,18 @@ function HoodModel() {
   useEffect(() => {
       const load_hoods = async () => { // prolly medical hoods?
           if (!loadingPage) {
+              const num_hoods = await get_neighborhoods_length(
+                boroughFilter,
+                fipsFilter);
+                setNumHoods(num_hoods);
+                setNumPages(Math.ceil(num_hoods/25.0));
+                setLoadingPage(false);
               const hoods = await fetch_neighborhoods(
                 currPage,
                 sort,
                 order,
                 boroughFilter,
+                fipsFilter,
                 perPage);
               // console.log(hoods);
               setHoods(hoods);
@@ -143,21 +181,21 @@ function HoodModel() {
 
            <CustomDropDown
             title="FIPS Code"
-            items={[""
-            ]}
-            func={handleBoroughFilter}
+            items={getUniqueFips().map(item => item)}
+            func={handleFipsFilter}
             scroll
           />
 
         </div>
         <button className="filter-submit-button" onClick={handleSubmit}>
-          Submit
+          Apply
         </button>
 
-        <h5>Results: {numHoods} </h5>
+        
         {loading && <Loading />}
         {!loading && (
           <React.Fragment>
+            <h5>Results: {numHoods} </h5>
             <div className="pagination-ind">
             {!isSearchResults && hoods !== null && (
               <PaginationIndicator
@@ -170,13 +208,15 @@ function HoodModel() {
             <div className="cardBox">
               {hoods !== null &&
                 hoods.map((hood, index) => {
-                  return (
-                    <HoodCard
-                      key={index}
-                      hood={hood}
-                      highlight={highlight}
+                  if (hood.nta_name != null) { // do not display if no name
+                    return (
+                      <HoodCard
+                        key={index}
+                        hood={hood}
+                        highlight={highlight}
                     />
-                  );
+                    );
+                  }
                 })}
             </div>
             {!isSearchResults && hoods !== null && (

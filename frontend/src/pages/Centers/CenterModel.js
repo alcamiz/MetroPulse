@@ -31,7 +31,50 @@ function CenterModel() {
   const [sort, setSort] = useState(null);
   const [order, setOrder] = useState(null);
   const [boroughFilter, setBoroughFilter] = useState(null);
+  const [neighborhoodFilter, setNeighborhoodFilter] = useState(null);
+  const [zipcodeFilter, setZipcodeFilter] = useState(null);
+
   const [perPage, setPerPage] = useState(20);
+
+// for Neighborhood filtering dropdown
+const getUniqueNeighborhoods = () => {
+  const uniqueNeighborhoods = new Set();
+  const neighborhoods = centers
+    ? centers
+        .filter((center) => center.nta_name !== null)
+        .map((center) => center.nta_name)
+        .filter((neighborhood) => {
+          if (uniqueNeighborhoods.has(neighborhood)) {
+            return false; // Skip if already added
+          }
+          uniqueNeighborhoods.add(neighborhood);
+          return true;
+        })
+        .sort()
+    : [];
+
+  return ["Neighborhood", ...neighborhoods];
+};
+
+// for Zipcode filtering dropdown
+const getUniqueZipcodes = () => {
+  const uniqueZipcodes = new Set();
+  const zipcodes = centers
+    ? centers
+        .filter((center) => center.zip_code !== null)
+        .map((center) => center.zip_code)
+        .filter((zipcode) => {
+          if (uniqueZipcodes.has(zipcode)) {
+            return false; // Skip if already added
+          }
+          uniqueZipcodes.add(zipcode);
+          return true;
+        })
+        .sort()
+    : [];
+
+  return ["Zipcode", ...zipcodes];
+};
 
   const lower_underlines = (input_string) => {
     return input_string.toLowerCase().replace(/ /g, "_");
@@ -42,11 +85,16 @@ function CenterModel() {
   };
 
   function handleSort(field) {
-    console.log(field);
+    // console.log(field);
+    // console.log(field === "Zipcode");
     if (field === "Sort") {
       setSort(null);
     } 
     else {
+      if (field === "Zipcode") {
+        // console.log("Zip");
+        field = "Zip";
+      }
       setSort(lower_underlines(field));
     }
   }
@@ -75,10 +123,30 @@ function CenterModel() {
     }
   }
 
+  function handleNeighborhoodFilter(activity) {
+    console.log(activity);
+    if (activity === "Neighborhood") {
+      setNeighborhoodFilter(null);
+    } else {
+      setNeighborhoodFilter(activity);
+    }
+  }
+
+  function handleZipcodeFilter(activity) {
+    console.log(activity);
+    if (activity === "Zipcode") {
+      setZipcodeFilter(null);
+    } else {
+      setZipcodeFilter(activity);
+    }
+  }
+
   useEffect(() => {
       const load_num_centers = async () => {
           const num_centers = await get_centers_length(
-            boroughFilter);
+            boroughFilter,
+            neighborhoodFilter,
+            zipcodeFilter);
           setNumCenters(num_centers);
           setNumPages(Math.ceil(num_centers/25.0));
           setLoadingPage(false);
@@ -92,7 +160,9 @@ function CenterModel() {
       const load_centers = async () => { // prolly medical centers?
           if (!loadingPage) {
             const num_centers = await get_centers_length(
-              boroughFilter);
+              boroughFilter,
+              neighborhoodFilter,
+              zipcodeFilter);
               setNumCenters(num_centers);
               setNumPages(Math.ceil(num_centers/25.0));
               setLoadingPage(false);
@@ -101,6 +171,8 @@ function CenterModel() {
               sort,
               order,
               boroughFilter,
+              neighborhoodFilter,
+              zipcodeFilter,
               perPage);
             // console.log(centers);
             setCenters(centers);
@@ -151,20 +223,18 @@ function CenterModel() {
             scroll
           />
 
-           <CustomDropDown
+          <CustomDropDown
             title="Neighborhood"
-            items={[""
-            ]}
-            func={handleBoroughFilter}
+            items={getUniqueNeighborhoods().map(item => item)}
+            func={handleNeighborhoodFilter}
             scroll
           />
 
-            <CustomDropDown
-            title="Zipcode"
-            items={[""
-            ]}
-            func={handleBoroughFilter}
-            scroll
+          <CustomDropDown
+          title="Zipcode"
+          items={getUniqueZipcodes().map(item => item)}
+          func={handleZipcodeFilter}
+          scroll
           />
 
           
@@ -189,13 +259,15 @@ function CenterModel() {
             <div className="cardBox">
               {centers !== null &&
                 centers.map((center, index) => {
-                  return (
-                    <CenterCard
-                      key={index}
-                      center={center}
-                      highlight={highlight}
+                  if (center.name != null) { // do not display if no name
+                    return (
+                      <CenterCard
+                        key={index}
+                        center={center}
+                        highlight={highlight}
                     />
-                  );
+                    );
+                  }
                 })}
             </div>
             {!isSearchResults && centers !== null && (
