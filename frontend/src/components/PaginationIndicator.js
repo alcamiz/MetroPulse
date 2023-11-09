@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/Pagination.css"
+import "../styles/Pagination.css";
 
 const max = (val1, val2) => {
   return val1 > val2 ? val1 : val2;
@@ -66,16 +66,10 @@ const PaginationIndicator = ({ numPages, currPage, setCurrPage }) => {
       )}
       {valuesAround.map((currVal) => {
         return (
-          <button
-            key={currVal}
-            className={
-              "pagination-button" +
-              (currVal === currPage ? " pagination-selected" : "")
-            }
-            onClick={() => selectButton(currVal)}
-          >
-            <span>{currVal}</span>
-          </button>
+  <button key={currVal} className={`pagination-button ${currVal === currPage ? "page-selected" : ""}`}
+    onClick={() => selectButton(currVal)}>
+  <span>{currVal}</span>
+</button>
         );
       })}
       {currPage !== numPages && (

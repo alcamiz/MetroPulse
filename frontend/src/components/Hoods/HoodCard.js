@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import HoodPlaceholder from "../../placeholders/neighborhood_placeholder.png"; 
+import {highlightWords} from "../../utils/highlightWords"
 
 const styles = {
   link: {
@@ -14,15 +15,14 @@ const styles = {
   }
 };
 
-function HoodCard( {hood} ) {
-  // center
+function HoodCard( { hood, highlight } ) {
 
   return (
     <Link to={`/hoods/${hood.id_t}`} style={styles.link}>
       <Card style={styles.card}>
         <Card.Img variant="top" src={hood.static_map_url} />
         <Card.Body>
-          <Card.Title>{hood.nta_name}</Card.Title>
+          <Card.Title dangerouslySetInnerHTML={{__html: highlightWords(hood.nta_name, highlight)}}/>
           <Card.Text>Borough: {hood.borough}</Card.Text>
           <Card.Text>Population: {hood.population}</Card.Text>
           <Card.Text>County Code: {hood.fips_county_code}</Card.Text>

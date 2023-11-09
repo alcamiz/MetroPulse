@@ -1,0 +1,55 @@
+.column-layout {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 100px auto;
+}
+
+.column-buttons {
+    display: flex;
+    justify-content: center; 
+    gap: 10px;
+}
+
+.column-buttons button {
+    background-color: white; 
+    color: black; 
+    border: 2px solid lightgrey; 
+    padding: 10px 20px; 
+    text-transform: uppercase; 
+    font-weight: bold; 
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer; 
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s; 
+}
+
+.column-buttons button:hover,
+.column-buttons button:focus {
+    background-color: lightgrey; 
+    color: white; 
+    border-color: white; 
+}
+
+.column-buttons button.active {
+    background-color: lightgrey;
+    color: white;
+    border-color: white;
+}
+
+.no-results {
+    text-align: center;
+    color: lightslategrey;
+    padding: 20px;
+    font-size: 1.5em; 
+    font-weight: 300;
+    letter-spacing: 1px; 
+    margin-top: 50px; 
+    transition: color 0.3s ease-in-out;
+}
+
+
+
+  
+  

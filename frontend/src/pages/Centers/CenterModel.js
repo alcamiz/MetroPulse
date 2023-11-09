@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
 import "../../instances/Instance.css";
 import "../../styles/Model.css";
+import "../../styles/SearchModel.css"
 import {fetch_centers, get_centers_length} from "../../utils/pagination.js";
-import { getCenters } from "../../utils/api";
+import { searchSpecificModel } from "../../utils/api";
 import Loading from "../../components/Loading";
 import PaginationIndicator from "../../components/PaginationIndicator";
 import CenterCard from "../../components/Centers/CenterCard.js";
 import CustomDropDown from "../../components/CustomDropDown";
+import SearchBar from "../../components/SearchBar"
+
 
 
 function CenterModel() {
@@ -17,6 +21,9 @@ function CenterModel() {
   const [centers, setCenters] = useState(null);
   const [numPages, setNumPages] = useState(null);
   const [numCenters, setNumCenters] = useState(1);
+  const [highlight, setHighlight] = useState("")
+  const [isSearchResults, setIsSearchResults] = useState(false);
+
 
   // PHASE 3
 
@@ -103,12 +110,24 @@ function CenterModel() {
       setLoading(true);
       load_centers(); // parks?
   }, [loadingPage, currPage, reload])
+
+
+  const handleSearch = async (search_value) => {
+    setLoading(true);
+    setIsSearchResults(true);
+    const search_data = await searchSpecificModel(search_value, "center");
+    let test_centers_searched = search_data["centers"]["data"];
+    setNumCenters(Object.keys(test_centers_searched).length)
+    setCenters(test_centers_searched);
+    setHighlight(search_value);
+    setLoading(false);
+  }
   
   return (
     <React.Fragment>
       <div className="mainContainer">
         <h1 className="titleText">Testing Centers</h1>
-
+        <SearchBar model="Test Centers" handleSearch={handleSearch} />
         {/* PHASE 3 - Sorting and Filtering */}
         <div className="dropdownContainer">
 
@@ -160,13 +179,13 @@ function CenterModel() {
         {!loading && (
           <React.Fragment>
             <h5>Results: {numCenters} </h5>
-            <div className="pagination-ind">
+            {!isSearchResults && centers !== null && (
               <PaginationIndicator
                 currPage={currPage}
                 setCurrPage={setCurrPage}
                 numPages={numPages}
               />
-            </div>
+            )}
             <div className="cardBox">
               {centers !== null &&
                 centers.map((center, index) => {
@@ -174,15 +193,18 @@ function CenterModel() {
                     <CenterCard
                       key={index}
                       center={center}
+                      highlight={highlight}
                     />
                   );
                 })}
             </div>
-            <PaginationIndicator
-              currPage={currPage}
-              setCurrPage={setCurrPage}
-              numPages={numPages}
-            />
+            {!isSearchResults && centers !== null && (
+              <PaginationIndicator
+                currPage={currPage}
+                setCurrPage={setCurrPage}
+                numPages={numPages}
+              />
+            )}
           </React.Fragment>
         )}
       </div>

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import MedicalPlaceholder from "../../placeholders/medical_placeholder.png";
+import {highlightWords} from "../../utils/highlightWords"
 
 const styles = {
   link: {
@@ -14,14 +15,14 @@ const styles = {
   }
 };
 
-function MedicalCard({ medical }) {
+function MedicalCard({ medical, highlight }) {
 
   return (
     <Link to={`/medical/${medical.id_t}`} style={styles.link}>
     <Card style={styles.card}>
       <Card.Img variant="top" width="400" height="400" src={medical.static_map_url || "https://www.google.com/maps/d/thumbnail?mid=1rN8fFwktkFQlwWkL8mlSoximF6E"} />
       <Card.Body>
-        <Card.Title>{medical.name}</Card.Title>
+        <Card.Title dangerouslySetInnerHTML={{__html: highlightWords(medical.name, highlight)}}/>
         <Card.Text>Borough: {medical.borough}</Card.Text>
         <Card.Text>Council District: {medical.council_district}</Card.Text>
         <Card.Text>Zipcode: {medical.zip_code}</Card.Text>

@@ -11,6 +11,9 @@ import HoodModel from './pages/Hoods/HoodModel';
 import MedicalModel from './pages/Medicals/MedicalModel';
 import About from './about/AboutPage';
 import Navbar from "./components/Navbar"
+import SearchPage from "./pages/SearchPage.js";
+
+
 
 function App() {
 
@@ -28,6 +31,7 @@ function App() {
             <Route path="/test/:test_id" element={<CenterInstance />}/>
             <Route path="/medical/:medical_id" element={<MedicalInstance />}/>
             <Route path="/hoods/:nta_id" element={<HoodInstance />}/>
+            <Route path="/search/:search_term" element={<SearchPage />} />
           </Routes>
         </div>
       </Router>

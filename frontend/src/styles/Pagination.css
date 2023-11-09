@@ -14,8 +14,8 @@
     border: 0.1px solid lightgrey;
 }
 
-.pagination-selected {
-    background: #083d77;
+.page-selected {
+    background: lightslategray;
     color: white;
     border: 0.1px solid lightgrey;
 }

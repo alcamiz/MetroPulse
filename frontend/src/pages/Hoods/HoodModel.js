@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import {fetch_neighborhoods, get_neighborhoods_length} from "../../utils/pagination.js";
-import { getHoods } from "../../utils/api";
+import { searchSpecificModel } from "../../utils/api";
+import "../../styles/SearchModel.css"
 import Loading from "../../components/Loading";
 import PaginationIndicator from "../../components/PaginationIndicator";
 import HoodCard from "../../components/Hoods/HoodCard.js";
 import CustomDropDown from "../../components/CustomDropDown";
+import SearchBar from "../../components/SearchBar"
 
 function HoodModel() {
   const [currPage, setCurrPage] = useState(1);
@@ -13,6 +15,8 @@ function HoodModel() {
   const [hoods, setHoods] = useState(null);
   const [numPages, setNumPages] = useState(null)
   const [numHoods, setNumHoods] = useState(1);
+  const [highlight, setHighlight] = useState("")
+  const [isSearchResults, setIsSearchResults] = useState(false);
 
   // PHASE 3
 
@@ -93,12 +97,23 @@ function HoodModel() {
       setLoading(true);
       load_hoods(); // parks?
   }, [loadingPage, currPage, reload])
+
+  const handleSearch = async (search_value) => {
+    setLoading(true);
+    setIsSearchResults(true);
+    const search_data = await searchSpecificModel(search_value, "neighborhood");
+    let searched_neighborhoods = search_data["neighborhoods"]["data"]
+    setHoods(searched_neighborhoods);
+    setNumHoods(Object.keys(searched_neighborhoods).length)
+    setHighlight(search_value);
+    setLoading(false);
+  }
   
   return (
     <React.Fragment>
       <div className="mainContainer">
         <h1 className="titleText">Neighborhoods</h1>
-
+        <SearchBar model="Neighborhoods" handleSearch={handleSearch} />
          {/* PHASE 3 - Sorting and Filtering */}
 
          {/* Sort: id, name, borough, Population  */}
@@ -144,11 +159,13 @@ function HoodModel() {
         {!loading && (
           <React.Fragment>
             <div className="pagination-ind">
+            {!isSearchResults && hoods !== null && (
               <PaginationIndicator
                 currPage={currPage}
                 setCurrPage={setCurrPage}
                 numPages={numPages}
               />
+            )}
             </div>
             <div className="cardBox">
               {hoods !== null &&
@@ -157,15 +174,18 @@ function HoodModel() {
                     <HoodCard
                       key={index}
                       hood={hood}
+                      highlight={highlight}
                     />
                   );
                 })}
             </div>
-            <PaginationIndicator
-              currPage={currPage}
-              setCurrPage={setCurrPage}
-              numPages={numPages}
-            />
+            {!isSearchResults && hoods !== null && (
+              <PaginationIndicator
+                currPage={currPage}
+                setCurrPage={setCurrPage}
+                numPages={numPages}
+              />
+            )}
           </React.Fragment>
         )}
       </div>

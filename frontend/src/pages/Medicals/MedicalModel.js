@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "../../styles/Model.css";
+import "../../styles/SearchModel.css"
 import {get_hospitals_length, fetch_hospitals} from "../../utils/pagination.js";
-import { getCenters } from "../../utils/api";
+import { searchSpecificModel } from "../../utils/api";
 import Loading from "../../components/Loading";
 import PaginationIndicator from "../../components/PaginationIndicator";
 import MedicalCard from "../../components/Medicals/MedicalCard.js";
 import CustomDropDown from "../../components/CustomDropDown";
+import SearchBar from "../../components/SearchBar"
 
 function MedicalModel() {
   const [currPage, setCurrPage] = useState(1);
@@ -14,6 +16,8 @@ function MedicalModel() {
   const [medicals, setMedicals] = useState(null);
   const [numPages, setNumPages] = useState(null);
   const [numMedicals, setNumMedicals] = useState(1);
+  const [highlight, setHighlight] = useState("")
+  const [isSearchResults, setIsSearchResults] = useState(false);
 
   // PHASE 3
 
@@ -96,11 +100,22 @@ function MedicalModel() {
     load_medicals();
   }, [loadingPage, currPage, reload]);
 
+  const handleSearch = async (search_value) => {
+    setLoading(true);
+    setIsSearchResults(true);
+    const search_data = await searchSpecificModel(search_value, "hospital");
+    let searched_hospitals = search_data["hospitals"]["data"]
+    setNumMedicals(Object.keys(searched_hospitals).length)
+    setMedicals(searched_hospitals);
+    setHighlight(search_value);
+    setLoading(false);
+  }
+
   return (
     <React.Fragment>
       <div className="mainContainer">
         <h1 className="titleText">Medical Facilities</h1> 
-
+        <SearchBar model="Hospitals" handleSearch={handleSearch} />
         {/* PHASE 3 - Sorting and Filtering */}
         <div className="dropdownContainer">
           {/* Sort:   */}
@@ -150,13 +165,13 @@ function MedicalModel() {
         {loading && <Loading />}
         {!loading && (
           <React.Fragment>
-            <div className="pagination-ind">
+            {!isSearchResults && medicals !== null && (
               <PaginationIndicator
                 currPage={currPage}
                 setCurrPage={setCurrPage}
                 numPages={numPages}
               />
-            </div>
+            )}
             <div className="cardBox">
               {medicals !== null &&
                 medicals.map((medical, index) => {
@@ -164,15 +179,18 @@ function MedicalModel() {
                     <MedicalCard
                       key={index}
                       medical={medical}
+                      highlight={highlight}
                     />
                   );
                 })}
             </div>
-            <PaginationIndicator
-              currPage={currPage}
-              setCurrPage={setCurrPage}
-              numPages={numPages}
-            />
+            {!isSearchResults && medicals !== null && (
+              <PaginationIndicator
+                currPage={currPage}
+                setCurrPage={setCurrPage}
+                numPages={numPages}
+              />
+            )}
           </React.Fragment>
         )}
       </div>
