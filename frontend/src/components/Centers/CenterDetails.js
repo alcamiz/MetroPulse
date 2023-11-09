@@ -19,7 +19,7 @@ function CenterInfo({ center }) {
             <tbody>
               <tr>
                 <td>Phone Number</td>
-                <td>{center.phone}</td>
+                <td>{center.phone || "No phone number provided"}</td>
               </tr>
               <tr>
                 <td>Address</td>
@@ -39,7 +39,7 @@ function CenterInfo({ center }) {
               </tr>
               <tr>
                 <td>Instructions</td>
-                <td>{center.howto}</td>
+                <td>{center.howto|| "Not provided"}</td>
               </tr>
             </tbody>
           </Table>
