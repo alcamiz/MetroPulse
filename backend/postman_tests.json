@@ -69,7 +69,20 @@
 								},
 								{
 									"key": "per_page",
-									"value": "2"
+									"value": "2",
+									"description": "Choose the number of results per page"
+								},
+								{
+									"key": "sort_by",
+									"value": "id",
+									"description": "Feature to sort by. Choose from [id, name, zip, borough]",
+									"disabled": true
+								},
+								{
+									"key": "sort_order",
+									"value": "asc",
+									"description": "Sort order [asc, desc]. Defaults to ascending.",
+									"disabled": true
 								}
 							]
 						},
@@ -186,7 +199,20 @@
 								},
 								{
 									"key": "per_page",
-									"value": "2"
+									"value": "2",
+									"description": "Choose the number of results per page"
+								},
+								{
+									"key": "sort_by",
+									"value": "id",
+									"description": "Feature to sort by. Choose from [id, name, zip, borough]",
+									"disabled": true
+								},
+								{
+									"key": "sort_order",
+									"value": "asc",
+									"description": "Sort order [asc, desc]. Defaults to ascending.",
+									"disabled": true
 								}
 							]
 						},
@@ -281,7 +307,7 @@
 								{
 									"key": "borough",
 									"value": "Manhattan",
-									"description": "Filter list by   borough",
+									"description": "Filter list by  borough",
 									"disabled": true
 								},
 								{
@@ -297,7 +323,20 @@
 								},
 								{
 									"key": "per_page",
-									"value": "2"
+									"value": "2",
+									"description": "Choose the number of results per page"
+								},
+								{
+									"key": "sort_by",
+									"value": "id",
+									"description": "Feature to sort by. Choose from [id, name, borough, population]",
+									"disabled": true
+								},
+								{
+									"key": "sort_order",
+									"value": "asc",
+									"description": "Sort order [asc, desc]. Defaults to ascending. app",
+									"disabled": true
 								}
 							]
 						},
@@ -352,6 +391,55 @@
 				}
 			],
 			"description": "These GET requests interact with the neighborhoods data on our database. You are able to request information about a neighborhood through its internal ID, or request a list filtered by a number of different attributes."
+		},
+		{
+			"name": "Search",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Correctness Test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    pm.response.to.be.ok;",
+							"    pm.response.to.be.json;",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://backend.metropulse.link/search?string=cvs&model=all",
+					"protocol": "https",
+					"host": [
+						"backend",
+						"metropulse",
+						"link"
+					],
+					"path": [
+						"search"
+					],
+					"query": [
+						{
+							"key": "string",
+							"value": "cvs",
+							"description": "String value to search for; multi-value queries should be separate by a space, %20, or +."
+						},
+						{
+							"key": "model",
+							"value": "all",
+							"description": "Model to search through, from [all, center, hospital, neighborhood].  Default to searching through all models."
+						}
+					]
+				},
+				"description": "API endpoint for requesting search results from a list or provided search terms, sorted by \"rank\"."
+			},
+			"response": []
 		}
 	]
 }
