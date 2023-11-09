@@ -11,7 +11,7 @@ exports[`Test Indicator 1`] = `
     &lt;
   </button>
   <button
-    className="pagination-button pagination-selected"
+    className="pagination-button page-selected"
     onClick={[Function]}
   >
     <span />
@@ -39,6 +39,16 @@ exports[`Test whether the Navbar works 1`] = `
       }
     }
   >
+    <img
+      alt="MetroPulse"
+      src="test-file-stub"
+      style={
+        Object {
+          "height": "40px",
+          "width": "80px",
+        }
+      }
+    />
     MetroPulse
   </a>
   <button
@@ -67,7 +77,7 @@ exports[`Test whether the Navbar works 1`] = `
       }
     >
       <div
-        className="mr-auto navbar-nav"
+        className="navbar-nav"
         onKeyDown={[Function]}
       >
         <a
@@ -118,6 +128,33 @@ exports[`Test whether the Navbar works 1`] = `
       </div>
     </div>
   </div>
+  <div
+    className="nav-search nav-search-input"
+  >
+    <input
+      aria-label="Search"
+      onChange={[Function]}
+      placeholder="Search"
+      style={
+        Object {
+          "display": "inline",
+        }
+      }
+      type="text"
+      value=""
+    />
+    <a
+      href="/"
+      onClick={[Function]}
+    >
+      <button
+        className="nav-search-confirm"
+        onClick={[Function]}
+      >
+        Search
+      </button>
+    </a>
+  </div>
 </nav>
 `;
 
@@ -148,15 +185,20 @@ exports[`test center card 1`] = `
     >
       <div
         className="card-title h5"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "",
+          }
+        }
       />
       <p
         className="card-text"
-      >
-        <strong>
-          Borough:
-        </strong>
-         
-      </p>
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "Borough: undefined",
+          }
+        }
+      />
       <p
         className="card-text"
       >
@@ -362,12 +404,20 @@ exports[`test hood card 1`] = `
     >
       <div
         className="card-title h5"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "",
+          }
+        }
       />
       <p
         className="card-text"
-      >
-        Borough: 
-      </p>
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "Borough: undefined",
+          }
+        }
+      />
       <p
         className="card-text"
       >
@@ -617,12 +667,20 @@ exports[`test medical card 1`] = `
     >
       <div
         className="card-title h5"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "",
+          }
+        }
       />
       <p
         className="card-text"
-      >
-        Borough: 
-      </p>
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "Borough: undefined",
+          }
+        }
+      />
       <p
         className="card-text"
       >
