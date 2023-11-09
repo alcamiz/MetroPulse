@@ -200,9 +200,9 @@ def get_hospitals():
 
     elif sort_by == "name":
         if sort_order == "asc":
-            query = query.order_by(asc(Hospital.nta_name))
+            query = query.order_by(asc(Hospital.name))
         elif sort_order == "desc":
-            query = query.order_by(desc(Hospital.nta_name))
+            query = query.order_by(desc(Hospital.name))
 
     elif sort_by == "zip":
         if sort_order == "asc":
@@ -428,7 +428,7 @@ def search_centers(search_terms, page, per_page):
 
     # PostgreSQL specific features; do not switch to MySQL
     post_vector = func.to_tsvector(TestCenter.name)
-    post_query = func.to_tsquery((''.join([f'{term} | ' for term in search_terms]))[:-2])
+    post_query = func.to_tsquery((''.join([f'{term}:* | ' for term in search_terms]))[:-2])
     query = TestCenter.query.filter(post_vector.bool_op("@@")(post_query))
     query = query.order_by(func.ts_rank(post_vector, post_query).desc())
 
@@ -444,7 +444,7 @@ def search_hospitals(search_terms, page, per_page):
 
     # PostgreSQL specific features; do not switch to MySQL
     post_vector = func.to_tsvector(Hospital.name)
-    post_query = func.to_tsquery((''.join([f'{term} | ' for term in search_terms]))[:-2])
+    post_query = func.to_tsquery((''.join([f'{term}:* | ' for term in search_terms]))[:-2])
     query = Hospital.query.filter(post_vector.bool_op("@@")(post_query))
     query = query.order_by(func.ts_rank(post_vector, post_query).desc())
 
@@ -460,7 +460,7 @@ def search_hoods(search_terms, page, per_page):
 
     # PostgreSQL specific features; do not switch to MySQL
     post_vector = func.to_tsvector(Neighborhood.nta_name)
-    post_query = func.to_tsquery((''.join([f'{term} | ' for term in search_terms]))[:-2])
+    post_query = func.to_tsquery((''.join([f'{term}:* | ' for term in search_terms]))[:-2])
     query = Neighborhood.query.filter(post_vector.bool_op("@@")(post_query))
     query = query.order_by(func.ts_rank(post_vector, post_query).desc())
 
