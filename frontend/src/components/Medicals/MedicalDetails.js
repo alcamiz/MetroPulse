@@ -1,6 +1,6 @@
 import React from "react";
 import "../../instances/Instance.css";
-import MedicalPlaceholder from "../../placeholders/medical_placeholder.png"; 
+import MedicalPlaceholder from "../../placeholders/medical_placeholder.png";
 
 import background from '../../shared/img/test_back.jpeg';
 import '../../instances/Instance.css';
@@ -45,11 +45,18 @@ function MedicalInfo({ medical }) {
         <Accordion.Header>Nearby Testing Centers</Accordion.Header>
         <Accordion.Body>
           <ul>
-            {(medical.nearby_centers == null) ? 0 : medical.nearby_centers.map((center) => (
-              <li key={center.id_t}>
-                <Link to={`/center/${center.id_t}`}>{center.name}</Link>
-              </li>
-            ))}
+            {medical.nearby_centers == null
+              ? 0
+              : medical.nearby_centers
+                .filter((center, index, self) => {
+                  // Filter to keep only the first occurrence of each center.name
+                  return self.findIndex((c) => c.name === center.name) === index;
+                })
+                .map((center) => (
+                  <li key={center.id_t}>
+                    <Link to={`/test/${center.id_t}`}>{center.name}</Link>
+                  </li>
+                ))}
           </ul>
         </Accordion.Body>
       </Accordion.Item>
@@ -57,23 +64,23 @@ function MedicalInfo({ medical }) {
   );
 }
 
-function MedicalDetails({medical}) {
+function MedicalDetails({ medical }) {
   return (
     <div className="Instance">
       <div class="container">
         <div class="row">
           <div class="col-sm">
             <header className="Instance-header">
-              <img src={medical.static_map_url || "https://www.google.com/maps/d/thumbnail?mid=1rN8fFwktkFQlwWkL8mlSoximF6E"} className="Instance-logo" alt="logo" /> 
+              <img src={medical.static_map_url || "https://www.google.com/maps/d/thumbnail?mid=1rN8fFwktkFQlwWkL8mlSoximF6E"} className="Instance-logo" alt="logo" />
               <h3 className="Instance-title">
-                {medical.facility_name}
+                {medical.name}
               </h3>
-              <MedicalInfo medical={medical}/>
+              <MedicalInfo medical={medical} />
             </header>
           </div>
           <div class="col-sm">
             <div className="Instance-images">
-              <img style={ {display: `block`}} width="400" height="400" src={medical.image_url || "https://s3-prod.modernhealthcare.com/s3fs-public/styles/width_792/public/rural-health2_i.png"} className="Instance-logo" alt="logo" />
+              <img style={{ display: `block` }} width="400" height="400" src={medical.image_url || "https://s3-prod.modernhealthcare.com/s3fs-public/styles/width_792/public/rural-health2_i.png"} className="Instance-logo" alt="logo" />
             </div>
           </div>
         </div>

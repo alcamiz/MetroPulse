@@ -1,0 +1,82 @@
+.nav-search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+
+.nav-search input[type="text"] {
+    width: 350px;
+    height: 40px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 5px 15px;
+    font-size: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    margin-right: 10px;
+}
+
+.nav-search input[type="text"]:focus {
+    outline: none;
+    border-color: #333;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.nav-search-confirm {
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-search-confirm:hover,
+.nav-search-confirm:focus {
+    background-color: #555;
+    outline: none;
+}
+
+.search-warning {
+    color: black;
+    margin-top: 10px;
+    font-size: 0.85em;
+    text-align: center;
+}
+
+
+.link-button {
+    background-color: white; 
+    color: black; 
+    border: 2px solid lightgrey; 
+    padding: 10px 20px; 
+    text-transform: uppercase; 
+    font-weight: bold; 
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer; 
+    text-decoration: none; 
+    display: inline-block;
+    text-align: center; 
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s; 
+}
+
+.link-button:hover,
+.link-button:focus {
+    background-color: lightgrey; 
+    color: white; 
+    border-color: white; 
+}
+
+.link-button.active {
+    background-color: lightgrey;
+    color: white;
+    border-color: white;
+}
+

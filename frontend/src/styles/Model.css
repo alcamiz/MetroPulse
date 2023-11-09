@@ -19,5 +19,34 @@
     row-gap: 30px;
     column-gap: 30px;
     padding: auto;
+    padding-top: 30px;
     margin-bottom: 30px;
+    justify-content: center;
+  }
+
+  .dropdownContainer {
+    flex-direction: column;
+    margin-bottom: 20px;
+    min-height: 20px; /* Adjust as needed */
+  }
+  
+  .dropdown-button {
+    display: inline;
+    margin: 0 50px;
+  }
+
+  #dropdown-basic-button {
+    background-color: #212529;
+    border: 0.1px solid lightgrey;
+  }
+
+  
+  .filter-submit-button {
+    background: #626262;
+    border: 0.1px solid lightgrey;
+    padding: 7px 15px;
+    margin: 15px 0 20px 0;
+    font-family: "Helvetica";
+    border-radius: 10px;
+    color: white;
   }
