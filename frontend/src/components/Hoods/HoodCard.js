@@ -23,7 +23,7 @@ function HoodCard( { hood, highlight } ) {
         <Card.Img variant="top" src={hood.static_map_url} />
         <Card.Body>
           <Card.Title dangerouslySetInnerHTML={{__html: highlightWords(hood.nta_name, highlight)}}/>
-          <Card.Text>Borough: {hood.borough}</Card.Text>
+          <Card.Text dangerouslySetInnerHTML={{ __html: highlightWords(`Borough: ${hood.borough}`, highlight) }}/>
           <Card.Text>Population: {hood.population}</Card.Text>
           <Card.Text>County Code: {hood.fips_county_code}</Card.Text>
           <Card.Text>NTA Code: {hood.nta_code}</Card.Text>

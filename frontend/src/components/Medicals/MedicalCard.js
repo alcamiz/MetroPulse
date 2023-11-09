@@ -23,7 +23,7 @@ function MedicalCard({ medical, highlight }) {
       <Card.Img variant="top" width="400" height="400" src={medical.static_map_url || "https://www.google.com/maps/d/thumbnail?mid=1rN8fFwktkFQlwWkL8mlSoximF6E"} />
       <Card.Body>
         <Card.Title dangerouslySetInnerHTML={{__html: highlightWords(medical.name, highlight)}}/>
-        <Card.Text>Borough: {medical.borough}</Card.Text>
+        <Card.Text dangerouslySetInnerHTML={{ __html: highlightWords(`Borough: ${medical.borough}`, highlight) }}/>
         <Card.Text>Council District: {medical.council_district}</Card.Text>
         <Card.Text>Zipcode: {medical.zip_code}</Card.Text>
         <Card.Text>Nearby Testing Centers: {(medical.nearby_centers == null) ? 0 : medical.nearby_centers.filter((center, index, self) => {

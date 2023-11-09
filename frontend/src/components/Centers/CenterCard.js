@@ -24,7 +24,7 @@ function CenterCard({ center, highlight }) {
         <Card.Img variant="top" src={center.static_map_url} />
         <Card.Body>
           <Card.Title dangerouslySetInnerHTML={{__html: highlightWords(center.name, highlight)}}/>
-          <Card.Text><strong>Borough:</strong> {center.borough}</Card.Text>
+          <Card.Text dangerouslySetInnerHTML={{ __html: highlightWords(`Borough: ${center.borough}`, highlight) }}/>
           <Card.Text>Council Number: {center.council}</Card.Text>
           <Card.Text>Zipcode: {center.zip_code}</Card.Text>
           <Card.Text>Nearby Medical Facilities: {(center.nearby_hospitals == null) ? 0 : center.nearby_hospitals.filter((hospital, index, self) => {
