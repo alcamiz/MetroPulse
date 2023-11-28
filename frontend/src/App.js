@@ -28,6 +28,8 @@ function App() {
             <Route path="/test/:test_id" element={<CenterInstance />}/>
             <Route path="/medical/:medical_id" element={<MedicalInstance />}/>
             <Route path="/hoods/:nta_id" element={<HoodInstance />}/>
+            <Route path="/vis" element={<Vis/>} />
+            <Route path="/prov" element={<ProviderVis />} />
           </Routes>
         </div>
       </Router>
