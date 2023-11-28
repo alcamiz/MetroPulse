@@ -26,12 +26,12 @@ function About() {
       }));
       const combinedData = allData.flat();
 
-      for(let user of members) {
+      for (let user of members) {
         const memberCommits = combinedData.filter((commit) => commit.author_name === user);
         commits[user] = memberCommits.length;
         commitTotal += commits[user]
       }
-  
+
       setCommitCount(commits)
       totalCommitCount(commitTotal)
     };
@@ -75,11 +75,13 @@ function About() {
             from an expansive database, aimed at easing your access to them. We strive to give you the easiest
             methods of accessing these centers and try to give you the most relevant data to do so.
           </p>
+          <div />
+          <div class="textblock"></div>
           <h1>Where Can You Get Our Data?</h1>
           <div class="linkColor">
-          <h1><Link to="https://documenter.getpostman.com/view/29785582/2s9YJZ3jGy" style={{ color: 'black' }}>Our API</Link>
-      </h1>
-        </div>
+            <h1><Link to="https://documenter.getpostman.com/view/29785582/2s9YJZ3jGy" style={{ color: 'black' }}>Our API</Link>
+            </h1>
+          </div>
         </div>
       </div>
       <div className="OurTeam">
@@ -155,116 +157,116 @@ function About() {
         <div class="footblock" ><h1>Resources</h1></div>
         <div class="teamGrid">
           <div className="resCard">
-            <div className= "cardCap">
-              <a href="https://legacy.reactjs.org/docs/getting-started.html" target ="_blank" rel="noopener noreferrer">
-                <Card.Img 
-                  variant="top" 
+            <div className="cardCap">
+              <a href="https://legacy.reactjs.org/docs/getting-started.html" target="_blank" rel="noopener noreferrer">
+                <Card.Img
+                  variant="top"
                   src="https://www.svgrepo.com/show/452092/react.svg"
-                  height="150px" 
-                  width="150px" 
-                  objectFit="cover" 
+                  height="150px"
+                  width="150px"
+                  objectFit="cover"
                 />
                 <Card.Title>React</Card.Title>
               </a>
             </div>
           </div>
           <div className="resCard">
-            <div className= "cardCap">
-              <a href="https://docs.python.org/3/" target ="_blank" rel="noopener noreferrer">
-                <Card.Img 
-                  variant="top" 
+            <div className="cardCap">
+              <a href="https://docs.python.org/3/" target="_blank" rel="noopener noreferrer">
+                <Card.Img
+                  variant="top"
                   src="https://www.svgrepo.com/show/374016/python.svg"
-                  height="150px" 
-                  width="150px" 
-                  objectFit="cover" 
+                  height="150px"
+                  width="150px"
+                  objectFit="cover"
                 />
                 <Card.Title>Python</Card.Title>
               </a>
             </div>
           </div>
           <div className="resCard">
-            <div className= "cardCap">
-              <a href="https://www.postman.com/api-documentation-tool/" target ="_blank" rel="noopener noreferrer">
-                <Card.Img 
-                  variant="top" 
+            <div className="cardCap">
+              <a href="https://www.postman.com/api-documentation-tool/" target="_blank" rel="noopener noreferrer">
+                <Card.Img
+                  variant="top"
                   src="https://www.svgrepo.com/show/354202/postman-icon.svg"
-                  height="150px" 
-                  width="150px" 
-                  objectFit="cover" 
+                  height="150px"
+                  width="150px"
+                  objectFit="cover"
                 />
                 <Card.Title>Postman</Card.Title>
               </a>
             </div>
           </div>
           <div className="resCard">
-            <div className= "cardCap">
-              <a href="https://getbootstrap.com/" target ="_blank" rel="noopener noreferrer">
-                <Card.Img 
-                  variant="top" 
+            <div className="cardCap">
+              <a href="https://getbootstrap.com/" target="_blank" rel="noopener noreferrer">
+                <Card.Img
+                  variant="top"
                   src="https://www.svgrepo.com/show/353498/bootstrap.svg"
-                  height="150px" 
-                  width="150px" 
-                  objectFit="cover" 
+                  height="150px"
+                  width="150px"
+                  objectFit="cover"
                 />
                 <Card.Title>BootStrap</Card.Title>
               </a>
             </div>
           </div>
           <div className="resCard">
-            <div className= "cardCap">
-              <a href="https://code.visualstudio.com/" target ="_blank" rel="noopener noreferrer">
-                <Card.Img 
-                  variant="top" 
+            <div className="cardCap">
+              <a href="https://code.visualstudio.com/" target="_blank" rel="noopener noreferrer">
+                <Card.Img
+                  variant="top"
                   src="https://www.svgrepo.com/show/374171/vscode.svg"
-                  height="150px" 
-                  width="150px" 
-                  objectFit="cover" 
+                  height="150px"
+                  width="150px"
+                  objectFit="cover"
                 />
                 <Card.Title>VS Code</Card.Title>
               </a>
             </div>
           </div>
           <div className="resCard">
-            <div className= "cardCap">
-              <a href="https://edstem.org/us/help/using-ed-discussion" target ="_blank" rel="noopener noreferrer">
-                <Card.Img 
-                  variant="top" 
-                  src="https://lth.engineering.asu.edu/wp-content/uploads/sites/18/2021/06/Ed.png" 
-                  height="150px" 
-                  width="150px" 
-                  objectFit="cover" 
+            <div className="cardCap">
+              <a href="https://edstem.org/us/help/using-ed-discussion" target="_blank" rel="noopener noreferrer">
+                <Card.Img
+                  variant="top"
+                  src="https://lth.engineering.asu.edu/wp-content/uploads/sites/18/2021/06/Ed.png"
+                  height="150px"
+                  width="150px"
+                  objectFit="cover"
                 />
                 <Card.Title>Ed</Card.Title>
               </a>
             </div>
           </div>
           <div className="resCard">
-            <div className= "cardCap">
+            <div className="cardCap">
               <a href="https://about.gitlab.com/free-trial/devsecops/?utm_medium=c
               pc&utm_source=google&utm_campaign=brand_rlsa__global_exact&utm_content=free-t
               rial&utm_term=git%20lab&_bt=656315922370&_bk=git%20lab&_bm=e&_bn=g&_bg=1484814412
               76&gclid=CjwKCAjwysipBhBXEiwApJOcu5oFETcfOR1EIS6iNzm5SgxD1TLVQI5esvpZNpEAzIm9o_JW5
-              h9IPRoC6k4QAvD_BwE" target ="_blank" rel="noopener noreferrer">
-                <Card.Img 
-                  variant="top" 
-                  src="https://seeklogo.com/images/G/gitlab-logo-757620E430-seeklogo.com.png" 
-                  height="150px" 
-                  width="150px" 
-                  objectFit="cover" 
+              h9IPRoC6k4QAvD_BwE" target="_blank" rel="noopener noreferrer">
+                <Card.Img
+                  variant="top"
+                  src="https://seeklogo.com/images/G/gitlab-logo-757620E430-seeklogo.com.png"
+                  height="150px"
+                  width="150px"
+                  objectFit="cover"
                 />
                 <Card.Title>GitLab</Card.Title>
               </a>
             </div>
           </div>
           <div className="resCard">
-            <div className= "cardCap">
-              <a href="https://aws.amazon.com/console/" target ="_blank" rel="noopener noreferrer">
-                <Card.Img 
-                  variant="top" 
-                  src="https://seeklogo.com/images/A/amazon-icon-logo-8F577E5C31-seeklogo.com.png" 
-                  height="150px" 
-                  width="150px" 
-                  objectFit="cover" 
+            <div className="cardCap">
+              <a href="https://aws.amazon.com/console/" target="_blank" rel="noopener noreferrer">
+                <Card.Img
+                  variant="top"
+                  src="https://seeklogo.com/images/A/amazon-icon-logo-8F577E5C31-seeklogo.com.png"
+                  height="150px"
+                  width="150px"
+                  objectFit="cover"
                 />
                 <Card.Title>AWS</Card.Title>
               </a>
@@ -273,16 +275,16 @@ function About() {
         </div>
       </div>
       <div className="footblock" style={{ padding: '10px', backgroundColor: '#f5f5f5', borderRadius: '5px', marginBottom: '10px', boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.1)' }}>
-      <h1 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '8px' }}>Git Overall</h1>
+        <h1 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '8px' }}>Git Overall</h1>
       </div>
       <div className="footblock" style={{ padding: '10px', backgroundColor: '#f5f5f5', borderRadius: '5px', marginBottom: '10px', boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.1)' }}>
-      <h3 style={{ fontSize: '18px', margin: '0' }}><i className="icon-commit"></i> Total Commits: {totalCommits}</h3>
+        <h3 style={{ fontSize: '18px', margin: '0' }}><i className="icon-commit"></i> Total Commits: {totalCommits}</h3>
       </div>
       <div className="footblock" style={{ padding: '10px', backgroundColor: '#f5f5f5', borderRadius: '5px', marginBottom: '10px', boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.1)' }}>
-      <h3 style={{ fontSize: '18px', margin: '0' }}><i className="icon-issue"></i> Total Issues: {totalIssue}</h3>
+        <h3 style={{ fontSize: '18px', margin: '0' }}><i className="icon-issue"></i> Total Issues: {totalIssue}</h3>
       </div>
       <div className="footblock" style={{ padding: '10px', backgroundColor: '#f5f5f5', borderRadius: '5px', marginBottom: '10px', boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.1)' }}>
-      <h3 style={{ fontSize: '18px', margin: '0' }}><i className="icon-tests"></i> Total Unit Tests: 31</h3>
+        <h3 style={{ fontSize: '18px', margin: '0' }}><i className="icon-tests"></i> Total Unit Tests: 31</h3>
       </div>
       <div class="textblock">
       </div>

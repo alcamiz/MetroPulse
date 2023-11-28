@@ -3,17 +3,19 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 3px;
 }
 
 .pagination-button {
-    width: 40px;
-    background: none;
-    border: none;
-    border-radius: 10px;
+    width: 35px;
+    background:#212529;
+    border-radius:5px;
+    color:rgb(255, 255, 255);
+    border: 0.1px solid lightgrey;
 }
 
-.pagination-selected {
-    background: #0000FF;
+.page-selected {
+    background: lightslategray;
     color: white;
+    border: 0.1px solid lightgrey;
 }

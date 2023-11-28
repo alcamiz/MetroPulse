@@ -99,20 +99,26 @@ test('test center details', () => {
 
 test("Test whether the Navbar works", () => {
     const tree = renderer.create(
-        <Navbar />
+        <Router>
+            <Navbar />
+        </Router>
     )
     expect(tree).toMatchSnapshot()
 })
 
 test("Test the Navbar", async () => {
-    render(<Navbar />);
-    const navbar = screen.getByTestId("navbar")
-    expect(navbar).toHaveTextContent("About")
-    expect(navbar).toHaveTextContent("Home")
-    expect(navbar).toHaveTextContent("Neighborhoods")
-    expect(navbar).toHaveTextContent("Medical Facilities")
-    expect(navbar).toHaveTextContent("Test Centers")
-})
+    render(
+        <Router>
+            <Navbar />
+        </Router>
+    );
+    const navbar = screen.getByTestId("navbar");
+    expect(navbar).toHaveTextContent("About");
+    expect(navbar).toHaveTextContent("Home");
+    expect(navbar).toHaveTextContent("Neighborhoods");
+    expect(navbar).toHaveTextContent("Medical Facilities");
+    expect(navbar).toHaveTextContent("Test Centers");
+});
 
 test("Test Loading", async () => {
     const tree = renderer.create(

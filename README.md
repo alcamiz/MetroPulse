@@ -2,11 +2,9 @@
 
 - Project Site: https://www.metropulse.link
 - API Docs Link: https://documenter.getpostman.com/view/29785582/2s9YJZ3jGy
-- API Link: https://backend.metropulse.link (endpoints are centers/hospitals/neighborhoods)
+- API Link: https://backend.metropulse.link (endpoints are centers/hospitals/neighborhoods/search)
 
 **Team Members:**
-
-
 
 * Kyston Brown (kmb6273)
 * Thomas Moody (tjm4482)
@@ -21,8 +19,6 @@
 
 **Data Sources URLs (RESTful APIs)**
 
-
-
 * Testing Centers ([link](https://data.cityofnewyork.us/resource/8eux-rfe8.json))
 * Council Demographics in Each District ([link](https://data.cityofnewyork.us/City-Government/Council-district-breakdown/jqy3-ybjq))
 * Descriptions for all models ([link](https://en.wikipedia.org/w/api.php))
@@ -31,8 +27,6 @@
 * Google Places APIs ([link](https://maps.googleapis.com/maps/api/place/nearbysearch/json))
 
 **Three Models:**
-
-
 
 * Medical Facilities
 * Neighborhoods
@@ -45,8 +39,6 @@
 * Test Centers: 1000
 
 **Attributes per Model**
-
-
 
 * Neighborhoods 
     * Borough
@@ -73,22 +65,16 @@
 
 **Connections:**
 
-
-
 * Neighborhood: List of nearby testing centers and hospitals
 * Test Centers: List of hospitals within 10 mile radius and link to neighborhood.
 * Hospitals: List of test centers within 10-mile radius and link to neighborhood.
 
 **Rich Media**
 
-
-
 * Map locations (OpenStreetMaps)
 * Images (Google Images; testing and medical centers)
 
 **Types of Media per Model**
-
-
 
 * Neighborhoods
     * Map outline of the Neighborhood
@@ -102,23 +88,21 @@
 
 **Questions to Answer:**
 
-
-
 * How can black NYC residents suffering from hypertension control their blood pressure consistently?
 * Where can black NYC residents find urgent medical care due to high blood pressure?
 * What facilities geared at aiding their high blood pressure can be found in their district?
 
-
-
 ## Project Leaders
 Responsibilities: 
-Scheduled meeting times, partly delegated roles, thought of high-level architecture, made sure everyone was on track.
+Schedule meetings, (partly) delegate roles, think up high-level architecture, and keep everyone on track.
 | Phase | Project Leader
 | :---: | :-------: |        
 | 1     | Alex Cabrera   |
 | 2     | Thomas Moody |
+| 3     | Kamil Kalowski |
 
 ## Completion Time
+
 ### Phase 1
 | Name               | Estimated     | Actual        |
 | ------------------ | :-----------: | :-----------: |
@@ -135,10 +119,17 @@ Scheduled meeting times, partly delegated roles, thought of high-level architect
 | Thomas Moody      |  15           | 20                 |
 | Kyston Brown      |  15           | 20                 |
 
-## Git SHA
+### Phase 3
+| Name               | Estimated     | Actual        |
+| ------------------ | :-----------: | :-----------: |
+| Kamil Kalowski    |  20           | 25                 |
+| Alex Cabrera      |  20           | 25                 |
+| Thomas Moody      |  15           | 20                 |
+| Kyston Brown      |  15           | 20                 |
 
+## Git SHA
 | Phase               | SHA           |
 | ------------------- | :-----------: |
 | 1                   |  870d3e41     |
 | 2                   |  712c6123     |
-
+| 3                   |  4a020eca     |

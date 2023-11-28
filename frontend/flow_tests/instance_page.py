@@ -36,45 +36,45 @@ class Test(unittest.TestCase):
         try:
             WebDriverWait(self.driver, 20, 10).until(
                 EC.element_to_be_clickable(
-                    (By.XPATH, '//*[@id="root"]/div/div/div/div[2]/a[1]')
+                    (By.XPATH, '//*[@id="root"]/div/div/div/div[4]/a[1]')
                 )
             )
             element = self.driver.find_element(
-                By.XPATH, '//*[@id="root"]/div/div/div/div[2]/a[1]'
+                By.XPATH, '//*[@id="root"]/div/div/div/div[4]/a[1]'
             )
             element.click()
         except Exception as ex:
             print("Couldn't find link to Neighborhood Instance: " + str(ex))
 
-        self.assertEqual(self.driver.current_url, url + "hoods/34")
+        self.assertEqual(self.driver.current_url, url + "hoods/0")
 
     def test_center_instance(self):
         self.driver.get(url + "test")
         try:
             WebDriverWait(self.driver, 20, 10).until(
                 EC.element_to_be_clickable(
-                    (By.XPATH, '//*[@id="root"]/div/div/div/div[2]/a[1]')
+                    (By.XPATH, '//*[@id="root"]/div/div/div/div[4]/a[1]')
                 )
             )
             element = self.driver.find_element(
-                By.XPATH, '//*[@id="root"]/div/div/div/div[2]/a[1]'
+                By.XPATH, '//*[@id="root"]/div/div/div/div[4]/a[1]'
             )
             element.click()
         except Exception as ex:
             print("Couldn't find link to Center Instance: " + str(ex))
 
-        self.assertEqual(self.driver.current_url, url + "test/87")
+        self.assertEqual(self.driver.current_url, url + "test/0")
 
     def test_medical_instance(self):
         self.driver.get(url + "medical")
         try:
             WebDriverWait(self.driver, 20, 10).until(
                 EC.element_to_be_clickable(
-                    (By.XPATH, '//*[@id="root"]/div/div/div/div[2]/a[1]')
+                    (By.XPATH, '//*[@id="root"]/div/div/div/div[4]/a[1]')
                 )
             )
             element = self.driver.find_element(
-                By.XPATH, '//*[@id="root"]/div/div/div/div[2]/a[1]'
+                By.XPATH, '//*[@id="root"]/div/div/div/div[4]/a[1]'
             )
             element.click()
         except Exception as ex:
