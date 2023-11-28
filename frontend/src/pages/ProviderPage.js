@@ -1,41 +1,30 @@
 import React, { useState, useEffect } from "react";
-import BoroughPieChartMedical from "../components/Visualizations/BoroughPieChart_medical";
-import BoroughPieChartTest from "../components/Visualizations/BoroughPieChart_test";
-import CutoffBarChart from "../components/Visualizations/Prov_CutoffBarChart";
-// import "../styles/Visualizations.css";
+import StackedBarChart from "../components/Visualizations/Prov_StackedBarChart";
+import PopulationDensityCutoffBarChart from "../components/Visualizations/Prov_CutoffBarChart";
+import "../styles/Visualization.css";
 
 const ProviderVis = () => {
 
-  const [boroughMedicalData, setBoroughMedicalData] = useState([]);
-  const [boroughTestData, setBoroughTestData] = useState([]);
+  const [shelteredUnshelteredData, setShelteredUnshelteredData] = useState([]);
+  const [populationDensityData, setPopulationDensityData] = useState([]);
   const [neighborhoodData, setNeighborhoodData] = useState([]);
 
-
-
-  const [statesData, setStatesData] = useState([]);
   const [speciesData, setSpeciesData] = useState([]);
   const [parksData, setParksData] = useState([]);
 
   useEffect(() => {
-    fetch("https://api.park-dex.me/api/states")
+    fetch("https://api.lacountyhomelesshelper.me/cities")
       .then((response) =>
         response.json().then((jsonData) => {
           console.log(jsonData);
-          setStatesData(processStatesData(jsonData));
+          setShelteredUnshelteredData(processShelterData(jsonData));
+          setPopulationDensityData(processPopulationDensityData(jsonData))
         })
       )
       .catch((error) => {
-        console.error("Error fetching states data:", error);
+        console.error("Error fetching city data:", error);
       });
 
-    fetch("https://api.park-dex.me/api/animals")
-      .then((response) => response.json())
-      .then((jsonData) => {
-        setSpeciesData(processSpeciesData(jsonData));
-      })
-      .catch((error) => {
-        console.error("Error fetching animals data:", error);
-      });
 
     fetch("https://api.park-dex.me/api/parks")
       .then((response) => response.json())
@@ -47,30 +36,31 @@ const ProviderVis = () => {
       });
   }, []);
 
-  const processStatesData = (data) => {
-    return data.data.map((state) => ({
-      state: state.name,
-      biodiversity: state.animals.length,
-    }));
+  const processShelterData = (data) => {
+    return data
+      .filter(city => city.total_sheltered_pop > 200 && city.total_unsheltered_pop > 200)
+      .map(city => ({
+        name: city.csa_label,
+        sheltered_population: city.total_sheltered_pop,
+        unsheltered_population: city.total_unsheltered_pop
+      }));
   };
+  
 
-  const processSpeciesData = (data) => {
-    const speciesCount = {};
+  const processPopulationDensityData = (data) => {
+    // First, sort the cities by population density in descending order
+    const sortedByDensity = data.sort((a, b) => b.density_total - a.density_total);
 
-    data.data.forEach((animal) => {
-      const group = animal.species_group;
-      if (speciesCount[group]) {
-        speciesCount[group]++;
-      } else {
-        speciesCount[group] = 1;
-      }
-    });
+    // Then, take the top 10 cities with the highest population density
+    const topTenCities = sortedByDensity.slice(0, 6);
 
-    return Object.keys(speciesCount).map((group) => ({
-      name: group,
-      count: speciesCount[group],
+    // Finally, map the cities to the required format
+    return topTenCities.map(city => ({
+      name: city.csa_label,
+      population_density: city.density_total
     }));
-  };
+};
+
 
   const processParksData = (data) => {
     const processedData = data.data.map((park) => ({
@@ -83,20 +73,22 @@ const ProviderVis = () => {
       .slice(0, 30);
   };
 
+
   return (
     <div className="container">
-      <h1 className="title">Visualizations</h1>
-      <div className="charts-container">
-        <h1 className="chart-title">States with Most Biodiversity</h1>
-       {/* // <BiodiversityBarChart data={statesData} /> */}
-        <h1 className="chart-title">Number of Animals per Species Group</h1>
-        {/* <SpeciesPieChart data={speciesData} /> */}
+      <h1 className="title">Sheltered vs Unsheltered Homeless</h1>
+        <div className="charts-container">
+          <StackedBarChart data={shelteredUnshelteredData} />
+        </div>
+        <h1 className="chart-title">Homeless population density by city</h1>
+        <div className="charts-container">
+          <PopulationDensityCutoffBarChart data={populationDensityData} />
+        </div>
         <h1 className="chart-title">
           Top 25 Parks with the Largest Amount of Activities
         </h1>
         {/* <ParksBarChart data={parksData} /> */}
       </div>
-    </div>
   );
 };
 
