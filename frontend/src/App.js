@@ -12,6 +12,8 @@ import MedicalModel from './pages/Medicals/MedicalModel';
 import About from './about/AboutPage';
 import Navbar from "./components/Navbar"
 import SearchPage from "./pages/SearchPage.js";
+import Vis from './pages/VisualizationPage';
+import ProviderVis from './pages/ProviderPage';
 
 
 

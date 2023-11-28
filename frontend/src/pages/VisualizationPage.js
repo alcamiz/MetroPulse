@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import BoroughPieChartMedical from "../components/Visualizations/BoroughPieChart_medical";
 import BoroughPieChartTest from "../components/Visualizations/BoroughPieChart_test";
-import CutoffBarChart from "../components/Visualizations/CuttoffBarChart";
-import "../styles/Visualizations.css";
+import CutoffBarChart from "../components/Visualizations/CutoffBarChart";
+//import "../styles/Visualizations.css";
 
 const Vis = () => {
 
@@ -88,13 +88,13 @@ const Vis = () => {
       <h1 className="title">Visualizations</h1>
       <div className="charts-container">
         <h1 className="chart-title">States with Most Biodiversity</h1>
-        <BiodiversityBarChart data={statesData} />
+        {/* <BiodiversityBarChart data={statesData} /> */}
         <h1 className="chart-title">Number of Animals per Species Group</h1>
-        <SpeciesPieChart data={speciesData} />
+        {/* <SpeciesPieChart data={speciesData} /> */}
         <h1 className="chart-title">
           Top 25 Parks with the Largest Amount of Activities
         </h1>
-        <ParksBarChart data={parksData} />
+        {/* <ParksBarChart data={parksData} /> */}
       </div>
     </div>
   );
