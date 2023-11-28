@@ -422,15 +422,18 @@ def get_neighborhood_id(neighborhood_id):
     response.headers.add("Access-Control-Allow-Origin", "*")
     return response
 
-def search_centers(search_terms, page, per_page):
-    if len(search_terms) < 1:
+def search_centers(original_search, query_string, page, per_page):
+    if len(query_string) < 1:
         pass
 
     # PostgreSQL specific features; do not switch to MySQL
     post_vector = func.to_tsvector(func.coalesce(TestCenter.name, "") + func.coalesce(TestCenter.address, "") + func.coalesce(TestCenter.borough, "") + func.coalesce(TestCenter.nta_name, "") + func.coalesce(TestCenter.zip_code, ""))
-    post_query = func.to_tsquery((''.join([f'{term}:* | ' for term in search_terms]))[:-2])
+    post_query = func.to_tsquery(query_string)
     query = TestCenter.query.filter(post_vector.bool_op("@@")(post_query))
-    query = query.order_by(func.ts_rank(post_vector, post_query).desc())
+    query = query.order_by(func.ts_rank_cd(post_vector, post_query).desc())
+
+    query = query.order_by(TestCenter.address.ilike(f"%{original_search}%").desc())
+    query = query.order_by(TestCenter.name.ilike(f"%{original_search}%").desc())
 
     # for term in search_terms:
     #     query = query.filter(ilike_op(TestCenter.name, f'%{term}%'))
@@ -438,15 +441,18 @@ def search_centers(search_terms, page, per_page):
     query = query.paginate(page=page, per_page=per_page, error_out=False)
     return center_build(query), count
 
-def search_hospitals(search_terms, page, per_page):
-    if len(search_terms) < 1:
+def search_hospitals(original_search, query_string, page, per_page):
+    if len(query_string) < 1:
         pass
 
     # PostgreSQL specific features; do not switch to MySQL
     post_vector = func.to_tsvector(func.coalesce(Hospital.name, "") + func.coalesce(Hospital.address, "") + func.coalesce(Hospital.borough, "") + func.coalesce(Hospital.nta_name, "") + func.coalesce(Hospital.zip_code, ""))
-    post_query = func.to_tsquery((''.join([f'{term}:* | ' for term in search_terms]))[:-2])
+    post_query = func.to_tsquery(query_string)
     query = Hospital.query.filter(post_vector.bool_op("@@")(post_query))
-    query = query.order_by(func.ts_rank(post_vector, post_query).desc())
+    query = query.order_by(func.ts_rank_cd(post_vector, post_query).desc())
+
+    query = query.order_by(Hospital.address.ilike(f"%{original_search}%").desc())
+    query = query.order_by(Hospital.name.ilike(f"%{original_search}%").desc())
 
     # for term in search_terms:
     #     query = query.filter(ilike_op(Hospital.name, f'%{term}%'))
@@ -454,15 +460,16 @@ def search_hospitals(search_terms, page, per_page):
     query = query.paginate(page=page, per_page=per_page, error_out=False)
     return hospital_build(query), count
 
-def search_hoods(search_terms, page, per_page):
-    if len(search_terms) < 1:
+def search_hoods(original_search, query_string, page, per_page):
+    if len(query_string) < 1:
         pass
 
     # PostgreSQL specific features; do not switch to MySQL
     post_vector = func.to_tsvector(func.coalesce(Neighborhood.nta_name, "") + func.coalesce(Neighborhood.borough, ""))
-    post_query = func.to_tsquery((''.join([f'{term}:* | ' for term in search_terms]))[:-2])
+    post_query = func.to_tsquery(query_string)
     query = Neighborhood.query.filter(post_vector.bool_op("@@")(post_query))
     query = query.order_by(func.ts_rank(post_vector, post_query).desc())
+    query = query.order_by(Neighborhood.nta_name.ilike(f"%{original_search}%").desc())
 
     # for term in search_terms:
     #     query = query.filter(ilike_op(Neighborhood.nta_name, f'%{term}%'))
@@ -485,25 +492,26 @@ def search():
     if search_string == None:
         search_string = ""
     search_terms = search_string.split()
+    string_query = (''.join([f'{term}:*|' for term in search_terms]))[:-1]
 
     model = request.args.get("model", type=str, default=None)
     if model == None:
         model = "all"
 
     if model == "all" or model == "center":
-        result_centers, center_count = search_centers(search_terms, page, per_page)
+        result_centers, center_count = search_centers(search_string, string_query, page, per_page)
     else:
         result_centers = []
         center_count = 0
 
     if model == "all" or model == "hospital":
-        result_hospitals, hospital_count = search_hospitals(search_terms, page, per_page)
+        result_hospitals, hospital_count = search_hospitals(search_string, string_query, page, per_page)
     else:
         result_hospitals = []
         hospital_count = 0
 
     if model == "all" or model == "neighborhood":
-        result_hoods, n_count = search_hoods(search_terms, page, per_page)
+        result_hoods, n_count = search_hoods(search_string, string_query, page, per_page)
     else:
         result_hoods = []
         n_count = 0
