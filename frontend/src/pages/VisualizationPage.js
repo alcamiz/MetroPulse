@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import BoroughPieChartMedical from "../components/Visualizations/BoroughPieChart_medical";
-import BoroughPieChartTest from "../components/Visualizations/BoroughPieChart_test";
+import BoroughPieChart from "../components/Visualizations/BoroughPieChart";
 import CutoffBarChart from "../components/Visualizations/CutoffBarChart";
+import { backend_website } from "../backend_website";
 //import "../styles/Visualizations.css";
 
 const Vis = () => {
-
   const [boroughMedicalData, setBoroughMedicalData] = useState([]);
   const [boroughTestData, setBoroughTestData] = useState([]);
   const [neighborhoodData, setNeighborhoodData] = useState([]);
@@ -16,87 +15,92 @@ const Vis = () => {
   const [speciesData, setSpeciesData] = useState([]);
   const [parksData, setParksData] = useState([]);
 
+  const boroughs = ["Bronx", "Brooklyn", "Manhattan", "Queens"];
+
   useEffect(() => {
-    fetch("https://api.park-dex.me/api/states")
-      .then((response) =>
-        response.json().then((jsonData) => {
-          console.log(jsonData);
-          setStatesData(processStatesData(jsonData));
-        })
-      )
-      .catch((error) => {
-        console.error("Error fetching states data:", error);
-      });
+    // Hospitals by Borough
+    const fetchBoroughMedicalData = async (borough) => {
+      try {
+        const website = `${backend_website}/hospitals?borough=${borough}`;
+        const response = await fetch(website);
+        const jsonData = await response.json();
+  
+        return processBoroughMedicalData(jsonData, borough);
+      } catch (error) {
+        console.error(`Error fetching hospital data for ${borough} borough:`, error);
+        return { name: borough, value: 0 };
+      }
+    };
+  
+    const fetchAllBoroughMedicalData = async () => {
+      const promises = boroughs.map((borough) => fetchBoroughMedicalData(borough));
+      const dataForAllBoroughs = await Promise.all(promises);
+      setBoroughMedicalData(dataForAllBoroughs);
+    };
 
-    fetch("https://api.park-dex.me/api/animals")
-      .then((response) => response.json())
-      .then((jsonData) => {
-        setSpeciesData(processSpeciesData(jsonData));
-      })
-      .catch((error) => {
-        console.error("Error fetching animals data:", error);
-      });
-
-    fetch("https://api.park-dex.me/api/parks")
-      .then((response) => response.json())
-      .then((jsonData) => {
-        setParksData(processParksData(jsonData));
-      })
-      .catch((error) => {
-        console.error("Error fetching parks data:", error);
-      });
+    // Test Center by Borough 
+    const fetchBoroughTestData = async (borough) => {
+      try {
+        const website = `${backend_website}/centers?borough=${borough}`;
+        const response = await fetch(website);
+        const jsonData = await response.json();
+  
+        return processBoroughTestData(jsonData, borough);
+      } catch (error) {
+        console.error(`Error fetching test center data for ${borough} borough:`, error);
+        return { name: borough, value: 0 };
+      }
+    };
+  
+    const fetchAllBoroughTestData = async () => {
+      const promises = boroughs.map((borough) => fetchBoroughTestData(borough));
+      const dataForAllBoroughs = await Promise.all(promises);
+      setBoroughTestData(dataForAllBoroughs);
+    };
+  
+    fetchAllBoroughMedicalData();
+    fetchAllBoroughTestData();
   }, []);
 
-  const processStatesData = (data) => {
-    return data.data.map((state) => ({
-      state: state.name,
-      biodiversity: state.animals.length,
-    }));
+  const processBoroughMedicalData = async (data, borough) => {
+    const numMedicals = data["total_size"]
+    return {
+      name: borough,
+      value: numMedicals,
+    };
   };
 
-  const processSpeciesData = (data) => {
-    const speciesCount = {};
-
-    data.data.forEach((animal) => {
-      const group = animal.species_group;
-      if (speciesCount[group]) {
-        speciesCount[group]++;
-      } else {
-        speciesCount[group] = 1;
-      }
-    });
-
-    return Object.keys(speciesCount).map((group) => ({
-      name: group,
-      count: speciesCount[group],
-    }));
-  };
-
-  const processParksData = (data) => {
-    const processedData = data.data.map((park) => ({
-      park: park.full_name,
-      activities: park.activities.length,
-    }));
-
-    return processedData
-      .sort((a, b) => b.activities - a.activities)
-      .slice(0, 30);
+  const processBoroughTestData = async (data, borough) => {
+    const numMedicals = data["total_size"]
+    return {
+      name: borough,
+      value: numMedicals,
+    };
   };
 
   return (
     <div className="container">
-      <h1 className="title">Visualizations</h1>
-      <div className="charts-container">
-        <h1 className="chart-title">States with Most Biodiversity</h1>
-        {/* <BiodiversityBarChart data={statesData} /> */}
-        <h1 className="chart-title">Number of Animals per Species Group</h1>
-        {/* <SpeciesPieChart data={speciesData} /> */}
-        <h1 className="chart-title">
-          Top 25 Parks with the Largest Amount of Activities
-        </h1>
-        {/* <ParksBarChart data={parksData} /> */}
-      </div>
+    <h1 className="chart-title">Hospitals by Borough</h1>
+    <div className="charts-container">
+      {boroughMedicalData.length > 0 && (
+        <>
+          
+          <BoroughPieChart data={boroughMedicalData} />
+        </>
+      )}
+      {boroughMedicalData.length === 0 && <p>Loading medical data...</p>}
     </div>
+    <h1 className="chart-title">Test Centers by Borough</h1>
+    <div className="charts-container">
+      {boroughTestData.length > 0 && (
+        <>
+          
+          <BoroughPieChart data={boroughTestData} />
+        </>
+      )}
+      {boroughTestData.length === 0 && <p>Loading test center data...</p>}
+    </div>
+  </div>
   );
 };
 

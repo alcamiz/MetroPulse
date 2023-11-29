@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+  import React, { useState, useEffect } from "react";
 import StackedBarChart from "../components/Visualizations/Prov_StackedBarChart";
 import PopulationDensityCutoffBarChart from "../components/Visualizations/Prov_CutoffBarChart";
 import "../styles/Visualization.css";
