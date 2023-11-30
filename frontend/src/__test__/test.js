@@ -118,6 +118,8 @@ test("Test the Navbar", async () => {
     expect(navbar).toHaveTextContent("Neighborhoods");
     expect(navbar).toHaveTextContent("Medical Facilities");
     expect(navbar).toHaveTextContent("Test Centers");
+    expect(navbar).toHaveTextContent("Visualizations");
+    expect(navbar).toHaveTextContent("Provider Visualizations");
 });
 
 test("Test Loading", async () => {

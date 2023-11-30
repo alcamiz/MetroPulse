@@ -100,6 +100,7 @@ Schedule meetings, (partly) delegate roles, think up high-level architecture, an
 | 1     | Alex Cabrera   |
 | 2     | Thomas Moody |
 | 3     | Kamil Kalowski |
+| 4     | Kyston Brown |
 
 ## Completion Time
 
@@ -126,6 +127,14 @@ Schedule meetings, (partly) delegate roles, think up high-level architecture, an
 | Alex Cabrera      |  20           | 25                 |
 | Thomas Moody      |  15           | 20                 |
 | Kyston Brown      |  15           | 20                 |
+
+### Phase 4
+| Name               | Estimated     | Actual        |
+| ------------------ | :-----------: | :-----------: |
+| Kamil Kalowski    |  10           | 10                 |
+| Alex Cabrera      |  10           | 10                 |
+| Thomas Moody      |  10           | 10                 |
+| Kyston Brown      |  10           | 10                 |
 
 ## Git SHA
 | Phase               | SHA           |

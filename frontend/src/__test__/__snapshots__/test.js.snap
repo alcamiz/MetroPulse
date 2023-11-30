@@ -118,6 +118,24 @@ exports[`Test whether the Navbar works 1`] = `
         </a>
         <a
           className="nav-link"
+          data-rr-ui-event-key="/vis/"
+          disabled={false}
+          href="/vis/"
+          onClick={[Function]}
+        >
+          Visualizations
+        </a>
+        <a
+          className="nav-link"
+          data-rr-ui-event-key="/prov/"
+          disabled={false}
+          href="/prov/"
+          onClick={[Function]}
+        >
+          Provider Visualizations
+        </a>
+        <a
+          className="nav-link"
           data-rr-ui-event-key="/about/"
           disabled={false}
           href="/about/"
@@ -172,7 +190,7 @@ exports[`test center card 1`] = `
     className="card"
     style={
       Object {
-        "height": "auto",
+        "height": "40rem",
         "width": "20rem",
       }
     }
@@ -391,7 +409,7 @@ exports[`test hood card 1`] = `
     className="card"
     style={
       Object {
-        "height": "auto",
+        "height": "40rem",
         "width": "20rem",
       }
     }
@@ -651,7 +669,7 @@ exports[`test medical card 1`] = `
     className="card"
     style={
       Object {
-        "height": "auto",
+        "height": "40rem",
         "width": "20rem",
       }
     }
