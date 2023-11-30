@@ -9,12 +9,6 @@ const Vis = () => {
   const [boroughTestData, setBoroughTestData] = useState([]);
   const [neighborhoodData, setNeighborhoodData] = useState([]);
 
-
-
-  const [statesData, setStatesData] = useState([]);
-  const [speciesData, setSpeciesData] = useState([]);
-  const [parksData, setParksData] = useState([]);
-
   const boroughs = ["Bronx", "Brooklyn", "Manhattan", "Queens"];
 
   useEffect(() => {
@@ -60,6 +54,19 @@ const Vis = () => {
   
     fetchAllBoroughMedicalData();
     fetchAllBoroughTestData();
+
+    // Fetch neighborhood data
+    fetch("https://backend.metropulse.link/neighborhoods")
+    .then((response) =>
+      response.json().then((jsonData) => {
+        console.log(jsonData);
+        setNeighborhoodData(processNeighborhoodData(jsonData));
+      })
+    )
+    .catch((error) => {
+      console.error("Error fetching states data:", error);
+    });
+
   }, []);
 
   const processBoroughMedicalData = async (data, borough) => {
@@ -78,13 +85,25 @@ const Vis = () => {
     };
   };
 
+  const processNeighborhoodData = (data) => {
+    // First, sort the cities by population density in descending order
+    const sortedByPopulation = data.data.sort((a, b) => b.population - a.population);
+
+    // Then, take the top 10 cities with the highest population density
+    const topTenHoods = sortedByPopulation.slice(0, 25);
+    
+    return topTenHoods.map((hood) => ({
+      nta_name: hood.nta_name,
+      population: hood.population,
+    }));
+  };
+
   return (
     <div className="container">
     <h1 className="chart-title">Hospitals by Borough</h1>
     <div className="charts-container">
       {boroughMedicalData.length > 0 && (
         <>
-          
           <BoroughPieChart data={boroughMedicalData} />
         </>
       )}
@@ -94,11 +113,14 @@ const Vis = () => {
     <div className="charts-container">
       {boroughTestData.length > 0 && (
         <>
-          
           <BoroughPieChart data={boroughTestData} />
         </>
       )}
       {boroughTestData.length === 0 && <p>Loading test center data...</p>}
+    </div>
+    <h1 className="chart-title">Population of Neighborhoods</h1>
+    <div className="charts-container">  
+      <CutoffBarChart data={neighborhoodData}/>
     </div>
   </div>
   );

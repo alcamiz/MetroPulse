@@ -10,7 +10,7 @@ const styles = {
   },
   card: {
       width: '20rem',
-      height: 'auto'
+      height: '40rem'
   }
 };
 

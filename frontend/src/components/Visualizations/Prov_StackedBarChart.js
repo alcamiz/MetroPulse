@@ -21,8 +21,8 @@ const StackedBarChart = ({ data }) => {
             <YAxis />
             <Tooltip />
             <Legend />
-            <Bar dataKey="sheltered_population" stackId="a" fill="#8884d8"/>
-            <Bar dataKey="unsheltered_population" stackId="a" fill="#82ca9d" />
+            <Bar dataKey="sheltered_population" stackId="a" fill="#0088FE"/>
+            <Bar dataKey="unsheltered_population" stackId="a" fill="#00C49F" />
           </BarChart>
         </ResponsiveContainer>
       );

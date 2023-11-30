@@ -1,16 +1,14 @@
   import React, { useState, useEffect } from "react";
 import StackedBarChart from "../components/Visualizations/Prov_StackedBarChart";
 import PopulationDensityCutoffBarChart from "../components/Visualizations/Prov_CutoffBarChart";
+import ScatterPlot from "../components/Visualizations/ScatterPlot";
 import "../styles/Visualization.css";
 
 const ProviderVis = () => {
 
   const [shelteredUnshelteredData, setShelteredUnshelteredData] = useState([]);
   const [populationDensityData, setPopulationDensityData] = useState([]);
-  const [neighborhoodData, setNeighborhoodData] = useState([]);
-
-  const [speciesData, setSpeciesData] = useState([]);
-  const [parksData, setParksData] = useState([]);
+  const [ResourceData, setResourceData] = useState([]);
 
   useEffect(() => {
     fetch("https://api.lacountyhomelesshelper.me/cities")
@@ -19,21 +17,13 @@ const ProviderVis = () => {
           console.log(jsonData);
           setShelteredUnshelteredData(processShelterData(jsonData));
           setPopulationDensityData(processPopulationDensityData(jsonData))
+          setResourceData(processResourceData(jsonData))
         })
       )
       .catch((error) => {
         console.error("Error fetching city data:", error);
       });
 
-
-    fetch("https://api.park-dex.me/api/parks")
-      .then((response) => response.json())
-      .then((jsonData) => {
-        setParksData(processParksData(jsonData));
-      })
-      .catch((error) => {
-        console.error("Error fetching parks data:", error);
-      });
   }, []);
 
   const processShelterData = (data) => {
@@ -59,17 +49,17 @@ const ProviderVis = () => {
       name: city.csa_label,
       population_density: city.density_total
     }));
-};
+  };
 
-
-  const processParksData = (data) => {
-    const processedData = data.data.map((park) => ({
-      park: park.full_name,
-      activities: park.activities.length,
+  const processResourceData = (data) => {
+    const processedData = data.map((city) => ({
+      csa_label: city.csa_label,
+      square_miles: city.square_miles,
+      total_unsheltered_pop : city.total_unsheltered_pop,
     }));
 
     return processedData
-      .sort((a, b) => b.activities - a.activities)
+      .sort((a, b) => b.square_miles - a.square_miles)
       .slice(0, 30);
   };
 
@@ -85,9 +75,11 @@ const ProviderVis = () => {
           <PopulationDensityCutoffBarChart data={populationDensityData} />
         </div>
         <h1 className="chart-title">
-          Top 25 Parks with the Largest Amount of Activities
+          Unsheltered Population Compared to Square Miles
         </h1>
-        {/* <ParksBarChart data={parksData} /> */}
+        <div className="charts-container">
+          <ScatterPlot data={ResourceData} />
+        </div>
       </div>
   );
 };

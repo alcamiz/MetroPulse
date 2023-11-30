@@ -21,7 +21,7 @@ const PopulationDensityCutoffBarChart = ({ data }) => {
             <Tooltip />
             <Legend />
             <CartesianGrid strokeDasharray="3 3" />
-            <Bar dataKey="population_density" fill="#8884d8" background={{ fill: '#eee' }} />
+            <Bar dataKey="population_density" fill="#00C49F"/>
           </BarChart>
         </ResponsiveContainer>
       );

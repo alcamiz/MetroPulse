@@ -27,7 +27,7 @@ function MedicalInfo({ medical }) {
               </tr>
               <tr>
                 <td>Neighborhood</td>
-                <td><Link to={'/hoods/' + medical.parent_neighborhood}>{medical.nta}</Link></td>
+                <td><Link to={'/hoods/' + medical.parent_neighborhood}>{medical.nta_name}</Link></td>
               </tr>
               <tr>
                 <td>Borough</td>
@@ -35,7 +35,7 @@ function MedicalInfo({ medical }) {
               </tr>
               <tr>
                 <td>Council District</td>
-                <td>{medical.council}</td>
+                <td>{medical.council_district}</td>
               </tr>
             </tbody>
           </Table>
