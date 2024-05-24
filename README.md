@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src=“frontend/public/pulse-svgrepo-com.svg” width="150">
+<img src="frontend/public/pulse-svgrepo-com.svg" width="150">
 
 # MetroPulse NYC
 
