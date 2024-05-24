@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src=“frontend/public/pulse-svgrepo-com.svg” width="150">
+
 # MetroPulse NYC
 
 A website and API with the goal of bringing awareness to the rising hypertension health issues in the New York area, and help those struggling with the condition.
